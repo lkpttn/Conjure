@@ -7,13 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D796E031B4F52E600840211 /* Series.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D796E021B4F52E600840211 /* Series.swift */; };
+		0D796E041B4F52E600840211 /* Series.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D796E021B4F52E600840211 /* Series.swift */; };
+		0D796E061B4F556300840211 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D796E051B4F556300840211 /* Game.swift */; };
+		0D796E071B4F556300840211 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D796E051B4F556300840211 /* Game.swift */; };
+		0D796E091B51567100840211 /* winCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D796E081B51567100840211 /* winCircle.swift */; };
+		0D796E0A1B51567100840211 /* winCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D796E081B51567100840211 /* winCircle.swift */; };
+		0D796E0C1B51FB6500840211 /* TurnCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D796E0B1B51FB6500840211 /* TurnCell.swift */; };
+		0D796E0D1B51FB6500840211 /* TurnCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D796E0B1B51FB6500840211 /* TurnCell.swift */; };
 		0D7ED9D51B4B387700A6C2B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7ED9D41B4B387700A6C2B0 /* AppDelegate.swift */; };
-		0D7ED9D71B4B387700A6C2B0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7ED9D61B4B387700A6C2B0 /* ViewController.swift */; };
+		0D7ED9D71B4B387700A6C2B0 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7ED9D61B4B387700A6C2B0 /* GameViewController.swift */; };
 		0D7ED9DA1B4B387700A6C2B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D7ED9D81B4B387700A6C2B0 /* Main.storyboard */; };
 		0D7ED9DC1B4B387700A6C2B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D7ED9DB1B4B387700A6C2B0 /* Assets.xcassets */; };
 		0D7ED9DF1B4B387700A6C2B0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D7ED9DD1B4B387700A6C2B0 /* LaunchScreen.storyboard */; };
 		0D7ED9EA1B4B387700A6C2B0 /* ConjureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7ED9E91B4B387700A6C2B0 /* ConjureTests.swift */; };
 		0D7ED9F51B4B387700A6C2B0 /* ConjureUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7ED9F41B4B387700A6C2B0 /* ConjureUITests.swift */; };
+		0D7EDA031B4B38D900A6C2B0 /* LifeCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7EDA021B4B38D900A6C2B0 /* LifeCounter.swift */; };
+		0DF8F8561B4EFA08000C6AF6 /* GameHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF8F8551B4EFA08000C6AF6 /* GameHeader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,9 +44,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0D796E021B4F52E600840211 /* Series.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Series.swift; sourceTree = "<group>"; };
+		0D796E051B4F556300840211 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		0D796E081B51567100840211 /* winCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = winCircle.swift; sourceTree = "<group>"; };
+		0D796E0B1B51FB6500840211 /* TurnCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurnCell.swift; sourceTree = "<group>"; };
 		0D7ED9D11B4B387700A6C2B0 /* Conjure.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Conjure.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D7ED9D41B4B387700A6C2B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0D7ED9D61B4B387700A6C2B0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0D7ED9D61B4B387700A6C2B0 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		0D7ED9D91B4B387700A6C2B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0D7ED9DB1B4B387700A6C2B0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0D7ED9DE1B4B387700A6C2B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +61,8 @@
 		0D7ED9F01B4B387700A6C2B0 /* ConjureUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConjureUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D7ED9F41B4B387700A6C2B0 /* ConjureUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConjureUITests.swift; sourceTree = "<group>"; };
 		0D7ED9F61B4B387700A6C2B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0D7EDA021B4B38D900A6C2B0 /* LifeCounter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LifeCounter.swift; sourceTree = "<group>"; };
+		0DF8F8551B4EFA08000C6AF6 /* GameHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameHeader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,7 +114,13 @@
 			isa = PBXGroup;
 			children = (
 				0D7ED9D41B4B387700A6C2B0 /* AppDelegate.swift */,
-				0D7ED9D61B4B387700A6C2B0 /* ViewController.swift */,
+				0D7ED9D61B4B387700A6C2B0 /* GameViewController.swift */,
+				0D796E0B1B51FB6500840211 /* TurnCell.swift */,
+				0D7EDA021B4B38D900A6C2B0 /* LifeCounter.swift */,
+				0D796E021B4F52E600840211 /* Series.swift */,
+				0D796E051B4F556300840211 /* Game.swift */,
+				0DF8F8551B4EFA08000C6AF6 /* GameHeader.swift */,
+				0D796E081B51567100840211 /* winCircle.swift */,
 				0D7ED9D81B4B387700A6C2B0 /* Main.storyboard */,
 				0D7ED9DB1B4B387700A6C2B0 /* Assets.xcassets */,
 				0D7ED9DD1B4B387700A6C2B0 /* LaunchScreen.storyboard */,
@@ -255,8 +277,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0D7ED9D71B4B387700A6C2B0 /* ViewController.swift in Sources */,
+				0D7ED9D71B4B387700A6C2B0 /* GameViewController.swift in Sources */,
+				0D796E061B4F556300840211 /* Game.swift in Sources */,
+				0D796E0C1B51FB6500840211 /* TurnCell.swift in Sources */,
 				0D7ED9D51B4B387700A6C2B0 /* AppDelegate.swift in Sources */,
+				0DF8F8561B4EFA08000C6AF6 /* GameHeader.swift in Sources */,
+				0D796E091B51567100840211 /* winCircle.swift in Sources */,
+				0D7EDA031B4B38D900A6C2B0 /* LifeCounter.swift in Sources */,
+				0D796E031B4F52E600840211 /* Series.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,6 +292,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D796E0D1B51FB6500840211 /* TurnCell.swift in Sources */,
+				0D796E041B4F52E600840211 /* Series.swift in Sources */,
+				0D796E071B4F556300840211 /* Game.swift in Sources */,
+				0D796E0A1B51567100840211 /* winCircle.swift in Sources */,
 				0D7ED9EA1B4B387700A6C2B0 /* ConjureTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -399,6 +431,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Conjure/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.friendofpixels.Conjure;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -410,6 +443,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Conjure/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.friendofpixels.Conjure;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -483,6 +517,7 @@
 				0D7ED9FB1B4B387700A6C2B0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0D7ED9FC1B4B387700A6C2B0 /* Build configuration list for PBXNativeTarget "ConjureTests" */ = {
 			isa = XCConfigurationList;
@@ -491,6 +526,7 @@
 				0D7ED9FE1B4B387700A6C2B0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0D7ED9FF1B4B387700A6C2B0 /* Build configuration list for PBXNativeTarget "ConjureUITests" */ = {
 			isa = XCConfigurationList;
@@ -499,6 +535,7 @@
 				0D7EDA011B4B387700A6C2B0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
