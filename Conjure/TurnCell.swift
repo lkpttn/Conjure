@@ -14,5 +14,8 @@ class TurnCell: UITableViewCell {
     @IBOutlet weak var turnNumber: UILabel!
     @IBOutlet weak var playerOneTurnLife: UILabel!
     @IBOutlet weak var playerTwoTurnLife: UILabel!
+    @IBOutlet weak var playerOneChange: UILabel!
+    @IBOutlet weak var playerTwoChange: UILabel!
+    
 
 }

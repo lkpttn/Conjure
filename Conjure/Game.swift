@@ -34,6 +34,9 @@ class Turn {
     var turnPlayerOneLife: Int
     var turnPlayerTwoLife: Int
     
+    var turnPlayerOneChange = ""
+    var turnPlayerTwoChange = ""
+    
     init(turnNumber: Int, turnPlayerOneLife: Int, turnPlayerTwoLife: Int) {
         self.turnNumber = turnNumber
         self.turnPlayerOneLife = turnPlayerOneLife

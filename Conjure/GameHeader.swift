@@ -53,11 +53,10 @@ class GameHeader: UIView {
         addSubview(playerTwoCounter)
         playerTwoCounter.playerName.text = "Opponent"
         
-        // Series label
         let seriesLabelFrame = CGRect(x: 0, y: 10, width: 360, height: 40)
         let seriesLabel = UILabel(frame: seriesLabelFrame)
-        seriesLabel.text = "Casual"
         seriesLabel.textAlignment = .Center
+        seriesLabel.text = ""
         addSubview(seriesLabel)
     }
     
@@ -65,5 +64,4 @@ class GameHeader: UIView {
         let circle = winCircle(frame: frame)
         addSubview(circle)
     }
-    
 }

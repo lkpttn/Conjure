@@ -79,13 +79,17 @@ class LifeCounter: UIView {
     
     // MARK: Button actions
     func minusLife(minusButton: UIButton) {
-        lifeTotal -= 1
-        counter.text = String(lifeTotal)
+        if lifeTotal != 0 {
+            lifeTotal -= 1
+            counter.text = String(lifeTotal)
+        }
     }
     
     func plusLife(plusButton: UIButton) {
-        lifeTotal += 1
-        counter.text = String(lifeTotal)
+        if lifeTotal != 0 {
+            lifeTotal += 1
+            counter.text = String(lifeTotal)
+        }
     }
 
 } // END
