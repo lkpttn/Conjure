@@ -42,7 +42,6 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     // MARK: Table stuff
     // How many rows are in the table
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("Number of turns in array: \(series.games[gamenumber-1].turns.count)")
         return series.games[gamenumber-1].turns.count
     }
     
@@ -83,7 +82,6 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.playerOneChange.text = playerOneString
         cell.playerTwoChange.text = playerTwoString
 
-        
         return cell
 
     }
@@ -95,6 +93,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         changeSeriesLabel(series.numberOfGames)
         
         gamenumber += 1
+        print("Starting game number \(gamenumber)")
         
         // Create a new game instance with an increased base number
         let game = Game(baseLifeTotal: 20, gameNumber: gamenumber)
@@ -140,6 +139,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             // and check to see if the series is over.
             print("Player Two wins")
             series.losses += 1
+            series.deck.losses += 1
             
             // Add the win circle
             doWinCirleLogic(series.wins, losses: series.losses)
@@ -152,6 +152,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             // and check to see if the series is over.
             print("Player One wins")
             series.wins += 1
+            series.deck.wins += 1
             
             // Add the win circle
             doWinCirleLogic(series.wins, losses: series.losses)
@@ -223,7 +224,6 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             seriesLabel.text = "Single"
         case 3:
             seriesLabel.text = "Bo3"
-            print("Best of 3")
         case 5:
             seriesLabel.text = "Bo5"
         case 7:
@@ -288,6 +288,12 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+//    func save() {
+//        let savedData = NSKeyedArchiver.archivedDataWithRootObject(series)
+//        let defaults = NSUserDefaults.standardUserDefaults()
+//        defaults.setObject(savedData, forKey: "Series")
+//    }
+    
     // MARK: Button things
     func nextTurn(sender: UIButton!) {
         // Increment the turn number
@@ -310,7 +316,6 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         // Did anyone win?
         checkWinners()
-        
     }
     
     func nextGame(sender: UIButton!) {
@@ -321,13 +326,17 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func endSeries(sender: UIButton!) {
-        // Code to save the series goes here.
-        
-        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-        let nextViewController = storyBoard.instantiateViewControllerWithIdentifier("LeadViewController") as! LeadViewController
-        self.presentViewController(nextViewController, animated:false, completion:nil)
+        // Programmatically preform the segue specified in LeadViewController
+        self.performSegueWithIdentifier("unwindToLeadView", sender: self)
     }
     
+    // MARK: Reset
+    @IBAction func resetButton(sender: UIButton) {
+        series.games.removeLast()
+        gamenumber -= 1
+        turnNumber = 0
+        startGame(gamenumber, series: series)
+    }
     
 } // END
 

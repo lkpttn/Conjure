@@ -8,23 +8,28 @@
 
 import UIKit
 
-class Series {
+class Series: NSCoder {
+    
     // MARK: Properties
-    let date = NSDate()
-    // let deck: Deck?
-    let numberOfGames: Int
-    let timeLimit: Int
+    var date = NSDate()
+    var numberOfGames: Int
+    var timeLimit: Int
     var winConditon: Int
     var wins = 0
     var losses = 0
     var games = [Game]()
+    var deck = Deck(deckName: "No deck selected")
     
-    // Small variables
-    var gameNumber = 1
+    // MARK: Archiving Paths
+    // This chooses where we will save Series data in the filesystem
+    static let DocumentsDirectory = NSFileManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
+    static let ArchiveURL = DocumentsDirectory.URLByAppendingPathComponent("series")
     
-    init(/* deck: Deck?, */ numberOfGames: Int, timeLimit: Int) {
+    init(deck: Deck, numberOfGames: Int, timeLimit: Int) {
+        // self.deck = deck
         self.numberOfGames = numberOfGames
         self.timeLimit = timeLimit
+        self.deck = deck
         
         // Logic block fo determining how many games you need to win
         switch numberOfGames {
@@ -39,7 +44,38 @@ class Series {
         default:
             winConditon = 1
         }
-        
     }
     
+    // MARK: NSCoding
+    func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeObject(games, forKey: "games")
+        aCoder.encodeObject(deck, forKey: "deck")
+        aCoder.encodeInteger(wins, forKey: "wins")
+        aCoder.encodeInteger(losses, forKey: "losses")
+        aCoder.encodeObject(date, forKey: "date")
+        aCoder.encodeInteger(numberOfGames, forKey: "numberOfGames")
+        aCoder.encodeInteger(timeLimit, forKey: "timeLimit")
+    }
+    
+    // This initializer must be initialized on all subclasses
+    // Convenience denotes this as a secondary initializer
+    // ? marks it as a method that might fail.
+    // This runs code if it initialized with objects to decode
+    required convenience init?(coder aDecoder: NSCoder) {
+        let games = aDecoder.decodeObjectForKey("games") as! NSArray
+        let deck = aDecoder.decodeObjectForKey("deck") as! Deck
+        let wins = aDecoder.decodeIntegerForKey("wins")
+        let losses = aDecoder.decodeIntegerForKey("losses")
+        let numberOfGames = aDecoder.decodeIntegerForKey("numberOfGames")
+        let date = aDecoder.decodeObjectForKey("date") as! NSDate
+        let timeLimit = aDecoder.decodeIntegerForKey("timeLimit")
+        
+        
+        self.init(deck: deck, numberOfGames: numberOfGames, timeLimit: timeLimit)
+        self.wins = wins
+        self.losses = losses
+        self.games = games as! [Game]
+        self.date = date
+    }
+
 } // END

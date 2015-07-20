@@ -1,5 +1,5 @@
 //
-//  turnCell.swift
+//  TurnCell.swift
 //  Conjure
 //
 //  Created by Luke Patton on 7/11/15.
@@ -16,6 +16,4 @@ class TurnCell: UITableViewCell {
     @IBOutlet weak var playerTwoTurnLife: UILabel!
     @IBOutlet weak var playerOneChange: UILabel!
     @IBOutlet weak var playerTwoChange: UILabel!
-    
-
 }
