@@ -18,6 +18,7 @@ class DeckDetailViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var winPercentageLabel: UILabel!
     
     var deck: Deck?
+    var deckDictionary = [String: Deck]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,8 +31,8 @@ class DeckDetailViewController: UIViewController, UITextFieldDelegate {
             lossesLabel.text = String(deck.losses)
             
             // Fix the division
-            let winPercent = (deck.wins/deck.losses)*100
-            winPercentageLabel.text = String(winPercent)
+            // let winPercent = (deck.wins/deck.losses)*100
+            // winPercentageLabel.text = String(winPercent)
         }
         else {
             self.deck = Deck(deckName: "No deck name")
@@ -72,10 +73,14 @@ class DeckDetailViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: Button actions
     @IBAction func deckSelection(sender: UIButton) {
+        deckDictionary[(deck?.deckName)!] = deck
         self.performSegueWithIdentifier("unwindToLeadView", sender: self)
     }
     
-
+    @IBAction func deckDelete(sender: UIButton) {
+        self.performSegueWithIdentifier("unwindToDeckTableView", sender: self)
+    }
+    
     /*
     // MARK: - Navigation
 

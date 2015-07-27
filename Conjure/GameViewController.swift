@@ -139,7 +139,6 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             // and check to see if the series is over.
             print("Player Two wins")
             series.losses += 1
-            series.deck.losses += 1
             
             // Add the win circle
             doWinCirleLogic(series.wins, losses: series.losses)
@@ -152,7 +151,6 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             // and check to see if the series is over.
             print("Player One wins")
             series.wins += 1
-            series.deck.wins += 1
             
             // Add the win circle
             doWinCirleLogic(series.wins, losses: series.losses)
@@ -287,12 +285,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             return String(playerTwoChange)
         }
     }
-    
-//    func save() {
-//        let savedData = NSKeyedArchiver.archivedDataWithRootObject(series)
-//        let defaults = NSUserDefaults.standardUserDefaults()
-//        defaults.setObject(savedData, forKey: "Series")
-//    }
+
     
     // MARK: Button things
     func nextTurn(sender: UIButton!) {

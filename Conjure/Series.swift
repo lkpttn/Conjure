@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Series: NSCoder {
+class Series: NSObject, NSCoding {
     
     // MARK: Properties
     var date = NSDate()
@@ -64,6 +64,7 @@ class Series: NSCoder {
     required convenience init?(coder aDecoder: NSCoder) {
         let games = aDecoder.decodeObjectForKey("games") as! NSArray
         let deck = aDecoder.decodeObjectForKey("deck") as! Deck
+        // let deck = Deck(deckName: "Not saved deck")
         let wins = aDecoder.decodeIntegerForKey("wins")
         let losses = aDecoder.decodeIntegerForKey("losses")
         let numberOfGames = aDecoder.decodeIntegerForKey("numberOfGames")

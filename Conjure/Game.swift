@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Game {
+class Game: NSObject, NSCoding {
     // MARK: Properties
     var baseLifeTotal: Int
     var gameNumber: Int
@@ -26,9 +26,28 @@ class Game {
         playerTwoLife = baseLifeTotal
     }
     
+    // MARK: NSCoding
+    func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeInteger(baseLifeTotal, forKey: "baseLifeTotal")
+        aCoder.encodeInteger(gameNumber, forKey: "gameNumber")
+        aCoder.encodeObject(turns, forKey: "turns")
+    }
+    
+    required convenience init?(coder aDecoder: NSCoder) {
+        let baseLifeTotal = aDecoder.decodeIntegerForKey("baseLifeTotal")
+        let gameNumber = aDecoder.decodeIntegerForKey("gameNumber")
+        let turns = aDecoder.decodeObjectForKey("turns") as? NSArray
+        
+        self.init(baseLifeTotal: baseLifeTotal, gameNumber: gameNumber)
+        self.playerOneLife = baseLifeTotal
+        self.playerTwoLife = baseLifeTotal
+        // Need to delete the older game before I can start up again
+        self.turns = turns as! [Turn]
+    }
+    
 } // END
 
-class Turn {
+class Turn: NSObject, NSCoding {
     // Mark: Turn properties
     var turnNumber: Int
     var turnPlayerOneLife: Int
@@ -41,5 +60,20 @@ class Turn {
         self.turnNumber = turnNumber
         self.turnPlayerOneLife = turnPlayerOneLife
         self.turnPlayerTwoLife = turnPlayerTwoLife
+    }
+    
+    // MARK: NSCoding
+    func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeInteger(turnNumber, forKey: "turnNumber")
+        aCoder.encodeInteger(turnPlayerOneLife, forKey: "turnPlayerOneLife")
+        aCoder.encodeInteger(turnPlayerTwoLife, forKey: "turnPlayerTwoLife")
+    }
+    
+    required convenience init?(coder aDecoder: NSCoder) {
+        let turnNumber = aDecoder.decodeIntegerForKey("turnNumber")
+        let turnPlayerOneLife = aDecoder.decodeIntegerForKey("turnPlayerOneLife")
+        let turnPlayerTwoLife = aDecoder.decodeIntegerForKey("turnPlayerTwoLife")
+        
+        self.init(turnNumber: turnNumber, turnPlayerOneLife: turnPlayerOneLife, turnPlayerTwoLife: turnPlayerTwoLife)
     }
 } // END

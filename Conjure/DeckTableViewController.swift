@@ -10,15 +10,17 @@ import UIKit
 
 class DeckTableViewController: UITableViewController {
     
+    var deckDictionary = [String: Deck]()
     var deckArray = [Deck]()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let testDeck = Deck(deckName: "Test Deck")
-        testDeck.wins = 16
-        testDeck.losses = 4
-        deckArray.append(testDeck)
+        // Turn the deckDictionary into a deckarray
+        for (deckName, deck) in deckDictionary {
+            print(deckName)
+            deckArray.append(deck)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,24 +38,18 @@ class DeckTableViewController: UITableViewController {
         return deckArray.count
     }
 
-    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
         let cellIdentifier = "SeriesCell"
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! SeriesCell
         // Configure the cell...
         let deck = deckArray[indexPath.row]
-        print(deck)
         cell.deckNameLabel.text = String(deck.deckName)
         cell.winLossLabel.text = "\(deck.wins)-\(deck.losses)"
         
-        
         return cell
-
     }
     
     // MARK: Segue actions
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showDeckDetail" {
             print("Getting information from the cell")
@@ -68,62 +64,27 @@ class DeckTableViewController: UITableViewController {
                 let selectedDeck = deckArray[indexPath.row]
                 // the new view controller (A DeckDetailViewController) is passed the series information
                 destination.deck = selectedDeck
+                destination.deckDictionary = deckDictionary
             }
         }
         else if segue.identifier == "addNewDeck" {
             print("Getting information from the cell")
-            // Downcasting the destination view controller as a DeckDetailViewController
-            // let destination = segue.destinationViewController as! DeckDetailViewController
+            let destination = segue.destinationViewController as! DeckDetailViewController
+            destination.deckDictionary = deckDictionary
         }
         else {
             print("Nope")
         }
     }
     
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    @IBAction func unwindToDeckTableView(sender: UIStoryboardSegue) {
+        let source = sender.sourceViewController as? DeckDetailViewController
+        // Find the deck indexPath
+        if let selectedIndexPath = tableView.indexPathForSelectedRow {
+            // Delete from dictionary and array
+            deckDictionary.removeValueForKey((source?.deck?.deckName)!)
+            deckArray.removeAtIndex(selectedIndexPath.row)
+            tableView.deleteRowsAtIndexPaths([selectedIndexPath], withRowAnimation: .Fade)
+        }
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

@@ -16,10 +16,15 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     @IBOutlet weak var pickerLabel: UILabel!
     @IBOutlet weak var pickerButton: UIButton!
     @IBOutlet weak var deckLabel: UILabel!
+    @IBOutlet weak var startSeriesButton: UIButton!
+    
+    @IBOutlet weak var deckNameHistoryLabel: UILabel!
+    @IBOutlet weak var deckRecordHistoryLabel: UILabel!
+    
     
     // a variable that is a empty array of Meal objects
     var seriesArray = [Series]()
-    var deckArray = [Deck]()
+    var deckDictionary = [String: Deck]()
     
     var currentDeck: Deck?
     var numberOfGames = 1
@@ -42,33 +47,31 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         
         numberOfGamesField.inputView = optionsPicker
         numberOfGamesField.text = String(testOptions[0])
+        
+        // Load saved series
+        if let savedSeries = loadSeries() {
+            seriesArray += savedSeries
+        }
+        else {
+            print("Series help!")
+        }
+        
+        // Load saved decks
+        if let savedDecks = loadDecks() {
+            // For loop iteration?
+            deckDictionary = savedDecks
+        }
+        else {
+            print("Deck help!")
+        }
+        
+        changeLabels()
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "startSeries" {
-            print("Starting a new series")
-            // Downcasting the destination view controller as a MealViewController
-            let svc = segue.destinationViewController as! GameViewController
-            
-            // Set up the series to be passed to the GameViewController
-            svc.series = Series(deck: currentDeck!, numberOfGames: numberOfGames, timeLimit: 2500)
-        }
-        else if segue.identifier == "showHistory" {
-            // topViewController lets us get data from the top view controller in the stack, which now is LeadViewController
-            let nav = segue.destinationViewController as! UINavigationController
-            let destination = nav.topViewController as! HistoryTableViewController
-            destination.seriesArray = seriesArray
-        }
-        else if segue.identifier == "showDecks" {
-            // topViewController lets us get data from the top view controller in the stack, which now is LeadViewController
-            let nav = segue.destinationViewController as! UINavigationController
-            let destination = nav.topViewController as! DeckTableViewController
-            destination.deckArray = deckArray
-        }
-
-        else {
-            print("Nope")
-        }
+    func changeLabels() {
+        let lastSeries = seriesArray[0]
+        deckNameHistoryLabel.text = lastSeries.deck.deckName
+        deckRecordHistoryLabel.text = "\(lastSeries.wins)-\(lastSeries.losses)"
     }
     
     // MARK: PickerView stuff
@@ -94,21 +97,104 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         self.view.endEditing(true)
     }
     
+    // MARK: NSCoding
+    // Save or load the series whenever there's an update
+    func saveSeries() {
+        // An archiver object that saves the meal array to the ArchivePath we defined in Series
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(seriesArray, toFile: Series.ArchiveURL.path!)
+        print("Saved the series")
+        if !isSuccessfulSave {
+            print("Failure!")
+        }
+    }
+    
+    func loadSeries() -> [Series]? {
+        // finds the object at the ArchivePath and attempts to downcast it as an array of Series
+        return NSKeyedUnarchiver.unarchiveObjectWithFile(Series.ArchiveURL.path!) as? [Series]
+    }
+    
+    func saveDecks() {
+        // An archiver object that saves the meal array to the ArchivePath we defined in Series
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(deckDictionary, toFile: Deck.ArchiveURL.path!)
+        print("Saved the decks")
+        if !isSuccessfulSave {
+            print("Failure!")
+        }
+    }
+    
+    func loadDecks() -> [String: Deck]? {
+        // finds the object at the ArchivePath and attempts to downcast it as an array of Decks
+        return NSKeyedUnarchiver.unarchiveObjectWithFile(Deck.ArchiveURL.path!) as? [String: Deck]
+    }
+    
+    // MARK: Navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "startSeries" {
+            print("Starting a new series")
+            // Downcasting the destination view controller as a MealViewController
+            let svc = segue.destinationViewController as! GameViewController
+            
+            // Set up the series to be passed to the GameViewController
+            if currentDeck != nil {
+                svc.series = Series(deck: currentDeck!, numberOfGames: numberOfGames, timeLimit: 2500)
+            }
+            else {
+                let alert = UIAlertController(title: "No Deck Selected", message: "You need to ", preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.Default, handler: nil))
+                self.presentViewController(alert, animated: true, completion: nil)
+            }
+        }
+        else if segue.identifier == "showHistory" {
+            // topViewController lets us get data from the top view controller in the stack, which now is LeadViewController
+            let nav = segue.destinationViewController as! UINavigationController
+            let destination = nav.topViewController as! HistoryTableViewController
+            destination.seriesArray = seriesArray
+        }
+        else if segue.identifier == "showDecks" {
+            // topViewController lets us get data from the top view controller in the stack, which now is LeadViewController
+            let nav = segue.destinationViewController as! UINavigationController
+            let destination = nav.topViewController as! DeckTableViewController
+            destination.deckDictionary = deckDictionary
+        }
+        else {
+            print("Nope")
+        }
+    }
+    
     // MARK: Unwind actions
     @IBAction func unwindToLeadView(sender: UIStoryboardSegue) {
         // If the sourceViewController was GameViewController, add the new series into the array.
         if let source = sender.sourceViewController as? GameViewController, series = source.series {
             // Do stuff with the new series here. Save maybe?
             seriesArray.insert(series, atIndex: 0)
-            print(seriesArray.count)
+            saveSeries()
+            
+            // Edit the deck as well.
+            if series.wins > series.losses {
+                deckDictionary[currentDeck!.deckName]?.wins += 1
+            }
+            else if series.losses > series.wins {
+                deckDictionary[currentDeck!.deckName]?.losses += 1
+            }
+            saveDecks()
+            changeLabels()
+        }
+        if let source = sender.sourceViewController as? HistoryTableViewController {
+            seriesArray = source.seriesArray
+            changeLabels()
+            saveSeries()
         }
         if let source = sender.sourceViewController as? DeckDetailViewController, deck = source.deck {
             // Do stuff with the new series here. Save maybe?
             self.currentDeck = deck
             deckLabel.text = deck.deckName
             
+            // Set the passed in deckDictionary to the lead view
+            deckDictionary = source.deckDictionary
+            saveDecks()
+            print(deckDictionary)
+            
             if deck.newDeck == true {
-                deckArray.insert(deck, atIndex: 0)
                 deck.newDeck = false
             }
         }

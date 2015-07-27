@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="32y-oI-Fu8">
-                                <rect key="frame" x="20" y="550" width="49" height="30"/>
+                                <rect key="frame" x="20" y="495" width="49" height="30"/>
                                 <state key="normal" title="History"/>
                                 <connections>
                                     <segue destination="6J9-Oj-h1V" kind="show" identifier="showHistory" id="E9V-PM-w2h"/>
@@ -57,9 +57,22 @@
                                     <segue destination="NbB-Gg-PGa" kind="show" identifier="showDecks" id="Cs6-eS-Phx"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Deck Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oxR-2I-hwI">
+                                <rect key="frame" x="20" y="540" width="89" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Win/Loss" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Ni-2E-WA7">
+                                <rect key="frame" x="509" y="540" width="71" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="8Ni-2E-WA7" firstAttribute="trailing" secondItem="TlF-Cf-9oJ" secondAttribute="trailingMargin" id="73X-ym-ZrS"/>
                             <constraint firstItem="mQ6-vj-FTy" firstAttribute="top" secondItem="6vA-im-uza" secondAttribute="bottom" constant="-20" id="MBZ-Hb-leT"/>
                             <constraint firstItem="mQ6-vj-FTy" firstAttribute="trailing" secondItem="TlF-Cf-9oJ" secondAttribute="trailingMargin" id="XIe-YJ-zwu"/>
                             <constraint firstItem="mQ6-vj-FTy" firstAttribute="leading" secondItem="TlF-Cf-9oJ" secondAttribute="leadingMargin" id="wWQ-uu-lSz"/>
@@ -67,8 +80,11 @@
                     </view>
                     <connections>
                         <outlet property="deckLabel" destination="maI-rE-Qs3" id="52t-WH-UnU"/>
+                        <outlet property="deckNameHistoryLabel" destination="oxR-2I-hwI" id="xDm-LU-ovB"/>
+                        <outlet property="deckRecordHistoryLabel" destination="8Ni-2E-WA7" id="vSd-ub-D0q"/>
                         <outlet property="gameHeader" destination="mQ6-vj-FTy" id="Duq-yt-kBj"/>
                         <outlet property="numberOfGamesField" destination="rrL-ej-Yjy" id="nlI-69-hcb"/>
+                        <outlet property="startSeriesButton" destination="9aC-Kb-sNL" id="wiA-am-moA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rVz-4H-SEv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -124,6 +140,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="dRb-xP-rYT">
+                        <barButtonItem key="leftBarButtonItem" title="Home" id="YiI-u5-P2u">
+                            <connections>
+                                <segue destination="v3X-QA-yuA" kind="unwind" unwindAction="unwindToLeadView:" id="heT-H5-U8c"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Kr8-20-elK">
                             <connections>
                                 <segue destination="JVW-mc-dEb" kind="show" identifier="addNewDeck" id="hXE-Wb-CW5"/>
@@ -132,6 +153,7 @@
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lVM-Ds-LFn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="v3X-QA-yuA" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="305" y="-365"/>
         </scene>
@@ -163,14 +185,6 @@
                                     <constraint firstAttribute="bottom" secondItem="HnT-vZ-pqp" secondAttribute="bottom" constant="8" id="flQ-pM-ooH"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gty-ej-0uq">
-                                <rect key="frame" x="20" y="270" width="94" height="30"/>
-                                <state key="normal" title="Use this deck"/>
-                                <connections>
-                                    <action selector="deckSelection:" destination="JVW-mc-dEb" eventType="touchUpInside" id="AFi-4R-YX4"/>
-                                    <segue destination="Ymo-33-eMa" kind="unwind" identifier="unwindToLeadView" unwindAction="unwindToLeadView:" id="Ktb-s7-s94"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Wins" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DfY-mV-K9X">
                                 <rect key="frame" x="20" y="160" width="39" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -207,6 +221,21 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ORJ-Jt-VFz">
+                                <rect key="frame" x="20" y="308" width="111" height="30"/>
+                                <state key="normal" title="Delete this deck"/>
+                                <connections>
+                                    <segue destination="Ymo-33-eMa" kind="unwind" unwindAction="unwindToDeckTableView:" id="43U-NH-INx"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gty-ej-0uq">
+                                <rect key="frame" x="20" y="270" width="94" height="30"/>
+                                <state key="normal" title="Use this deck"/>
+                                <connections>
+                                    <action selector="deckSelection:" destination="JVW-mc-dEb" eventType="touchUpInside" id="AFi-4R-YX4"/>
+                                    <segue destination="Ymo-33-eMa" kind="unwind" identifier="unwindToLeadView" unwindAction="unwindToLeadView:" id="Ktb-s7-s94"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -413,11 +442,13 @@
                         <barButtonItem key="leftBarButtonItem" title="Home" id="y96-TW-K5r">
                             <connections>
                                 <action selector="homeButton:" destination="tRn-O9-gm0" id="daW-Fn-5BT"/>
+                                <segue destination="0sK-cx-fRr" kind="unwind" identifier="unwindToLeadView" unwindAction="unwindToLeadView:" id="WTs-Bm-tfB"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mxS-wZ-AAg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="0sK-cx-fRr" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="305" y="1056"/>
         </scene>
