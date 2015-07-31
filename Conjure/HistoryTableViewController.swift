@@ -78,7 +78,10 @@ class HistoryTableViewController: UITableViewController, UINavigationControllerD
     
     func styleNavBar() {
         let navBar = self.navigationController?.navigationBar
-        navBar!.barTintColor = UIColor.blackColor()
+        navBar?.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
+        navBar?.shadowImage = UIImage()
+        navBar?.translucent = true
+        navBar!.barTintColor = UIColor.clearColor()
     }
     
     // MARK: Dismiss Button

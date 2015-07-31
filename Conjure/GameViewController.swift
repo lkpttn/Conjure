@@ -216,6 +216,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         let seriesLabelFrame = CGRect(x: 0, y: 10, width: 360, height: 40)
         let seriesLabel = UILabel(frame: seriesLabelFrame)
         seriesLabel.textAlignment = .Center
+        seriesLabel.textColor = .whiteColor()
         
         switch numberofgames {
         case 1:

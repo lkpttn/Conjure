@@ -11,6 +11,7 @@ import UIKit
 class GameHeader: UIView {
     
     // MARK: Properties
+    let topFrame = CGRect(x: 0, y: 0, width: 750, height: 236)
     var playerOneCounter = LifeCounter(frame: CGRect(x: 40, y: 50, width: 163, height: 200))
     var playerTwoCounter = LifeCounter(frame: CGRect(x: 203, y: 50, width: 163, height: 200))
     
@@ -19,7 +20,6 @@ class GameHeader: UIView {
     // The Frame
     // Based on iPhone 6 sizes, needs to adjust to autolayout
     // Frames do not have inheritance? Adjusting topFrame does not effect left and right side frames
-    let topFrame = CGRect(x: 0, y: 0, width: 750, height: 200)
     let leftSideFrame = CGRect(x: 40, y: 40, width: 163, height: 200)
     let rightSideFrame = CGRect(x: 203, y: 40, width: 163, height: 200)
     
@@ -33,6 +33,7 @@ class GameHeader: UIView {
         
         // Do these do anything?
         playerOneCounter.frame = leftSideFrame
+        playerOneCounter.backgroundColor = UIColor.redColor()
         playerTwoCounter.frame = rightSideFrame
         setupSubviews()
     }
@@ -47,6 +48,7 @@ class GameHeader: UIView {
         // Can we initialize lifeCounter's here? Right now they are explicitly declared.
         // let playerOneCounter = LifeCounter(frame: leftSideFrame)
         addSubview(playerOneCounter)
+        playerOneCounter.backgroundColor = UIColor.clearColor()
         playerOneCounter.playerName.text = "Me"
         
         // let playerTwoCounter = LifeCounter(frame: rightSideFrame)
@@ -57,6 +59,7 @@ class GameHeader: UIView {
         let seriesLabel = UILabel(frame: seriesLabelFrame)
         seriesLabel.textAlignment = .Center
         seriesLabel.text = ""
+        seriesLabel.textColor = .whiteColor()
         addSubview(seriesLabel)
     }
     

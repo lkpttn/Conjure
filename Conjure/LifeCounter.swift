@@ -49,7 +49,7 @@ class LifeCounter: UIView {
     
     func addLifeCounter() {
         // Styles life counter label
-        counter.textColor = UIColor.blackColor()
+        counter.textColor = UIColor.whiteColor()
         counter.textAlignment = .Center
         counter.font = UIFont.boldSystemFontOfSize(72)
         counter.text = String(lifeTotal)
@@ -57,14 +57,18 @@ class LifeCounter: UIView {
         // Styles playerName label
         playerName.text = "Player Name"
         playerName.textAlignment = .Center
+        playerName.textColor = .whiteColor()
         
         
         // Button
         let minusButton = UIButton(frame: CGRect(x: 5, y: 110, width: 40, height: 40))
         let plusButton = UIButton(frame: CGRect(x: 55, y: 110, width: 40, height: 40))
         
-        minusButton.backgroundColor = UIColor.redColor()
-        plusButton.backgroundColor = UIColor.blueColor()
+        let minusImage = UIImage(named: "Minus")
+        minusButton.setImage(minusImage, forState: .Normal)
+        
+        let plusImage = UIImage(named: "Plus")
+        plusButton.setImage(plusImage, forState: .Normal)
         
         // Button action
         minusButton.addTarget(self, action: "minusLife:", forControlEvents: .TouchDown)

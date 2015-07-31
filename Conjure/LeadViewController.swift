@@ -22,7 +22,6 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     @IBOutlet weak var deckRecordHistoryLabel: UILabel!
     
     
-    // a variable that is a empty array of Meal objects
     var seriesArray = [Series]()
     var deckDictionary = [String: Deck]()
     
@@ -33,6 +32,7 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     var optionsPicker: UIPickerView!
     var testOptions = [1,3,5,7]
     
+    let defaults = NSUserDefaults.standardUserDefaults()
     
     // MARK: Initialization
     required init(coder aDecoder: NSCoder) {
@@ -63,6 +63,11 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         }
         else {
             print("Deck help!")
+        }
+        
+        if let name = defaults.stringForKey("currentDeck")
+        {
+            print(name)
         }
         
         changeLabels()
@@ -147,7 +152,7 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         else if segue.identifier == "showHistory" {
             // topViewController lets us get data from the top view controller in the stack, which now is LeadViewController
             let nav = segue.destinationViewController as! UINavigationController
-            let destination = nav.topViewController as! HistoryTableViewController
+            let destination = nav.topViewController as! HistoryViewController
             destination.seriesArray = seriesArray
         }
         else if segue.identifier == "showDecks" {
@@ -179,7 +184,7 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             saveDecks()
             changeLabels()
         }
-        if let source = sender.sourceViewController as? HistoryTableViewController {
+        if let source = sender.sourceViewController as? HistoryViewController {
             seriesArray = source.seriesArray
             changeLabels()
             saveSeries()

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D11DE921B6BE69100697EAD /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D11DE911B6BE69100697EAD /* HistoryViewController.swift */; };
 		0D2037161B535AF30058E059 /* LeadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2037151B535AF30058E059 /* LeadViewController.swift */; };
 		0D3278E31B569D5800B58ECD /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3278DF1B55FC2600B58ECD /* Deck.swift */; };
 		0D3278E41B569D5900B58ECD /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3278DF1B55FC2600B58ECD /* Deck.swift */; };
@@ -52,6 +53,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0D11DE911B6BE69100697EAD /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		0D2037151B535AF30058E059 /* LeadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeadViewController.swift; sourceTree = "<group>"; };
 		0D3278DF1B55FC2600B58ECD /* Deck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
 		0D3278E51B56D87700B58ECD /* HistoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewController.swift; sourceTree = "<group>"; };
@@ -122,8 +124,9 @@
 				0D7ED9D61B4B387700A6C2B0 /* GameViewController.swift */,
 				0DDFC71A1B596B4700DAB4DB /* DeckTableViewController.swift */,
 				0DDFC71C1B5A85A100DAB4DB /* DeckDetailViewController.swift */,
-				0D3278E51B56D87700B58ECD /* HistoryTableViewController.swift */,
 				0DDFC7181B57FB1C00DAB4DB /* GameDetailViewController.swift */,
+				0D3278E51B56D87700B58ECD /* HistoryTableViewController.swift */,
+				0D11DE911B6BE69100697EAD /* HistoryViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -322,6 +325,7 @@
 				0D3278E31B569D5800B58ECD /* Deck.swift in Sources */,
 				0D796E0C1B51FB6500840211 /* TurnCell.swift in Sources */,
 				0D7ED9D51B4B387700A6C2B0 /* AppDelegate.swift in Sources */,
+				0D11DE921B6BE69100697EAD /* HistoryViewController.swift in Sources */,
 				0D2037161B535AF30058E059 /* LeadViewController.swift in Sources */,
 				0DF8F8561B4EFA08000C6AF6 /* GameHeader.swift in Sources */,
 				0D796E091B51567100840211 /* winCircle.swift in Sources */,
