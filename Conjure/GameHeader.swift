@@ -41,8 +41,9 @@ class GameHeader: UIView {
     }
     
     func setupSubviews() {
-        let gradientImage = UIImage(named: "Gradient")
-        self.backgroundColor = UIColor(patternImage: gradientImage!)
+        // let gradientImage = UIImage(named: "Gradient")
+        // self.backgroundColor = UIColor(patternImage: gradientImage!)
+        self.backgroundColor = UIColor(red: 22/255.0, green: 48/255.0, blue: 63/255.0, alpha: 1)
         
         addSubview(playerOneCounter)
         playerOneCounter.playerName.text = "ME"

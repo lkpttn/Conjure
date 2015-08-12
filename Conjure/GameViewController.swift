@@ -115,7 +115,8 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         gameButton.removeTarget(nil, action: nil, forControlEvents: .AllEvents)
         
         gameButton.setTitle("End Turn", forState: .Normal)
-        gameButton.setTitleColor(UIColor.blueColor(), forState: UIControlState.Normal)
+        let lightBlueColor = UIColor(red: 8/255.0, green: 129/255.0, blue: 220/255.0, alpha: 1.0)
+        gameButton.backgroundColor = lightBlueColor
         
         gameButton.addTarget(self, action: "nextTurn:", forControlEvents: .TouchDown)
         
@@ -172,7 +173,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             gameButton.removeTarget(nil, action: nil, forControlEvents: .AllEvents)
             
             gameButton.setTitle("End Series", forState: .Normal)
-            gameButton.setTitleColor(UIColor.greenColor(), forState: UIControlState.Normal)
+            gameButton.backgroundColor = UIColor.greenColor()
             
             gameButton.addTarget(self, action: "endSeries:", forControlEvents: .TouchDown)
         }
@@ -181,7 +182,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             gameButton.removeTarget(nil, action: nil, forControlEvents: .AllEvents)
             
             gameButton.setTitle("Next Game", forState: .Normal)
-            gameButton.setTitleColor(UIColor.redColor(), forState: UIControlState.Normal)
+            gameButton.backgroundColor = UIColor.redColor()
             
             gameButton.addTarget(self, action: "nextGame:", forControlEvents: .TouchDown)
 

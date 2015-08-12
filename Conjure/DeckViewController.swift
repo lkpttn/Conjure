@@ -74,8 +74,8 @@ class DeckViewController: UIViewController, UITableViewDelegate, UITableViewData
         navBar?.translucent = true
         navBar!.barTintColor = UIColor.clearColor()
         
-        let gradientImage = UIImage(named: "Gradient")
-        headerView.backgroundColor = UIColor(patternImage: gradientImage!)
+        let headerColor = UIColor(red: 22/255.0, green: 48/255.0, blue: 63/255.0, alpha: 1)
+        headerView.backgroundColor = headerColor
     }    
 
     // MARK: Segue actions
