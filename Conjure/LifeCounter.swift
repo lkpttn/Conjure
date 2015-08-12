@@ -23,8 +23,8 @@ class LifeCounter: UIView {
     // Creates the UI Labels
     // All created views need a defined frame for where they sit
     // Is this neccesary outside of the init? Is there a better way?
-    var counter = UILabel(frame: CGRect(x: 0, y: 20, width: 100, height: 90))
-    var playerName = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 40))
+    var counter = UILabel(frame: CGRect(x: 0, y: 40, width: 100, height: 90))
+    var playerName = UILabel(frame: CGRect(x: 0, y: 5, width: 100, height: 40))
     var winner = ""
 
     
@@ -51,18 +51,19 @@ class LifeCounter: UIView {
         // Styles life counter label
         counter.textColor = UIColor.whiteColor()
         counter.textAlignment = .Center
-        counter.font = UIFont.boldSystemFontOfSize(72)
+        counter.font = UIFont(name: "SourceSansPro-Bold", size: 90)
         counter.text = String(lifeTotal)
         
         // Styles playerName label
         playerName.text = "Player Name"
         playerName.textAlignment = .Center
         playerName.textColor = .whiteColor()
+        playerName.font = UIFont(name: "SourceSansPro-Regular", size: 13)
         
         
         // Button
-        let minusButton = UIButton(frame: CGRect(x: 5, y: 110, width: 40, height: 40))
-        let plusButton = UIButton(frame: CGRect(x: 55, y: 110, width: 40, height: 40))
+        let minusButton = UIButton(frame: CGRect(x: 0, y: 130, width: 40, height: 40))
+        let plusButton = UIButton(frame: CGRect(x: 60, y: 130, width: 40, height: 40))
         
         let minusImage = UIImage(named: "Minus")
         minusButton.setImage(minusImage, forState: .Normal)
@@ -90,10 +91,8 @@ class LifeCounter: UIView {
     }
     
     func plusLife(plusButton: UIButton) {
-        if lifeTotal != 0 {
             lifeTotal += 1
             counter.text = String(lifeTotal)
-        }
     }
 
 } // END

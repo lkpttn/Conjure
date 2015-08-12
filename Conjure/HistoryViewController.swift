@@ -13,6 +13,8 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     // MARK: Properties
     @IBOutlet weak var seriesTable: UITableView!
     
+    @IBOutlet weak var headerView: UIView!
+    
     var seriesArray = [Series]()
     
     override func viewWillAppear(animated: Bool) {
@@ -34,6 +36,9 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         navBar?.shadowImage = UIImage()
         navBar?.translucent = true
         navBar!.barTintColor = UIColor.clearColor()
+        
+        let gradientImage = UIImage(named: "Gradient")
+        headerView.backgroundColor = UIColor(patternImage: gradientImage!)
     }
     
     // MARK: Table methods

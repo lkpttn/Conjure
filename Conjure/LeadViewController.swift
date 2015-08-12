@@ -15,7 +15,10 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     @IBOutlet weak var numberOfGamesField: UITextField!
     @IBOutlet weak var pickerLabel: UILabel!
     @IBOutlet weak var pickerButton: UIButton!
+    
     @IBOutlet weak var deckLabel: UILabel!
+    @IBOutlet weak var deckWinLossLabel: UILabel!
+    
     @IBOutlet weak var startSeriesButton: UIButton!
     
     @IBOutlet weak var deckNameHistoryLabel: UILabel!
@@ -31,8 +34,6 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     // test
     var optionsPicker: UIPickerView!
     var testOptions = [1,3,5,7]
-    
-    let defaults = NSUserDefaults.standardUserDefaults()
     
     // MARK: Initialization
     required init(coder aDecoder: NSCoder) {
@@ -65,18 +66,15 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             print("Deck help!")
         }
         
-        if let name = defaults.stringForKey("currentDeck")
-        {
-            print(name)
-        }
-        
         changeLabels()
     }
     
     func changeLabels() {
-        let lastSeries = seriesArray[0]
-        deckNameHistoryLabel.text = lastSeries.deck.deckName
-        deckRecordHistoryLabel.text = "\(lastSeries.wins)-\(lastSeries.losses)"
+        if seriesArray.isEmpty == false {
+            let lastSeries = seriesArray[0]
+            deckNameHistoryLabel.text = lastSeries.deck.deckName
+            deckRecordHistoryLabel.text = "\(lastSeries.wins)-\(lastSeries.losses)"
+        }
     }
     
     // MARK: PickerView stuff
@@ -97,7 +95,7 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     
     // set the string to reflect the choice
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
-        numberOfGamesField.text = String(testOptions[row])
+        numberOfGamesField.text = "Best of \(testOptions[row])"
         numberOfGames = testOptions[row]
         self.view.endEditing(true)
     }
@@ -158,7 +156,7 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         else if segue.identifier == "showDecks" {
             // topViewController lets us get data from the top view controller in the stack, which now is LeadViewController
             let nav = segue.destinationViewController as! UINavigationController
-            let destination = nav.topViewController as! DeckTableViewController
+            let destination = nav.topViewController as! DeckViewController
             destination.deckDictionary = deckDictionary
         }
         else {
@@ -193,15 +191,21 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             // Do stuff with the new series here. Save maybe?
             self.currentDeck = deck
             deckLabel.text = deck.deckName
+            deckWinLossLabel.text = "W: \(deck.wins)    L: \(deck.losses)"
             
             // Set the passed in deckDictionary to the lead view
             deckDictionary = source.deckDictionary
             saveDecks()
-            print(deckDictionary)
             
             if deck.newDeck == true {
                 deck.newDeck = false
             }
+        }
+        if let source = sender.sourceViewController as? DeckViewController {
+            // Set the passed in deckDictionary to the lead view
+            deckDictionary = source.deckDictionary
+            saveDecks()
+            print(deckDictionary)
         }
     }
 

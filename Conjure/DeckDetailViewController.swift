@@ -17,8 +17,15 @@ class DeckDetailViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var lossesLabel: UILabel!
     @IBOutlet weak var winPercentageLabel: UILabel!
     
+    @IBOutlet weak var headerView: UIView!
+    
     var deck: Deck?
     var deckDictionary = [String: Deck]()
+    var oldDeckName = ""
+    
+    override func viewWillAppear(animated: Bool) {
+        styleNavBar()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +33,7 @@ class DeckDetailViewController: UIViewController, UITextFieldDelegate {
 
         if let deck = deck {
             // If there is a deck passed to the ViewController, assign the variables.
+            oldDeckName = deck.deckName
             deckNameField.text = deck.deckName
             winsLabel.text = String(deck.wins)
             lossesLabel.text = String(deck.losses)
@@ -69,26 +77,32 @@ class DeckDetailViewController: UIViewController, UITextFieldDelegate {
     func textFieldDidEndEditing(textField: UITextField) {
         checkValidName()
         deck!.deckName = deckNameField.text!
+        
+        // Change the deckDictionary key for this deck, it will be different than the deckName
+        deckDictionary[(deck?.deckName)!] = deckDictionary[oldDeckName]
+        deckDictionary.removeValueForKey(oldDeckName)
+    }
+    
+    func styleNavBar() {
+        let navBar = self.navigationController?.navigationBar
+        navBar?.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
+        navBar?.shadowImage = UIImage()
+        navBar?.translucent = true
+        navBar!.barTintColor = UIColor.clearColor()
+        
+        let gradientImage = UIImage(named: "Gradient")
+        headerView.backgroundColor = UIColor(patternImage: gradientImage!)
     }
     
     // MARK: Button actions
     @IBAction func deckSelection(sender: UIButton) {
-        deckDictionary[(deck?.deckName)!] = deck
+        if deck?.newDeck == true {
+            deckDictionary[(deck?.deckName)!] = deck
+        }
         self.performSegueWithIdentifier("unwindToLeadView", sender: self)
     }
     
     @IBAction func deckDelete(sender: UIButton) {
         self.performSegueWithIdentifier("unwindToDeckTableView", sender: self)
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

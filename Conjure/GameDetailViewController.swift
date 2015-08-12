@@ -16,9 +16,14 @@ class GameDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var winLossLabel: UILabel!
     @IBOutlet weak var gamesSegmentControl: UISegmentedControl!
 
+    @IBOutlet weak var headerView: UIView!
     
     var series: Series!
     var gamenumber = 1
+    
+    override func viewWillAppear(animated: Bool) {
+        styleNavBar()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,9 +41,15 @@ class GameDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         setupSegmentControl()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func styleNavBar() {
+        let navBar = self.navigationController?.navigationBar
+        navBar?.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
+        navBar?.shadowImage = UIImage()
+        navBar?.translucent = true
+        navBar!.barTintColor = UIColor.clearColor()
+        
+        let gradientImage = UIImage(named: "Gradient")
+        headerView.backgroundColor = UIColor(patternImage: gradientImage!)
     }
     
     // MARK: Segment control
@@ -79,6 +90,9 @@ class GameDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         // It was execiuting all the game code before reseting the table.
         // This means it was looking for turns in the new game instead of at the end of the current game.
         let turn = series.games[gamenumber-1].turns[indexPath.row]
+        print(turn.turnPlayerOneChange)
+        cell.playerOneChange.text = turn.turnPlayerOneChange
+        cell.playerTwoChange.text = turn.turnPlayerTwoChange
         
         // Change the color based on the String prefix, + or - or 0
         let playerOneString = String(turn.turnPlayerOneChange)

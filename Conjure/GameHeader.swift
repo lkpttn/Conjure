@@ -23,17 +23,13 @@ class GameHeader: UIView {
     let leftSideFrame = CGRect(x: 40, y: 40, width: 163, height: 200)
     let rightSideFrame = CGRect(x: 203, y: 40, width: 163, height: 200)
     
-    
-    
     // MARK: Initlization
-    // Views called programmatically use the default init command
     required init() {
         // Since we don't need different frame variable for this view, we can always just use topFrame
         super.init(frame: topFrame)
         
         // Do these do anything?
         playerOneCounter.frame = leftSideFrame
-        playerOneCounter.backgroundColor = UIColor.redColor()
         playerTwoCounter.frame = rightSideFrame
         setupSubviews()
     }
@@ -45,15 +41,14 @@ class GameHeader: UIView {
     }
     
     func setupSubviews() {
-        // Can we initialize lifeCounter's here? Right now they are explicitly declared.
-        // let playerOneCounter = LifeCounter(frame: leftSideFrame)
-        addSubview(playerOneCounter)
-        playerOneCounter.backgroundColor = UIColor.clearColor()
-        playerOneCounter.playerName.text = "Me"
+        let gradientImage = UIImage(named: "Gradient")
+        self.backgroundColor = UIColor(patternImage: gradientImage!)
         
-        // let playerTwoCounter = LifeCounter(frame: rightSideFrame)
+        addSubview(playerOneCounter)
+        playerOneCounter.playerName.text = "ME"
+        
         addSubview(playerTwoCounter)
-        playerTwoCounter.playerName.text = "Opponent"
+        playerTwoCounter.playerName.text = "OPPONENT"
         
         let seriesLabelFrame = CGRect(x: 0, y: 10, width: 360, height: 40)
         let seriesLabel = UILabel(frame: seriesLabelFrame)

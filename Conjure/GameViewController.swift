@@ -128,7 +128,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         self.turnTable.reloadData()
         
-        if turnNumber > 5 {
+        if turnNumber > 6 {
             rows += 60
             let offset = CGPoint(x: 0, y: rows)
             turnTable.setContentOffset(offset, animated: true)
@@ -248,6 +248,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let turnPlayerOneLife = turn.turnPlayerOneLife
         let playerOneChange = (lastTurnPlayerOneLife - turnPlayerOneLife) * -1
+        turn.turnPlayerOneChange = String(playerOneChange)
         
         if playerOneChange == 0 {
             return ""
@@ -273,6 +274,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     
         let turnPlayerTwoLife = turn.turnPlayerTwoLife
         let playerTwoChange = (lastTurnPlayerTwoLife - turnPlayerTwoLife) * -1
+        turn.turnPlayerTwoChange = String(playerTwoChange)
         
         if playerTwoChange == 0 {
             return ""
