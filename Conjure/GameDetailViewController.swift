@@ -21,6 +21,12 @@ class GameDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     var series: Series!
     var gamenumber = 1
     
+    // Colors
+    let redColor = UIColor(red: 208/255.0, green: 2/255.0, blue: 27/255.0, alpha: 1)
+    let greenColor = UIColor(red: 92/255.0, green: 176/255.0, blue: 0, alpha: 1)
+    let lightBlueColor = UIColor(red: 8/255.0, green: 129/255.0, blue: 220/255.0, alpha: 1.0)
+    let darkBlueColor = UIColor(red: 22/255.0, green: 48/255.0, blue: 63/255.0, alpha: 1)
+    
     override func viewWillAppear(animated: Bool) {
         styleNavBar()
     }
@@ -47,9 +53,8 @@ class GameDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         navBar?.shadowImage = UIImage()
         navBar?.translucent = true
         navBar!.barTintColor = UIColor.clearColor()
-        
-        let headerColor = UIColor(red: 22/255.0, green: 48/255.0, blue: 63/255.0, alpha: 1)
-        headerView.backgroundColor = headerColor
+
+        headerView.backgroundColor = darkBlueColor
     }
     
     // MARK: Segment control
@@ -97,18 +102,18 @@ class GameDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         // Change the color based on the String prefix, + or - or 0
         let playerOneString = String(turn.turnPlayerOneChange)
         if playerOneString.hasPrefix("+") {
-            cell.playerOneChange.textColor = UIColor.greenColor()
+            cell.playerOneChange.textColor = greenColor
         }
         else {
-            cell.playerOneChange.textColor = UIColor.redColor()
+            cell.playerOneChange.textColor = redColor
         }
         
         let playerTwoString = String(turn.turnPlayerTwoChange)
         if playerTwoString.hasPrefix("+") {
-            cell.playerTwoChange.textColor = UIColor.greenColor()
+            cell.playerTwoChange.textColor = greenColor
         }
         else {
-            cell.playerTwoChange.textColor = UIColor.redColor()
+            cell.playerTwoChange.textColor = redColor
         }
         
         // Add cell elements

@@ -49,6 +49,9 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         numberOfGamesField.inputView = optionsPicker
         numberOfGamesField.text = String(testOptions[0])
         
+        let lightBlueColor = UIColor(red: 8/255.0, green: 129/255.0, blue: 220/255.0, alpha: 1.0)
+        startSeriesButton.backgroundColor = lightBlueColor
+        
         // Load saved series
         if let savedSeries = loadSeries() {
             seriesArray += savedSeries

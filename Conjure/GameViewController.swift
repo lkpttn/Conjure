@@ -15,11 +15,15 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var turnTable: UITableView!
     @IBOutlet weak var gameButton: UIButton!
     
-    // Without an initializer, this isn't viable?
     var series: Series!
     var gamenumber = 0
     var turnNumber = 0
     var rows = 0
+    
+    // Colors
+    let redColor = UIColor(red: 208/255.0, green: 2/255.0, blue: 27/255.0, alpha: 1)
+    let greenColor = UIColor(red: 92/255.0, green: 176/255.0, blue: 0, alpha: 1)
+    let lightBlueColor = UIColor(red: 8/255.0, green: 129/255.0, blue: 220/255.0, alpha: 1.0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,18 +65,18 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Change the color based on the String prefix, + or - or 0
         let playerOneString = String(turn.turnPlayerOneChange)
         if playerOneString.hasPrefix("+") {
-            cell.playerOneChange.textColor = UIColor.greenColor()
+            cell.playerOneChange.textColor = greenColor
         }
         else {
-            cell.playerOneChange.textColor = UIColor.redColor()
+            cell.playerOneChange.textColor = redColor
         }
         
         let playerTwoString = String(turn.turnPlayerTwoChange)
         if playerTwoString.hasPrefix("+") {
-            cell.playerTwoChange.textColor = UIColor.greenColor()
+            cell.playerTwoChange.textColor = greenColor
         }
         else {
-            cell.playerTwoChange.textColor = UIColor.redColor()
+            cell.playerTwoChange.textColor = redColor
         }
         
         // Add cell elements
@@ -115,7 +119,6 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         gameButton.removeTarget(nil, action: nil, forControlEvents: .AllEvents)
         
         gameButton.setTitle("End Turn", forState: .Normal)
-        let lightBlueColor = UIColor(red: 8/255.0, green: 129/255.0, blue: 220/255.0, alpha: 1.0)
         gameButton.backgroundColor = lightBlueColor
         
         gameButton.addTarget(self, action: "nextTurn:", forControlEvents: .TouchDown)
@@ -173,8 +176,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             gameButton.removeTarget(nil, action: nil, forControlEvents: .AllEvents)
             
             gameButton.setTitle("End Series", forState: .Normal)
-            gameButton.backgroundColor = UIColor.greenColor()
-            
+            gameButton.backgroundColor = greenColor
             gameButton.addTarget(self, action: "endSeries:", forControlEvents: .TouchDown)
         }
         else {
@@ -182,10 +184,8 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             gameButton.removeTarget(nil, action: nil, forControlEvents: .AllEvents)
             
             gameButton.setTitle("Next Game", forState: .Normal)
-            gameButton.backgroundColor = UIColor.redColor()
-            
+            gameButton.backgroundColor = redColor
             gameButton.addTarget(self, action: "nextGame:", forControlEvents: .TouchDown)
-
         }
     }
     

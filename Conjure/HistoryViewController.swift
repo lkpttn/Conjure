@@ -17,6 +17,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     var seriesArray = [Series]()
     
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.styleNavBar()
