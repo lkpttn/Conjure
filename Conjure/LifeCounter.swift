@@ -25,9 +25,9 @@ class LifeCounter: UIView {
     // Is this neccesary outside of the init? Is there a better way?
     var counter = UILabel(frame: CGRect(x: 0, y: 40, width: 100, height: 90))
     var playerName = UILabel(frame: CGRect(x: 0, y: 5, width: 100, height: 40))
-    var winner = ""
-
     
+    let deviceWidth = UIScreen.mainScreen().bounds.width
+
     
     // MARK: Initlization
     
@@ -36,7 +36,15 @@ class LifeCounter: UIView {
         // I think this just sets the frame to the frame.
         super.init(frame: frame)
         
-        // This method adds and draws the Life Counter. Eventually will accept info about player names, life totals, etc
+        let frameWidth = self.bounds.width
+        print(self.bounds.width)
+        
+        let counterFrame = CGRect(x: 0, y: 40, width: frameWidth, height: 90)
+        counter.frame = counterFrame
+        
+        let nameFrame = CGRect(x: 0, y: 5, width: self.bounds.width, height: 40)
+        playerName.frame = nameFrame
+        
         addLifeCounter()
     }
     
@@ -48,9 +56,10 @@ class LifeCounter: UIView {
     
     
     func addLifeCounter() {
+    
         // Styles life counter label
-        counter.textColor = UIColor.whiteColor()
         counter.textAlignment = .Center
+        counter.textColor = UIColor.whiteColor()
         counter.font = UIFont(name: "SourceSansPro-Bold", size: 90)
         counter.text = String(lifeTotal)
         
@@ -62,8 +71,8 @@ class LifeCounter: UIView {
         
         
         // Button
-        let minusButton = UIButton(frame: CGRect(x: 0, y: 130, width: 40, height: 40))
-        let plusButton = UIButton(frame: CGRect(x: 60, y: 130, width: 40, height: 40))
+        let minusButton = UIButton(frame: CGRect(x: (bounds.width/4), y: 130, width: 40, height: 40))
+        let plusButton = UIButton(frame: CGRect(x: (bounds.width/4)+48, y: 130, width: 40, height: 40))
         
         let minusImage = UIImage(named: "Minus")
         minusButton.setImage(minusImage, forState: .Normal)
@@ -74,6 +83,12 @@ class LifeCounter: UIView {
         // Button action
         minusButton.addTarget(self, action: "minusLife:", forControlEvents: .TouchDown)
         plusButton.addTarget(self, action: "plusLife:", forControlEvents: .TouchDown)
+        
+        // Testing colors.
+//        counter.backgroundColor = .redColor()
+//        playerName.backgroundColor = .blueColor()
+//        minusButton.backgroundColor = .greenColor()
+//        plusButton.backgroundColor = .yellowColor()
         
         addSubview(playerName)
         addSubview(counter)

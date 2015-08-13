@@ -11,39 +11,35 @@ import UIKit
 class GameHeader: UIView {
     
     // MARK: Properties
-    let topFrame = CGRect(x: 0, y: 0, width: 750, height: 236)
-    var playerOneCounter = LifeCounter(frame: CGRect(x: 40, y: 50, width: 163, height: 200))
-    var playerTwoCounter = LifeCounter(frame: CGRect(x: 203, y: 50, width: 163, height: 200))
+    // This needs 4 pixels of x space to fit properly? Idk
+    let topFrame = CGRect(x: 0, y: 0, width: UIScreen.mainScreen().bounds.width, height: 236)
+    var playerOneCounter = LifeCounter(frame: CGRect(x: 4, y: 50, width: (UIScreen.mainScreen().bounds.width/2), height: 200))
+    var playerTwoCounter = LifeCounter(frame: CGRect(x: (UIScreen.mainScreen().bounds.width/2)+4, y: 50, width: (UIScreen.mainScreen().bounds.width)/2, height: 200))
     
     var seriesLabel = UILabel(frame: CGRectZero)
-
-    // The Frame
-    // Based on iPhone 6 sizes, needs to adjust to autolayout
-    // Frames do not have inheritance? Adjusting topFrame does not effect left and right side frames
-    let leftSideFrame = CGRect(x: 40, y: 40, width: 163, height: 200)
-    let rightSideFrame = CGRect(x: 203, y: 40, width: 163, height: 200)
     
     // MARK: Initlization
     required init() {
-        // Since we don't need different frame variable for this view, we can always just use topFrame
         super.init(frame: topFrame)
-        
-        // Do these do anything?
-        playerOneCounter.frame = leftSideFrame
-        playerTwoCounter.frame = rightSideFrame
+
         setupSubviews()
     }
     
-    // Currently this view is being called in Interface Builder, and so it runs from this initializer.
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setupSubviews()
     }
     
     func setupSubviews() {
-        // let gradientImage = UIImage(named: "Gradient")
-        // self.backgroundColor = UIColor(patternImage: gradientImage!)
+        let deviceWidth = UIScreen.mainScreen().bounds.width
+        
         self.backgroundColor = UIColor(red: 22/255.0, green: 48/255.0, blue: 63/255.0, alpha: 1)
+        
+        let midLine = UIView()
+        midLine.backgroundColor = .whiteColor()
+        print(UIScreen.mainScreen().bounds.width)
+        midLine.frame = CGRect(x: (deviceWidth/2)+3, y: 100, width: 1, height: 100)
+        addSubview(midLine)
         
         addSubview(playerOneCounter)
         playerOneCounter.playerName.text = "ME"

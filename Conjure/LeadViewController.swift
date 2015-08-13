@@ -70,6 +70,40 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         }
         
         changeLabels()
+        
+        // Autolayout
+//        let newView = UIView()
+//        newView.backgroundColor = UIColor.redColor()
+//        newView.translatesAutoresizingMaskIntoConstraints = false
+//        view.addSubview(newView)
+//            
+//        let horizontalConstraint = NSLayoutConstraint(
+//            item: newView, attribute: NSLayoutAttribute.CenterX,
+//            relatedBy: NSLayoutRelation.Equal,
+//            toItem: self, attribute: NSLayoutAttribute.CenterX,
+//            multiplier: 1, constant: 0)
+//        newView.addConstraint(horizontalConstraint)
+//            
+//        let verticalConstraint = NSLayoutConstraint(
+//            item: newView, attribute: NSLayoutAttribute.CenterY,
+//            relatedBy: NSLayoutRelation.Equal,
+//            toItem: self, attribute: NSLayoutAttribute.CenterY,
+//            multiplier: 1, constant: 0)
+//        newView.addConstraint(verticalConstraint)
+//            
+//        let widthConstraint = NSLayoutConstraint(
+//            item: newView, attribute: NSLayoutAttribute.Width,
+//            relatedBy: NSLayoutRelation.Equal,
+//            toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute,
+//            multiplier: 1, constant: 100)
+//        newView.addConstraint(widthConstraint)
+//            
+//        let heightConstraint = NSLayoutConstraint(
+//            item: newView, attribute: NSLayoutAttribute.Height,
+//            relatedBy: NSLayoutRelation.Equal,
+//            toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute,
+//            multiplier: 1, constant: 100)
+//        newView.addConstraint(heightConstraint)
     }
     
     func changeLabels() {
