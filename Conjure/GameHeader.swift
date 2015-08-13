@@ -38,7 +38,7 @@ class GameHeader: UIView {
         let midLine = UIView()
         midLine.backgroundColor = .whiteColor()
         print(UIScreen.mainScreen().bounds.width)
-        midLine.frame = CGRect(x: (deviceWidth/2)+3, y: 100, width: 1, height: 100)
+        midLine.frame = CGRect(x: (deviceWidth/2)+3.5, y: 70, width: 1, height: 144)
         addSubview(midLine)
         
         addSubview(playerOneCounter)
@@ -46,13 +46,6 @@ class GameHeader: UIView {
         
         addSubview(playerTwoCounter)
         playerTwoCounter.playerName.text = "OPPONENT"
-        
-        let seriesLabelFrame = CGRect(x: 0, y: 10, width: 360, height: 40)
-        let seriesLabel = UILabel(frame: seriesLabelFrame)
-        seriesLabel.textAlignment = .Center
-        seriesLabel.text = ""
-        seriesLabel.textColor = .whiteColor()
-        addSubview(seriesLabel)
     }
     
     func addWinCircle(frame: CGRect) {

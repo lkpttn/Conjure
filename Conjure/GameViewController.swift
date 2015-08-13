@@ -214,10 +214,12 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func changeSeriesLabel(numberofgames: Int) {
         // Series label
-        let seriesLabelFrame = CGRect(x: 0, y: 10, width: 360, height: 40)
+        let seriesLabelFrame = CGRect(x: 4, y: 20, width: UIScreen.mainScreen().bounds.width, height: 40)
         let seriesLabel = UILabel(frame: seriesLabelFrame)
         seriesLabel.textAlignment = .Center
+        seriesLabel.text = ""
         seriesLabel.textColor = .whiteColor()
+        seriesLabel.font = UIFont(name: "SourceSansPro-Regular", size: 13)
         
         switch numberofgames {
         case 1:
