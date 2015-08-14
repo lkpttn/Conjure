@@ -12,10 +12,12 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     // MARK: Properties
     @IBOutlet weak var seriesTable: UITableView!
-    
     @IBOutlet weak var headerView: UIView!
     
     var seriesArray = [Series]()
+    
+    let redColor = UIColor(red: 208/255.0, green: 2/255.0, blue: 27/255.0, alpha: 1)
+    let greenColor = UIColor(red: 92/255.0, green: 176/255.0, blue: 0, alpha: 1)
     
     
     override func viewWillAppear(animated: Bool) {
@@ -61,7 +63,15 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         // Configure the cell...
         let series = seriesArray[indexPath.row]
         cell.deckNameLabel.text = String(series.deck.deckName)
-        cell.winLossLabel.text = "\(series.wins)-\(series.losses)"
+        
+        if series.wins > series.losses {
+            cell.winLossLabel.textColor = greenColor
+            cell.winLossLabel.text = "W \(series.wins)-\(series.losses)"
+        }
+        else if series.losses > series.wins {
+            cell.winLossLabel.textColor = redColor
+            cell.winLossLabel.text = "L \(series.wins)-\(series.losses)"
+        }
         
         return cell
     }

@@ -13,6 +13,8 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     @IBOutlet weak var gameHeader: GameHeader!
     
     @IBOutlet weak var numberOfGamesField: UITextField!
+    @IBOutlet weak var numberOfGamesButton: UIButton!
+    
     @IBOutlet weak var pickerLabel: UILabel!
     @IBOutlet weak var pickerButton: UIButton!
     
@@ -30,10 +32,12 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     
     var currentDeck: Deck?
     var numberOfGames = 1
+    let redColor = UIColor(red: 208/255.0, green: 2/255.0, blue: 27/255.0, alpha: 1)
+    let greenColor = UIColor(red: 92/255.0, green: 176/255.0, blue: 0, alpha: 1)
     
     // test
-    var optionsPicker: UIPickerView!
-    var testOptions = [1,3,5,7]
+    var numberofGamesPicker: UIPickerView!
+    var numberofGamesOptions = [1,3,5]
     
     // MARK: Initialization
     required init(coder aDecoder: NSCoder) {
@@ -41,16 +45,9 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     }
     
     override func viewDidLoad() {
-        optionsPicker = UIPickerView()
-        
-        optionsPicker.dataSource = self
-        optionsPicker.delegate = self
-        
-        numberOfGamesField.inputView = optionsPicker
-        numberOfGamesField.text = String(testOptions[0])
-        
         let lightBlueColor = UIColor(red: 8/255.0, green: 129/255.0, blue: 220/255.0, alpha: 1.0)
         startSeriesButton.backgroundColor = lightBlueColor
+        
         
         // Load saved series
         if let savedSeries = loadSeries() {
@@ -70,51 +67,42 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         }
         
         changeLabels()
-        
-        // Autolayout
-//        let newView = UIView()
-//        newView.backgroundColor = UIColor.redColor()
-//        newView.translatesAutoresizingMaskIntoConstraints = false
-//        view.addSubview(newView)
-//            
-//        let horizontalConstraint = NSLayoutConstraint(
-//            item: newView, attribute: NSLayoutAttribute.CenterX,
-//            relatedBy: NSLayoutRelation.Equal,
-//            toItem: self, attribute: NSLayoutAttribute.CenterX,
-//            multiplier: 1, constant: 0)
-//        newView.addConstraint(horizontalConstraint)
-//            
-//        let verticalConstraint = NSLayoutConstraint(
-//            item: newView, attribute: NSLayoutAttribute.CenterY,
-//            relatedBy: NSLayoutRelation.Equal,
-//            toItem: self, attribute: NSLayoutAttribute.CenterY,
-//            multiplier: 1, constant: 0)
-//        newView.addConstraint(verticalConstraint)
-//            
-//        let widthConstraint = NSLayoutConstraint(
-//            item: newView, attribute: NSLayoutAttribute.Width,
-//            relatedBy: NSLayoutRelation.Equal,
-//            toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute,
-//            multiplier: 1, constant: 100)
-//        newView.addConstraint(widthConstraint)
-//            
-//        let heightConstraint = NSLayoutConstraint(
-//            item: newView, attribute: NSLayoutAttribute.Height,
-//            relatedBy: NSLayoutRelation.Equal,
-//            toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute,
-//            multiplier: 1, constant: 100)
-//        newView.addConstraint(heightConstraint)
+        setupPicker()
     }
     
     func changeLabels() {
         if seriesArray.isEmpty == false {
             let lastSeries = seriesArray[0]
             deckNameHistoryLabel.text = lastSeries.deck.deckName
-            deckRecordHistoryLabel.text = "\(lastSeries.wins)-\(lastSeries.losses)"
+            
+            if lastSeries.wins > lastSeries.losses {
+                deckRecordHistoryLabel.textColor = greenColor
+                deckRecordHistoryLabel.text = "W \(lastSeries.wins)-\(lastSeries.losses)"
+            }
+            else if lastSeries.losses > lastSeries.wins {
+                deckRecordHistoryLabel.textColor = redColor
+                deckRecordHistoryLabel.text = "L \(lastSeries.wins)-\(lastSeries.losses)"
+            }
+
         }
     }
     
     // MARK: PickerView stuff
+    func setupPicker() {
+        numberofGamesPicker = UIPickerView()
+        numberofGamesPicker.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1)
+        
+        numberofGamesPicker.dataSource = self
+        numberofGamesPicker.delegate = self
+        
+        numberOfGamesField.inputView = numberofGamesPicker
+        numberOfGamesField.text = "Single Game"
+    }
+    
+    @IBAction func numberOfGamesbutton(sender: UIButton) {
+        numberOfGamesField.becomeFirstResponder()
+    }
+    
     // Number of options
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int{
         return 1
@@ -122,18 +110,36 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     
     // The options array determines how many elements are in the picker
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int{
-        return testOptions.count
+        return numberofGamesOptions.count
     }
     
     // idk
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return String(testOptions[row])
+        var tempTitle = "Best of \(numberofGamesOptions[row])"
+        if numberofGamesOptions[row] == 1 {
+            tempTitle = "Single Game"
+        }
+        
+        return tempTitle
     }
     
     // set the string to reflect the choice
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
-        numberOfGamesField.text = "Best of \(testOptions[row])"
-        numberOfGames = testOptions[row]
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let tempNumber = numberofGamesOptions[row]
+        
+        switch tempNumber {
+        case 1:
+            numberOfGamesField.text = "Single Game"
+        case 3:
+            numberOfGamesField.text = "Best of 3"
+        case 5:
+            numberOfGamesField.text = "Best of 5"
+        default:
+            numberOfGamesField.text = "Single Game"
+        }
+
+
+        numberOfGames = numberofGamesOptions[row]
         self.view.endEditing(true)
     }
     
