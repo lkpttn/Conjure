@@ -15,6 +15,9 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     @IBOutlet weak var numberOfGamesField: UITextField!
     @IBOutlet weak var numberOfGamesButton: UIButton!
     
+    @IBOutlet weak var timeLimitButton: UIButton!
+    @IBOutlet weak var timeLimitTextField: UITextField!
+    
     @IBOutlet weak var pickerLabel: UILabel!
     @IBOutlet weak var pickerButton: UIButton!
     
@@ -32,12 +35,20 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     
     var currentDeck: Deck?
     var numberOfGames = 1
+    var timeLimit: Double = 0.0
+    
     let redColor = UIColor(red: 208/255.0, green: 2/255.0, blue: 27/255.0, alpha: 1)
     let greenColor = UIColor(red: 92/255.0, green: 176/255.0, blue: 0, alpha: 1)
     
-    // test
-    var numberofGamesPicker: UIPickerView!
+    // Picker Lists
+    var numberOfGamesPicker: UIPickerView!
     var numberofGamesOptions = [1,3,5]
+    
+    var timeLimitPicker: UIPickerView!
+    var timeLimitOptions = [600.0,1500.0,3000.0]
+    
+    var gamesComponent = 0
+    var timesComponent = 1
     
     // MARK: Initialization
     required init(coder aDecoder: NSCoder) {
@@ -45,9 +56,11 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     }
     
     override func viewDidLoad() {
+        // Allows the screen to fall asleep.
+        UIApplication.sharedApplication().idleTimerDisabled = false
+        
         let lightBlueColor = UIColor(red: 8/255.0, green: 129/255.0, blue: 220/255.0, alpha: 1.0)
         startSeriesButton.backgroundColor = lightBlueColor
-        
         
         // Load saved series
         if let savedSeries = loadSeries() {
@@ -89,18 +102,36 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     
     // MARK: PickerView stuff
     func setupPicker() {
-        numberofGamesPicker = UIPickerView()
-        numberofGamesPicker.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1)
+        numberOfGamesPicker = UIPickerView()
+        numberOfGamesPicker.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1)
         
-        numberofGamesPicker.dataSource = self
-        numberofGamesPicker.delegate = self
+        numberOfGamesPicker.dataSource = self
+        numberOfGamesPicker.delegate = self
         
-        numberOfGamesField.inputView = numberofGamesPicker
+        numberOfGamesField.inputView = numberOfGamesPicker
         numberOfGamesField.text = "Single Game"
+        numberOfGamesField.tintColor = .whiteColor()
+        
+        timeLimitPicker = UIPickerView()
+        timeLimitPicker.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1)
+        
+        timeLimitPicker.dataSource = self
+        timeLimitPicker.delegate = self
+        
+        timeLimitTextField.inputView = timeLimitPicker
+        timeLimitTextField.text = "25 minutes"
+        timeLimitTextField.tintColor = .whiteColor()
+        
+        numberOfGamesPicker.tag = 0
+        timeLimitPicker.tag = 1
     }
     
     @IBAction func numberOfGamesbutton(sender: UIButton) {
         numberOfGamesField.becomeFirstResponder()
+    }
+    
+    @IBAction func timeLimitButton(sender: UIButton) {
+        timeLimitTextField.becomeFirstResponder()
     }
     
     // Number of options
@@ -110,37 +141,70 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     
     // The options array determines how many elements are in the picker
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int{
-        return numberofGamesOptions.count
-    }
-    
-    // idk
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        var tempTitle = "Best of \(numberofGamesOptions[row])"
-        if numberofGamesOptions[row] == 1 {
-            tempTitle = "Single Game"
+        
+        if (pickerView.tag == 0) {
+            return numberofGamesOptions.count
+        }
+        else if (pickerView.tag == 1) {
+            return timeLimitOptions.count
         }
         
-        return tempTitle
+        return 1
+    }
+    
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if (pickerView.tag == 0) {
+            var tempTitle = "Best of \(numberofGamesOptions[row])"
+            if numberofGamesOptions[row] == 1 {
+                tempTitle = "Single Game"
+            }
+            return tempTitle
+        }
+        else if (pickerView.tag == 1) {
+            let tempTitle = "\(timeLimitOptions[row]/60) minutes"
+            return tempTitle
+        }
+        
+        return "Error"
     }
     
     // set the string to reflect the choice
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let tempNumber = numberofGamesOptions[row]
-        
-        switch tempNumber {
-        case 1:
-            numberOfGamesField.text = "Single Game"
-        case 3:
-            numberOfGamesField.text = "Best of 3"
-        case 5:
-            numberOfGamesField.text = "Best of 5"
-        default:
-            numberOfGamesField.text = "Single Game"
+        if (pickerView.tag == 0) {
+            let tempNumber = numberofGamesOptions[row]
+            
+            switch tempNumber {
+            case 1:
+                numberOfGamesField.text = "Single Game"
+            case 3:
+                numberOfGamesField.text = "Best of 3"
+            case 5:
+                numberOfGamesField.text = "Best of 5"
+            default:
+                numberOfGamesField.text = "Single Game"
+            }
+            
+            numberOfGames = numberofGamesOptions[row]
+            self.view.endEditing(true)
         }
-
-
-        numberOfGames = numberofGamesOptions[row]
-        self.view.endEditing(true)
+        else if (pickerView.tag == 1) {
+            let tempNumber = timeLimitOptions[row]
+            
+            switch tempNumber {
+            case 600:
+                timeLimitTextField.text = "10 Minutes"
+            case 1500:
+                timeLimitTextField.text = "25 Minutes"
+            case 3000:
+                timeLimitTextField.text = "50 Minutes"
+            default:
+                timeLimitTextField.text = "50 Minutes"
+            }
+            
+            timeLimit = timeLimitOptions[row]
+            self.view.endEditing(true)
+        }
+        
     }
     
     // MARK: NSCoding
@@ -182,10 +246,11 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             
             // Set up the series to be passed to the GameViewController
             if currentDeck != nil {
-                svc.series = Series(deck: currentDeck!, numberOfGames: numberOfGames, timeLimit: 2500)
+                svc.series = Series(deck: currentDeck!, numberOfGames: numberOfGames)
+                svc.timeLimit = timeLimit
             }
             else {
-                let alert = UIAlertController(title: "No Deck Selected", message: "You need to ", preferredStyle: UIAlertControllerStyle.Alert)
+                let alert = UIAlertController(title: "No Deck Selected", message: "You need to select a deck to record a match.", preferredStyle: UIAlertControllerStyle.Alert)
                 alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.Default, handler: nil))
                 self.presentViewController(alert, animated: true, completion: nil)
             }

@@ -13,7 +13,7 @@ class Series: NSObject, NSCoding {
     // MARK: Properties
     var date = NSDate()
     var numberOfGames: Int
-    var timeLimit: Int
+    // var timeLimit: Double
     var winConditon: Int
     var wins = 0
     var losses = 0
@@ -25,10 +25,9 @@ class Series: NSObject, NSCoding {
     static let DocumentsDirectory = NSFileManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
     static let ArchiveURL = DocumentsDirectory.URLByAppendingPathComponent("series")
     
-    init(deck: Deck, numberOfGames: Int, timeLimit: Int) {
+    init(deck: Deck, numberOfGames: Int) {
         // self.deck = deck
         self.numberOfGames = numberOfGames
-        self.timeLimit = timeLimit
         self.deck = deck
         
         // Logic block fo determining how many games you need to win
@@ -54,7 +53,7 @@ class Series: NSObject, NSCoding {
         aCoder.encodeInteger(losses, forKey: "losses")
         aCoder.encodeObject(date, forKey: "date")
         aCoder.encodeInteger(numberOfGames, forKey: "numberOfGames")
-        aCoder.encodeInteger(timeLimit, forKey: "timeLimit")
+        // aCoder.encodeDouble(timeLimit, forKey: "timeLimit")
     }
     
     // This initializer must be initialized on all subclasses
@@ -69,10 +68,10 @@ class Series: NSObject, NSCoding {
         let losses = aDecoder.decodeIntegerForKey("losses")
         let numberOfGames = aDecoder.decodeIntegerForKey("numberOfGames")
         let date = aDecoder.decodeObjectForKey("date") as! NSDate
-        let timeLimit = aDecoder.decodeIntegerForKey("timeLimit")
+        // let timeLimit = aDecoder.decodeDoubleForKey("timeLimit")
         
         
-        self.init(deck: deck, numberOfGames: numberOfGames, timeLimit: timeLimit)
+        self.init(deck: deck, numberOfGames: numberOfGames)
         self.wins = wins
         self.losses = losses
         self.games = games as! [Game]

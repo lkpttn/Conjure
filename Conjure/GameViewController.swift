@@ -16,9 +16,16 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var gameButton: UIButton!
     
     var series: Series!
+    var timeLimit: Double!
     var gamenumber = 0
     var turnNumber = 0
     var rows = 0
+    
+    // Timers
+    var matchTimer = NSTimer()
+    let timeInterval:NSTimeInterval = 1.0 //smaller interval
+    var timeCount:NSTimeInterval = 0 // counter for the timer
+
     
     // Colors
     let redColor = UIColor(red: 208/255.0, green: 2/255.0, blue: 27/255.0, alpha: 1)
@@ -31,16 +38,55 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         // This does not update the view! all of this happens after the views are drawn.
         // If effects the variables, but doesn't kick off a draw cycle.
         
+        // Keep the phone from going to sleep
+        UIApplication.sharedApplication().idleTimerDisabled = true
+        
         // Start the first game
         startGame(gamenumber, series: series)
         
         turnTable.delegate = self
         turnTable.dataSource = self
+        
+        setupTimers()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func setupTimers() {
+        // Timers
+        timeCount = timeLimit // counter for the timer
+
+        // Start the timer
+        if !matchTimer.valid {
+            gameHeader.gameTimer.text = timeString(timeCount)
+            matchTimer = NSTimer.scheduledTimerWithTimeInterval(
+                timeInterval,
+                target: self,
+                selector: "matchTimeUp:",
+                userInfo: nil,
+                repeats: true)
+        }
+    }
+    
+    func matchTimeUp(matchTimer:NSTimer){
+        timeCount = timeCount - timeInterval
+        let timerLabel = gameHeader.gameTimer
+        
+        if timeCount <= 0 {  //test for target time reached.
+            timerLabel.text = "Match over"
+            matchTimer.invalidate()
+        } else { //update the time on the clock if not reached
+            timerLabel.text = timeString(timeCount)
+        }
+    }
+    
+    func timeString(time:NSTimeInterval) -> String {
+        let minutes = Int(time) / 60
+        let seconds = Int(time) % 60
+        return String(format:"%02i:%02i",minutes,seconds)
     }
     
     // MARK: Table stuff
@@ -214,7 +260,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func changeSeriesLabel(numberofgames: Int) {
         // Series label
-        let seriesLabelFrame = CGRect(x: 4, y: 20, width: UIScreen.mainScreen().bounds.width, height: 40)
+        let seriesLabelFrame = CGRect(x: 4, y: 26, width: UIScreen.mainScreen().bounds.width, height: 40)
         let seriesLabel = UILabel(frame: seriesLabelFrame)
         seriesLabel.textAlignment = .Center
         seriesLabel.text = ""
