@@ -18,9 +18,6 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     @IBOutlet weak var timeLimitButton: UIButton!
     @IBOutlet weak var timeLimitTextField: UITextField!
     
-    @IBOutlet weak var pickerLabel: UILabel!
-    @IBOutlet weak var pickerButton: UIButton!
-    
     @IBOutlet weak var deckLabel: UILabel!
     @IBOutlet weak var deckWinLossLabel: UILabel!
     
@@ -35,7 +32,7 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     
     var currentDeck: Deck?
     var numberOfGames = 1
-    var timeLimit: Double = 0.0
+    var timeLimit: Double = 3000.0
     
     let redColor = UIColor(red: 208/255.0, green: 2/255.0, blue: 27/255.0, alpha: 1)
     let greenColor = UIColor(red: 92/255.0, green: 176/255.0, blue: 0, alpha: 1)
@@ -74,6 +71,14 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         if let savedDecks = loadDecks() {
             // For loop iteration?
             deckDictionary = savedDecks
+            print(deckDictionary)
+            
+            // Load the most recent current deck from user defaults
+            let defaults = NSUserDefaults.standardUserDefaults()
+            if let name = defaults.stringForKey("currentDeckString") {
+                currentDeck = deckDictionary[name]
+                deckLabel.text = currentDeck?.deckName
+            }
         }
         else {
             print("Deck help!")
@@ -119,7 +124,7 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         timeLimitPicker.delegate = self
         
         timeLimitTextField.inputView = timeLimitPicker
-        timeLimitTextField.text = "25 minutes"
+        timeLimitTextField.text = "50 minutes"
         timeLimitTextField.tintColor = .whiteColor()
         
         numberOfGamesPicker.tag = 0
@@ -161,7 +166,7 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             return tempTitle
         }
         else if (pickerView.tag == 1) {
-            let tempTitle = "\(timeLimitOptions[row]/60) minutes"
+            let tempTitle = "\(Int(timeLimitOptions[row]/60)) minutes"
             return tempTitle
         }
         
@@ -299,6 +304,11 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             // Do stuff with the new series here. Save maybe?
             self.currentDeck = deck
             deckLabel.text = deck.deckName
+            
+            // Store the current deck string/name in user defaults
+            let defaults = NSUserDefaults.standardUserDefaults()
+            defaults.setObject(deck.deckName, forKey: "currentDeckString")
+    
             deckWinLossLabel.text = "W: \(deck.wins)    L: \(deck.losses)"
             
             // Set the passed in deckDictionary to the lead view
