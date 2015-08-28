@@ -76,7 +76,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         let timerLabel = gameHeader.gameTimer
         
         if timeCount <= 0 {  //test for target time reached.
-            timerLabel.text = "Match over"
+            timerLabel.text = "Time expired"
             matchTimer.invalidate()
         } else { //update the time on the clock if not reached
             timerLabel.text = timeString(timeCount)
@@ -178,11 +178,8 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         self.turnTable.reloadData()
         
-        if turnNumber > 6 {
-            rows += 60
-            let offset = CGPoint(x: 0, y: rows)
-            turnTable.setContentOffset(offset, animated: true)
-        }
+        let indexPath = NSIndexPath(forItem: turnNumber-1, inSection: 0)
+        turnTable.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Top, animated: true)
         
         if playerOne.lifeTotal == 0 {
             // The other player wins. Increment the losses, gamenumber 
@@ -238,49 +235,39 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func doWinCirleLogic(wins: Int, losses: Int) {
         var circleFrame = CGRectZero
-        let circleWidth = 9
+        let circleWidth = 8
+        let circleY = 42
+        let circleX = Int(UIScreen.mainScreen().bounds.width/2)
         
         // Need to add cases for best of five, seven
         // Lots of weird logic bugginess
-        if losses == 1  && wins == 1 || losses == 1 && wins == 0 {
-            circleFrame = CGRect(x: 220, y: 30, width: circleWidth, height: circleWidth)
+        if losses == 1 && wins == 0 {
+            circleFrame = CGRect(x: circleX+30, y: circleY, width: circleWidth, height: circleWidth)
         }
         else if losses == 2 {
-            circleFrame = CGRect(x: 240, y: 30, width: circleWidth, height: circleWidth)
+            circleFrame = CGRect(x: circleX+45, y: circleY, width: circleWidth, height: circleWidth)
         }
         else if wins == 1 {
-            circleFrame = CGRect(x: 150, y: 30, width: circleWidth, height: circleWidth)
+            circleFrame = CGRect(x: circleX-30, y: circleY, width: circleWidth, height: circleWidth)
         }
         else if wins == 2 {
-            circleFrame = CGRect(x: 130, y: 30, width: circleWidth, height: circleWidth)
+            circleFrame = CGRect(x: circleX-45, y: circleY, width: circleWidth, height: circleWidth)
         }
         
         gameHeader.addWinCircle(circleFrame)
     }
     
     func changeSeriesLabel(numberofgames: Int) {
-        // Series label
-        let seriesLabelFrame = CGRect(x: 4, y: 26, width: UIScreen.mainScreen().bounds.width, height: 40)
-        let seriesLabel = UILabel(frame: seriesLabelFrame)
-        seriesLabel.textAlignment = .Center
-        seriesLabel.text = ""
-        seriesLabel.textColor = .whiteColor()
-        seriesLabel.font = UIFont(name: "SourceSansPro-Regular", size: 13)
-        
         switch numberofgames {
         case 1:
-            seriesLabel.text = "Single"
+            gameHeader.seriesLabel.text = "Single"
         case 3:
-            seriesLabel.text = "Bo3"
+            gameHeader.seriesLabel.text = "Bo3"
         case 5:
-            seriesLabel.text = "Bo5"
-        case 7:
-            seriesLabel.text = "Bo7"
+            gameHeader.seriesLabel.text = "Bo5"
         default:
-            seriesLabel.text = "Casual"
+            gameHeader.seriesLabel.text = "Casual"
         }
-        
-        gameHeader.addSubview(seriesLabel)
     }
     
     // Can these be consolidated into one function?

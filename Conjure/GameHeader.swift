@@ -17,8 +17,9 @@ class GameHeader: UIView {
     var playerTwoCounter = LifeCounter(frame: CGRect(x: (UIScreen.mainScreen().bounds.width/2)+4, y: 50, width: (UIScreen.mainScreen().bounds.width)/2, height: 200))
 
     
-    var seriesLabel = UILabel(frame: CGRectZero)
-    let gameTimer = UILabel(frame: CGRectMake(20, 20, 150, 50))
+    let seriesLabel = UILabel(frame: CGRectMake(4, 26, UIScreen.mainScreen().bounds.width, 40))
+    let gameTimer = UILabel(frame: CGRectMake(20, 26, 150, 40))
+    let settingsButton = UIButton(frame: CGRectMake(190, 26, 150, 40))
     
     // MARK: Initlization
     required init() {
@@ -45,15 +46,28 @@ class GameHeader: UIView {
         addSubview(midLine)
         
         // Timer
-        gameTimer.text = ""
+        gameTimer.text = "--:--"
         gameTimer.textColor = .whiteColor()
         gameTimer.font = UIFont(name: "SourceSansPro-Regular", size: 13)
         addSubview(gameTimer)
         
+        // Series Label
+        seriesLabel.textAlignment = .Center
+        seriesLabel.text = "Casual"
+        seriesLabel.textColor = .whiteColor()
+        seriesLabel.font = UIFont(name: "SourceSansPro-Regular", size: 13)
+        addSubview(seriesLabel)
+        
+        // Settings button
+        settingsButton.setTitle("Settings", forState: .Normal)
+        settingsButton.tintColor = .whiteColor()
+        settingsButton.titleLabel!.font = UIFont(name: "SourceSansPro-Regular", size: 13)
+        addSubview(settingsButton)
+        
         
         // Counters
         addSubview(playerOneCounter)
-        playerOneCounter.playerName.text = "ME"
+        playerOneCounter.playerName.text = "Me"
         
         addSubview(playerTwoCounter)
         playerTwoCounter.playerName.text = "OPPONENT"

@@ -47,6 +47,8 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     var gamesComponent = 0
     var timesComponent = 1
     
+    let defaults = NSUserDefaults.standardUserDefaults()
+    
     // MARK: Initialization
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -74,16 +76,20 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             print(deckDictionary)
             
             // Load the most recent current deck from user defaults
-            let defaults = NSUserDefaults.standardUserDefaults()
             if let name = defaults.stringForKey("currentDeckString") {
                 currentDeck = deckDictionary[name]
                 deckLabel.text = currentDeck?.deckName
+                deckWinLossLabel.text = "W: \(currentDeck!.wins)    L: \(currentDeck!.losses)"
             }
         }
         else {
             print("Deck help!")
         }
         
+        // Setup settings button
+        gameHeader.settingsButton.addTarget(self, action: "showSettings:", forControlEvents: .TouchUpInside)
+        
+        setForSettings()
         changeLabels()
         setupPicker()
     }
@@ -124,7 +130,7 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         timeLimitPicker.delegate = self
         
         timeLimitTextField.inputView = timeLimitPicker
-        timeLimitTextField.text = "50 minutes"
+        timeLimitTextField.text = "50 Minutes"
         timeLimitTextField.tintColor = .whiteColor()
         
         numberOfGamesPicker.tag = 0
@@ -176,46 +182,48 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     // set the string to reflect the choice
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if (pickerView.tag == 0) {
-            let tempNumber = numberofGamesOptions[row]
-            
-            switch tempNumber {
-            case 1:
-                numberOfGamesField.text = "Single Game"
-            case 3:
-                numberOfGamesField.text = "Best of 3"
-            case 5:
-                numberOfGamesField.text = "Best of 5"
-            default:
-                numberOfGamesField.text = "Single Game"
-            }
-            
+            numberCase(numberofGamesOptions[row])
             numberOfGames = numberofGamesOptions[row]
             self.view.endEditing(true)
         }
         else if (pickerView.tag == 1) {
-            let tempNumber = timeLimitOptions[row]
-            
-            switch tempNumber {
-            case 600:
-                timeLimitTextField.text = "10 Minutes"
-            case 1500:
-                timeLimitTextField.text = "25 Minutes"
-            case 3000:
-                timeLimitTextField.text = "50 Minutes"
-            default:
-                timeLimitTextField.text = "50 Minutes"
-            }
-            
+            timeCase(timeLimitOptions[row])
             timeLimit = timeLimitOptions[row]
             self.view.endEditing(true)
         }
         
     }
     
-    // MARK: NSCoding
-    // Save or load the series whenever there's an update
+    func numberCase(int: Int) {
+        switch int {
+        case 1:
+            numberOfGamesField.text = "Single Game"
+        case 3:
+            numberOfGamesField.text = "Best of 3"
+        case 5:
+            numberOfGamesField.text = "Best of 5"
+        default:
+            numberOfGamesField.text = "Single Game"
+        }
+    }
+    
+    func timeCase(double: Double) {
+        switch double {
+        case 600:
+            timeLimitTextField.text = "10 Minutes"
+        case 1500:
+            timeLimitTextField.text = "25 Minutes"
+        case 3000:
+            timeLimitTextField.text = "50 Minutes"
+        default:
+            timeLimit = 3000
+            timeLimitTextField.text = "50 Minutes"
+        }
+
+    }
+    
+    // MARK: Save and settings
     func saveSeries() {
-        // An archiver object that saves the meal array to the ArchivePath we defined in Series
         let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(seriesArray, toFile: Series.ArchiveURL.path!)
         print("Saved the series")
         if !isSuccessfulSave {
@@ -229,7 +237,6 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     }
     
     func saveDecks() {
-        // An archiver object that saves the meal array to the ArchivePath we defined in Series
         let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(deckDictionary, toFile: Deck.ArchiveURL.path!)
         print("Saved the decks")
         if !isSuccessfulSave {
@@ -242,11 +249,32 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         return NSKeyedUnarchiver.unarchiveObjectWithFile(Deck.ArchiveURL.path!) as? [String: Deck]
     }
     
+    func setForSettings() {
+        // Player names
+        gameHeader.playerOneCounter.playerName.text = defaults.stringForKey("playerOneName")
+        gameHeader.playerTwoCounter.playerName.text = defaults.stringForKey("playerTwoName")
+        
+        // Format defaults
+        numberOfGames = defaults.integerForKey("numberOfGamesInt")
+        numberCase(numberOfGames)
+        
+        timeLimit = defaults.doubleForKey("timeLimit")
+        timeCase(timeLimit)
+        
+        gameHeader.playerOneCounter.lifeTotal = defaults.integerForKey("lifeTotal")
+        gameHeader.playerTwoCounter.lifeTotal = defaults.integerForKey("lifeTotal")
+    }
+    
+    
     // MARK: Navigation
+    func showSettings(sender:UIButton!) {
+        print("Button tapped")
+        self.performSegueWithIdentifier("showSettings", sender: self)
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "startSeries" {
             print("Starting a new series")
-            // Downcasting the destination view controller as a MealViewController
             let svc = segue.destinationViewController as! GameViewController
             
             // Set up the series to be passed to the GameViewController
@@ -272,6 +300,10 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             let destination = nav.topViewController as! DeckViewController
             destination.deckDictionary = deckDictionary
         }
+        else if segue.identifier == "showSettings" {
+            let nav = segue.destinationViewController as! UINavigationController
+            let destination = nav.topViewController as! SettingsTableViewController
+        }
         else {
             print("Nope")
         }
@@ -292,6 +324,9 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             else if series.losses > series.wins {
                 deckDictionary[currentDeck!.deckName]?.losses += 1
             }
+            
+            deckWinLossLabel.text = "W: \(deckDictionary[currentDeck!.deckName]!.wins)    L: \(deckDictionary[currentDeck!.deckName]!.losses)"
+            
             saveDecks()
             changeLabels()
         }
@@ -324,6 +359,11 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             deckDictionary = source.deckDictionary
             saveDecks()
             print(deckDictionary)
+        }
+        if let source = sender.sourceViewController as? SettingsTableViewController {
+            setForSettings()
+            gameHeader.playerOneCounter.playerName.text?.uppercaseString
+            gameHeader.playerTwoCounter.playerName.text?.uppercaseString
         }
     }
 
