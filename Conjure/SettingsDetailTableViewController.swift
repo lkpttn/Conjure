@@ -54,6 +54,18 @@ class SettingsDetailTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
+    
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if detailType == 0 {
+            return "Starting Life Total"
+        }
+        else if detailType == 1 {
+            return "Match Type"
+        }
+        else {
+            return "Time Limit"
+        }
+    }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return cellData.count

@@ -19,16 +19,16 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate {
     @IBOutlet weak var numberOfGamesLabel: UILabel!
     @IBOutlet weak var timeLimitLabel: UILabel!
     
-    var numberOfGames: Int = 0
+    var numberOfGames: Int = 3
     var numberofGamesOptions: NSArray = [1,3,5]
     
-    var timeLimit: Double = 0.0
+    var timeLimit: Double = 3000.0
     var timeLimitOptions: NSArray = [600.0,1500.0,3000.0]
     
     // Holder variables
-    var tempPlayerOneName = ""
-    var tempPlayerTwoName = ""
-    var tempLifeTotal = 0
+    var tempPlayerOneName = "Me"
+    var tempPlayerTwoName = "Opponent"
+    var tempLifeTotal = 20
     var lifeTotalIndexPath = NSIndexPath()
 
     
@@ -47,8 +47,8 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate {
     
     func loadAllSettings() {
         // Player names
-        playerOneNameField.text = settings.stringForKey("playerOneName")
-        playerTwoNameField.text = settings.stringForKey("playerTwoName")
+        playerOneNameField.text = settings.stringForKey("playerOneName") ?? "Me"
+        playerTwoNameField.text = settings.stringForKey("playerTwoName") ?? "Opponent"
         
         // Format Defaults
         numberOfGames = settings.integerForKey("numberOfGames")

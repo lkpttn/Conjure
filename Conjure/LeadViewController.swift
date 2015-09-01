@@ -33,6 +33,7 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     var currentDeck: Deck?
     var numberOfGames = 1
     var timeLimit: Double = 3000.0
+    var lifeTotal = 20
     
     let redColor = UIColor(red: 208/255.0, green: 2/255.0, blue: 27/255.0, alpha: 1)
     let greenColor = UIColor(red: 92/255.0, green: 176/255.0, blue: 0, alpha: 1)
@@ -66,7 +67,7 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             seriesArray += savedSeries
         }
         else {
-            print("Series help!")
+            print("No saved series")
         }
         
         // Load saved decks
@@ -83,7 +84,7 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             }
         }
         else {
-            print("Deck help!")
+            print("No saved decks!")
         }
         
         // Setup settings button
@@ -249,8 +250,8 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     
     func setForSettings() {
         // Player names
-        gameHeader.playerOneCounter.playerName.text = defaults.stringForKey("playerOneName")
-        gameHeader.playerTwoCounter.playerName.text = defaults.stringForKey("playerTwoName")
+        gameHeader.playerOneCounter.playerName.text = defaults.stringForKey("playerOneName") ?? "Me"
+        gameHeader.playerTwoCounter.playerName.text = defaults.stringForKey("playerTwoName") ?? "Opponent"
         
         // Format defaults
         numberOfGames = defaults.integerForKey("numberOfGames")
@@ -259,8 +260,9 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         timeLimit = defaults.doubleForKey("timeLimit")
         timeCase(timeLimit)
         
-        gameHeader.playerOneCounter.lifeTotal = defaults.integerForKey("lifeTotal")
-        gameHeader.playerTwoCounter.lifeTotal = defaults.integerForKey("lifeTotal")
+        lifeTotal = defaults.integerForKey("lifeTotal") ?? 20
+        gameHeader.playerOneCounter.lifeTotal = lifeTotal
+        gameHeader.playerTwoCounter.lifeTotal = lifeTotal
     }
     
     

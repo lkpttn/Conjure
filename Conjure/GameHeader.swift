@@ -41,7 +41,6 @@ class GameHeader: UIView {
         // Line
         let midLine = UIView()
         midLine.backgroundColor = .whiteColor()
-        print(UIScreen.mainScreen().bounds.width)
         midLine.frame = CGRect(x: (deviceWidth/2)+3.5, y: 70, width: 1, height: 144)
         addSubview(midLine)
         

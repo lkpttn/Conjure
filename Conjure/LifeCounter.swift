@@ -14,7 +14,7 @@ class LifeCounter: UIView {
     let settings = NSUserDefaults.standardUserDefaults()
     
     // Starting life total
-    var lifeTotal = 0 {
+    var lifeTotal = 20 {
         didSet {
             // Updates the layout whenever the lifeTotal is updated
             setNeedsLayout()
@@ -40,7 +40,6 @@ class LifeCounter: UIView {
         super.init(frame: frame)
         
         let frameWidth = self.bounds.width
-        print(self.bounds.width)
         
         let counterFrame = CGRect(x: 0, y: 40, width: frameWidth, height: 90)
         counter.frame = counterFrame
