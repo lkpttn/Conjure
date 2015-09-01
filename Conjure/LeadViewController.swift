@@ -120,7 +120,6 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         numberOfGamesPicker.delegate = self
         
         numberOfGamesField.inputView = numberOfGamesPicker
-        numberOfGamesField.text = "Single Game"
         numberOfGamesField.tintColor = .whiteColor()
         
         timeLimitPicker = UIPickerView()
@@ -130,7 +129,6 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         timeLimitPicker.delegate = self
         
         timeLimitTextField.inputView = timeLimitPicker
-        timeLimitTextField.text = "50 Minutes"
         timeLimitTextField.tintColor = .whiteColor()
         
         numberOfGamesPicker.tag = 0
@@ -255,7 +253,7 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         gameHeader.playerTwoCounter.playerName.text = defaults.stringForKey("playerTwoName")
         
         // Format defaults
-        numberOfGames = defaults.integerForKey("numberOfGamesInt")
+        numberOfGames = defaults.integerForKey("numberOfGames")
         numberCase(numberOfGames)
         
         timeLimit = defaults.doubleForKey("timeLimit")
@@ -303,6 +301,9 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         else if segue.identifier == "showSettings" {
             let nav = segue.destinationViewController as! UINavigationController
             let destination = nav.topViewController as! SettingsTableViewController
+            
+            destination.tempPlayerOneName = defaults.stringForKey("playerOneName") ?? "Me"
+            destination.tempPlayerTwoName = defaults.stringForKey("playerTwoName") ?? "Opponent"
         }
         else {
             print("Nope")
@@ -361,6 +362,20 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             print(deckDictionary)
         }
         if let source = sender.sourceViewController as? SettingsTableViewController {
+            print("Trigger unwindToLeadView")
+            
+            defaults.setObject(source.tempPlayerOneName, forKey: "playerOneName")
+            defaults.setObject(source.tempPlayerTwoName, forKey: "playerTwoName")
+            
+            defaults.setInteger(source.tempLifeTotal, forKey: "lifeTotal")
+            gameHeader.playerOneCounter.counter.text = String(defaults.integerForKey("lifeTotal"))
+            gameHeader.playerTwoCounter.counter.text = String(defaults.integerForKey("lifeTotal"))
+            
+            defaults.setInteger(source.numberOfGames, forKey: "numberOfGames")
+            
+            defaults.setDouble(source.timeLimit, forKey: "timeLimit")
+
+            
             setForSettings()
             gameHeader.playerOneCounter.playerName.text?.uppercaseString
             gameHeader.playerTwoCounter.playerName.text?.uppercaseString

@@ -19,7 +19,7 @@ class GameHeader: UIView {
     
     let seriesLabel = UILabel(frame: CGRectMake(4, 26, UIScreen.mainScreen().bounds.width, 40))
     let gameTimer = UILabel(frame: CGRectMake(20, 26, 150, 40))
-    let settingsButton = UIButton(frame: CGRectMake(190, 26, 150, 40))
+    let settingsButton = UIButton(frame: CGRectMake(UIScreen.mainScreen().bounds.width-80, 26, 70, 30))
     
     // MARK: Initlization
     required init() {
@@ -59,6 +59,9 @@ class GameHeader: UIView {
         addSubview(seriesLabel)
         
         // Settings button
+        settingsButton.layer.borderWidth = 1.0
+        settingsButton.layer.borderColor = UIColor.whiteColor().CGColor
+        settingsButton.layer.cornerRadius = 3.0
         settingsButton.setTitle("Settings", forState: .Normal)
         settingsButton.tintColor = .whiteColor()
         settingsButton.titleLabel!.font = UIFont(name: "SourceSansPro-Regular", size: 13)

@@ -11,9 +11,10 @@ import UIKit
 class LifeCounter: UIView {
 
     // MARK: Propterties
+    let settings = NSUserDefaults.standardUserDefaults()
     
     // Starting life total
-    var lifeTotal = 20 {
+    var lifeTotal = 0 {
         didSet {
             // Updates the layout whenever the lifeTotal is updated
             setNeedsLayout()
@@ -33,6 +34,8 @@ class LifeCounter: UIView {
     
     // First init. LifeCounter needs different frames, so we ask for one during intialization.
     override init(frame: CGRect) {
+        lifeTotal = settings.integerForKey("lifeTotal") ?? 20
+        
         // I think this just sets the frame to the frame.
         super.init(frame: frame)
         

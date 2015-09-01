@@ -15,6 +15,8 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var turnTable: UITableView!
     @IBOutlet weak var gameButton: UIButton!
     
+    let settings = NSUserDefaults.standardUserDefaults()
+    
     var series: Series!
     var timeLimit: Double!
     var gamenumber = 0
@@ -146,7 +148,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         print("Starting game number \(gamenumber)")
         
         // Create a new game instance with an increased base number
-        let game = Game(baseLifeTotal: 20, gameNumber: gamenumber)
+        let game = Game(baseLifeTotal: settings.integerForKey("lifeTotal"), gameNumber: gamenumber)
         
         // Add the new game into the game array in the series object
         series.games += [game]
