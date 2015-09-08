@@ -31,6 +31,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         seriesTable.delegate = self
         seriesTable.dataSource = self
+        seriesTable.backgroundColor = UIColor.groupTableViewBackgroundColor()
         
         let dayFormatter = NSDateFormatter()
         dayFormatter.dateStyle = .MediumStyle

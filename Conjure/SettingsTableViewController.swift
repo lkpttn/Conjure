@@ -30,7 +30,6 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate {
     var tempPlayerTwoName = "Opponent"
     var tempLifeTotal = 20
     var lifeTotalIndexPath = NSIndexPath()
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -127,6 +126,10 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier != nil {
+            self.tableView.deselectRowAtIndexPath((self.tableView.indexPathForSelectedRow)!, animated: true)
+        }
+        
         if segue.identifier == "showMatchType" {
             print("Choosing match type")
             let destination = segue.destinationViewController as! SettingsDetailTableViewController

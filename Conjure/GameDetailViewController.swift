@@ -149,10 +149,6 @@ class GameDetailViewController: UIViewController, UITableViewDelegate, UITableVi
             gamenumber = 4
         case 4:
             gamenumber = 5
-        case 5:
-            gamenumber = 6
-        case 6:
-            gamenumber = 7
         default:
             gamenumber = 1
         }
