@@ -23,6 +23,7 @@ class SettingsDetailTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(timeLimit)
         
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "settingCell")
     }
@@ -30,18 +31,21 @@ class SettingsDetailTableViewController: UITableViewController {
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         
+        
         if (self.isMovingFromParentViewController()) {
             let parent = navigationController?.topViewController as! SettingsTableViewController
             
-            if detailType == 0 {
+            if detailType == 0 && lifeTotal != 0 {
                 parent.tempLifeTotal = lifeTotal
                 parent.startingLifeTotalLabel.text = String(lifeTotal)
             }
-            else if detailType == 1 {
+            else if detailType == 1 && numberOfGames != 0 {
                 parent.numberOfGames = numberOfGames
                 parent.numberOfGamesLabel.text = numberOfGamesString as String
             }
-            else if detailType == 2 {
+            else if detailType == 2 && timeLimit != 0 {
+                print("Time limit = \(timeLimit)")
+                print("Time Limit String = \(timeLimitString)")
                 parent.timeLimit = timeLimit
                 parent.timeLimitLabel.text = timeLimitString as String
             }
@@ -91,13 +95,13 @@ class SettingsDetailTableViewController: UITableViewController {
             }
         }
         else if detailType == 2 {
-            let int = cellData[indexPath.row] as! Int
-            switch int {
-            case 600:
+            let number = cellData[indexPath.row] as! Double
+            switch number {
+            case 600.0:
                 cell.textLabel!.text = "10 Minutes"
-            case 1500:
+            case 1500.0:
                 cell.textLabel!.text = "25 Minutes"
-            case 3000:
+            case 3000.0:
                 cell.textLabel!.text = "50 Minutes"
             default:
                 cell.textLabel!.text = "50 Minutes"
@@ -137,11 +141,11 @@ class SettingsDetailTableViewController: UITableViewController {
         else if detailType == 2 {
             timeLimit = Double(cellData[indexPath.row] as! NSNumber)
             switch timeLimit {
-            case 600:
+            case 600.0:
                 timeLimitString = "10 Minutes"
-            case 1500:
+            case 1500.0:
                 timeLimitString = "25 Minutes"
-            case 3000:
+            case 3000.0:
                 timeLimitString = "50 Minutes"
             default:
                 timeLimitString = "50 Minutes"

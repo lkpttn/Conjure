@@ -31,7 +31,7 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     var deckDictionary = [String: Deck]()
     
     var currentDeck: Deck?
-    var numberOfGames = 1
+    var numberOfGames = 3
     var timeLimit: Double = 3000.0
     var lifeTotal = 20
     
@@ -67,7 +67,7 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             seriesArray += savedSeries
         }
         else {
-            print("No saved series")
+            print("No saved series!")
         }
         
         // Load saved decks
@@ -202,7 +202,7 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         case 5:
             numberOfGamesField.text = "Best of 5"
         default:
-            numberOfGamesField.text = "Single Game"
+            numberOfGamesField.text = "Best of 3"
         }
     }
     
@@ -250,6 +250,7 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     
     func setForSettings() {
         // Player names
+        print(defaults.stringForKey("playerOneName"))
         gameHeader.playerOneCounter.playerName.text = defaults.stringForKey("playerOneName") ?? "Me"
         gameHeader.playerTwoCounter.playerName.text = defaults.stringForKey("playerTwoName") ?? "Opponent"
         
@@ -260,7 +261,11 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         timeLimit = defaults.doubleForKey("timeLimit")
         timeCase(timeLimit)
         
-        lifeTotal = defaults.integerForKey("lifeTotal") ?? 20
+        print(defaults.integerForKey("lifeTotal"))
+        lifeTotal = defaults.integerForKey("lifeTotal")
+        if lifeTotal == 0 {
+            lifeTotal = 20
+        }
         gameHeader.playerOneCounter.lifeTotal = lifeTotal
         gameHeader.playerTwoCounter.lifeTotal = lifeTotal
     }

@@ -15,6 +15,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var headerView: UIView!
     
     var seriesArray = [Series]()
+    var dateDictionary = [String: [Series]]()
     
     let redColor = UIColor(red: 208/255.0, green: 2/255.0, blue: 27/255.0, alpha: 1)
     let greenColor = UIColor(red: 92/255.0, green: 176/255.0, blue: 0, alpha: 1)
@@ -27,10 +28,25 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(seriesArray)
         
         seriesTable.delegate = self
         seriesTable.dataSource = self
+        
+        let dayFormatter = NSDateFormatter()
+        dayFormatter.dateStyle = .MediumStyle
+        
+        for series in seriesArray {
+            let day = dayFormatter.stringFromDate(series.date)
+            
+            if(dateDictionary[day] == nil) {
+                dateDictionary[day] = [];
+            }
+            
+            print(series.wins)
+            print(series.losses)
+            print(series.date)
+            dateDictionary[day]?.append(series)
+        }
     }
 
     func styleNavBar() {
@@ -46,22 +62,29 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     // MARK: Table methods
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
+        return dateDictionary.count
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return seriesArray.count
+        let date : String = Array(dateDictionary.keys)[section]
+        return dateDictionary[date]!.count;
+    }
+    
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let date : String = Array(dateDictionary.keys)[section]
+        return date
     }
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let date : String = Array(dateDictionary.keys)[indexPath.section]
+        let seriesOnDate = dateDictionary[date]!
+        let series = seriesOnDate[indexPath.row]
         
         let cellIdentifier = "SeriesCell"
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! SeriesCell
         // Configure the cell...
-        let series = seriesArray[indexPath.row]
+        // let series = seriesArray[indexPath.row]
         cell.deckNameLabel.text = String(series.deck.deckName)
         
         if series.wins > series.losses {
@@ -113,8 +136,13 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
             if let selectedSeriesCell = sender as? SeriesCell {
                 // Find the index path for the cell that sent the segue
                 let indexPath = seriesTable.indexPathForCell(selectedSeriesCell)!
+                
                 // selected series is set to the series at that indexPath
-                let selectedSeries = seriesArray[indexPath.row]
+                let date : String = Array(dateDictionary.keys)[indexPath.section]
+                let seriesOnDate = dateDictionary[date]!
+                let series = seriesOnDate[indexPath.row]
+                let selectedSeries = series
+                
                 // the new view controller (A GameDetailViewController) is passed the series information
                 destination.series = selectedSeries
             }

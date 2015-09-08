@@ -34,7 +34,10 @@ class LifeCounter: UIView {
     
     // First init. LifeCounter needs different frames, so we ask for one during intialization.
     override init(frame: CGRect) {
-        lifeTotal = settings.integerForKey("lifeTotal") ?? 20
+        lifeTotal = settings.integerForKey("lifeTotal")
+        if lifeTotal == 0 {
+            lifeTotal = 20
+        }
         
         // I think this just sets the frame to the frame.
         super.init(frame: frame)

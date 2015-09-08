@@ -41,8 +41,6 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate {
         
         playerOneNameField.delegate = self
         playerTwoNameField.delegate = self
-        
-        print("tempLifeTotal = \(tempLifeTotal)")
     }
     
     func loadAllSettings() {
@@ -52,13 +50,19 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate {
         
         // Format Defaults
         numberOfGames = settings.integerForKey("numberOfGames")
+        print("The number of games is \(numberOfGames)")
         numberCase(numberOfGames)
 
         timeLimit = settings.doubleForKey("timeLimit")
+        print("The time limit is \(timeLimit)")
         timeCase(timeLimit)
         
         tempLifeTotal = settings.integerForKey("lifeTotal") ?? 20
-        startingLifeTotalLabel.text = String(settings.integerForKey("lifeTotal"))
+        if tempLifeTotal == 0 {
+            tempLifeTotal = 20
+        }
+        print("The starting life total is is \(tempLifeTotal)")
+        startingLifeTotalLabel.text = String(tempLifeTotal)
     }
     
     func numberCase(int: Int) {
@@ -70,21 +74,20 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate {
         case 5:
             numberOfGamesLabel.text = "Best of 5"
         default:
-            numberOfGamesLabel.text = "Single Game"
+            numberOfGamesLabel.text = "Best of 3"
         }
         
     }
     
     func timeCase(double: Double) {
         switch double {
-        case 600:
+        case 600.0:
             timeLimitLabel.text = "10 Minutes"
-        case 1500:
+        case 1500.0:
             timeLimitLabel.text = "25 Minutes"
-        case 3000:
+        case 3000.0:
             timeLimitLabel.text = "50 Minutes"
         default:
-            timeLimit = 3000
             timeLimitLabel.text = "50 Minutes"
         }
         
@@ -137,7 +140,6 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate {
             destination.detailType = 0
             
             destination.cellData = [20,40,50]
-            destination.lifeTotal = tempLifeTotal
         }
         else if segue.identifier == "showTimeLimit" {
             print("Choosing time limit")
@@ -145,7 +147,6 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate {
             destination.detailType = 2
             
             destination.cellData = timeLimitOptions
-            destination.timeLimit = timeLimit
         }
     }
     

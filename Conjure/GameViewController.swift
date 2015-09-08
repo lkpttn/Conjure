@@ -148,7 +148,11 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         print("Starting game number \(gamenumber)")
         
         // Create a new game instance with an increased base number
-        let game = Game(baseLifeTotal: settings.integerForKey("lifeTotal"), gameNumber: gamenumber)
+        var lifeTotal = settings.integerForKey("lifeTotal")
+        if lifeTotal == 0 {
+            lifeTotal = 20
+        }
+        let game = Game(baseLifeTotal: lifeTotal, gameNumber: gamenumber)
         
         // Add the new game into the game array in the series object
         series.games += [game]
