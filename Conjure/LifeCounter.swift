@@ -12,6 +12,8 @@ class LifeCounter: UIView {
 
     // MARK: Propterties
     let settings = NSUserDefaults.standardUserDefaults()
+    var minusTimer = NSTimer()
+    var plusTimer = NSTimer()
     
     // Starting life total
     var lifeTotal = 20 {
@@ -34,6 +36,7 @@ class LifeCounter: UIView {
     
     // First init. LifeCounter needs different frames, so we ask for one during intialization.
     override init(frame: CGRect) {
+        
         lifeTotal = settings.integerForKey("lifeTotal")
         if lifeTotal == 0 {
             lifeTotal = 20
@@ -41,6 +44,9 @@ class LifeCounter: UIView {
         
         // I think this just sets the frame to the frame.
         super.init(frame: frame)
+        
+        minusTimer = NSTimer(timeInterval: 0.3, target: self, selector: "minus", userInfo: nil, repeats: true)
+        plusTimer = NSTimer(timeInterval: 0.3, target: self, selector: "plus", userInfo: nil, repeats: true)
         
         let frameWidth = self.bounds.width
         
@@ -59,7 +65,6 @@ class LifeCounter: UIView {
         super.init(coder: aDecoder)
     }
     
-    
     func addLifeCounter() {
     
         // Styles life counter label
@@ -76,6 +81,7 @@ class LifeCounter: UIView {
         
         
         // Button
+        
         let minusButton = UIButton(frame: CGRect(x: (bounds.width/8)+6, y: 125, width: 60, height: 60))
         let plusButton = UIButton(frame: CGRect(x: (bounds.width/4)+48, y: 125, width: 60, height: 60))
         
@@ -86,14 +92,18 @@ class LifeCounter: UIView {
         plusButton.setImage(plusImage, forState: .Normal)
         
         // Button action
-        minusButton.addTarget(self, action: "minusLife:", forControlEvents: .TouchDown)
-        plusButton.addTarget(self, action: "plusLife:", forControlEvents: .TouchDown)
+        // minusButton.addTarget(self, action: "minusLife:", forControlEvents: .TouchDown)
+        //plusButton.addTarget(self, action: "plusLife:", forControlEvents: .TouchDown)
         
-        // Testing colors.
-//        counter.backgroundColor = .redColor()
-//        playerName.backgroundColor = .blueColor()
-//        minusButton.backgroundColor = .greenColor()
-//        plusButton.backgroundColor = .yellowColor()
+        let minusTapGestureRecognizer = UITapGestureRecognizer(target: self, action: "minusTapped:")
+        let minusLongPressRecognizer = UILongPressGestureRecognizer(target: self, action: "minusLongPressed:")
+        minusButton.addGestureRecognizer(minusTapGestureRecognizer)
+        minusButton.addGestureRecognizer(minusLongPressRecognizer)
+        
+        let plusTapGestureRecognizer = UITapGestureRecognizer(target: self, action: "plusTapped:")
+        let plusLongPressRecognizer = UILongPressGestureRecognizer(target: self, action: "plusLongPressed:")
+        plusButton.addGestureRecognizer(plusTapGestureRecognizer)
+        plusButton.addGestureRecognizer(plusLongPressRecognizer)
         
         addSubview(playerName)
         addSubview(counter)
@@ -103,16 +113,57 @@ class LifeCounter: UIView {
     
     
     // MARK: Button actions
-    func minusLife(minusButton: UIButton) {
+    func minus() {
         if lifeTotal != 0 {
             lifeTotal -= 1
             counter.text = String(lifeTotal)
         }
     }
     
-    func plusLife(plusButton: UIButton) {
+    func plus() {
+        if lifeTotal != 0 {
             lifeTotal += 1
             counter.text = String(lifeTotal)
+        }
     }
+    
+    func minusTapped(sender: UITapGestureRecognizer) {
+        minus()
+    }
+    
+    func minusLongPressed(sender: UILongPressGestureRecognizer) {
+        
+        if sender.state == UIGestureRecognizerState.Ended {
+            minusTimer.invalidate()
+            print("Long press ended")
+        }
+        else if sender.state == UIGestureRecognizerState.Began {
+            print("Long press began")
+            if minusTimer.valid == false {
+                minusTimer = NSTimer(timeInterval: 0.3, target: self, selector: "minus", userInfo: nil, repeats: true)
+            }
+            NSRunLoop.currentRunLoop().addTimer(minusTimer, forMode: NSRunLoopCommonModes)
+        }
+    }
+    
+    func plusTapped(sender: UITapGestureRecognizer) {
+        plus()
+    }
+    
+    func plusLongPressed(sender: UILongPressGestureRecognizer) {
+        
+        if sender.state == UIGestureRecognizerState.Ended {
+            plusTimer.invalidate()
+            print("Long press ended")
+        }
+        else if sender.state == UIGestureRecognizerState.Began {
+            print("Long press began")
+            if plusTimer.valid == false {
+                plusTimer = NSTimer(timeInterval: 0.3, target: self, selector: "plus", userInfo: nil, repeats: true)
+            }
+            NSRunLoop.currentRunLoop().addTimer(plusTimer, forMode: NSRunLoopCommonModes)
+        }
+    }
+    
 
 } // END
