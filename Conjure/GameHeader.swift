@@ -17,8 +17,8 @@ class GameHeader: UIView {
     var playerTwoCounter = LifeCounter(frame: CGRect(x: (UIScreen.mainScreen().bounds.width/2)+4, y: 50, width: (UIScreen.mainScreen().bounds.width)/2, height: 200))
 
     
-    let seriesLabel = UILabel(frame: CGRectMake(4, 26, UIScreen.mainScreen().bounds.width, 40))
-    let gameTimer = UILabel(frame: CGRectMake(20, 26, 150, 40))
+    let seriesLabel = UILabel(frame: CGRectMake(4, 21, UIScreen.mainScreen().bounds.width, 40))
+    let gameTimer = UILabel(frame: CGRectMake(20, 21, 150, 40))
     let settingsButton = UIButton(frame: CGRectMake(UIScreen.mainScreen().bounds.width-80, 26, 70, 30))
     
     // MARK: Initlization

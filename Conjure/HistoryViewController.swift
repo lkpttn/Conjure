@@ -15,7 +15,9 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var headerView: UIView!
     
     var seriesArray = [Series]()
+    var dateArray = [String]()
     var dateDictionary = [String: [Series]]()
+    
     
     let redColor = UIColor(red: 208/255.0, green: 2/255.0, blue: 27/255.0, alpha: 1)
     let greenColor = UIColor(red: 92/255.0, green: 176/255.0, blue: 0, alpha: 1)
@@ -29,23 +31,29 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // var orderedDictionary = OrderedDictionary()
+        
         seriesTable.delegate = self
         seriesTable.dataSource = self
         seriesTable.backgroundColor = UIColor.groupTableViewBackgroundColor()
         
         let dayFormatter = NSDateFormatter()
-        dayFormatter.dateStyle = .MediumStyle
+        dayFormatter.dateFormat = "MMM d, y"
         
+        // For every series in the master array
         for series in seriesArray {
+            // Grab the NSDate on each series
+            // Format the NSDate as a date string "Friday"
             let day = dayFormatter.stringFromDate(series.date)
+            print(day)
             
+            // if dateDictionary doesn't have a "Friday" key, make one and add an element to the array with value "Friday"
             if(dateDictionary[day] == nil) {
-                dateDictionary[day] = [];
+                dateDictionary[day] = []
+                dateArray.append(day)
             }
             
-            print(series.wins)
-            print(series.losses)
-            print(series.date)
+            // Add the series to the "Friday" key value pair
             dateDictionary[day]?.append(series)
         }
     }
@@ -63,22 +71,25 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     // MARK: Table methods
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return dateDictionary.count
+        // return dateDictionary.count
+        return dateArray.count
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let date : String = Array(dateDictionary.keys)[section]
+        // let date : String = Array(dateDictionary.keys)[section]
+        let date = dateArray[section]
         return dateDictionary[date]!.count;
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let date : String = Array(dateDictionary.keys)[section]
+        // let date : String = Array(dateDictionary.keys)[section]
+        let date = dateArray[section]
         return date
     }
     
-    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let date : String = Array(dateDictionary.keys)[indexPath.section]
+        // let date : String = Array(dateDictionary.keys)[indexPath.section]
+        let date = dateArray[indexPath.section]
         let seriesOnDate = dateDictionary[date]!
         let series = seriesOnDate[indexPath.row]
         
@@ -123,6 +134,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
     }
+
 
     // MARK: - Navigation
 
