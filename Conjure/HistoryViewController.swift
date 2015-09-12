@@ -31,8 +31,6 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // var orderedDictionary = OrderedDictionary()
-        
         seriesTable.delegate = self
         seriesTable.dataSource = self
         seriesTable.backgroundColor = UIColor.groupTableViewBackgroundColor()
@@ -45,7 +43,6 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
             // Grab the NSDate on each series
             // Format the NSDate as a date string "Friday"
             let day = dayFormatter.stringFromDate(series.date)
-            print(day)
             
             // if dateDictionary doesn't have a "Friday" key, make one and add an element to the array with value "Friday"
             if(dateDictionary[day] == nil) {
@@ -71,32 +68,28 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     // MARK: Table methods
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // return dateDictionary.count
         return dateArray.count
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // let date : String = Array(dateDictionary.keys)[section]
         let date = dateArray[section]
         return dateDictionary[date]!.count;
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        // let date : String = Array(dateDictionary.keys)[section]
         let date = dateArray[section]
         return date
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        // let date : String = Array(dateDictionary.keys)[indexPath.section]
         let date = dateArray[indexPath.section]
         let seriesOnDate = dateDictionary[date]!
         let series = seriesOnDate[indexPath.row]
         
         let cellIdentifier = "SeriesCell"
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! SeriesCell
+        
         // Configure the cell...
-        // let series = seriesArray[indexPath.row]
         cell.deckNameLabel.text = String(series.deck.deckName)
         
         if series.wins > series.losses {
@@ -112,9 +105,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     // MARK: NSCoding
-    // Save or load the series whenever there's an update
     func saveSeries() {
-        // An archiver object that saves the meal array to the ArchivePath we defined in Series
         let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(seriesArray, toFile: Series.ArchiveURL.path!)
         print("Saved this series")
         if !isSuccessfulSave {
@@ -127,6 +118,10 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         if editingStyle == .Delete {
             // Delete the row from the data source
             seriesArray.removeAtIndex(indexPath.row)
+            
+            let date = dateArray[indexPath.section]
+            dateDictionary[date]!.removeAtIndex(indexPath.row)
+            
             saveSeries()
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             
