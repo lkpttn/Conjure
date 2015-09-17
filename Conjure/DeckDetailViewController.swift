@@ -39,8 +39,11 @@ class DeckDetailViewController: UIViewController, UITextFieldDelegate {
             lossesLabel.text = String(deck.losses)
             
             // Fix the division
-            // let winPercent = (deck.wins/deck.losses)*100
-            // winPercentageLabel.text = String(winPercent)
+            let games:Float = Float(deck.wins) + Float(deck.losses)
+            print(games)
+            let winPercent:Float = roundf((Float(deck.wins)/games)*100)
+            let winInt = Int(winPercent)
+            winPercentageLabel.text = "\(winInt)%"
         }
         else {
             self.deck = Deck(deckName: "No deck name")
