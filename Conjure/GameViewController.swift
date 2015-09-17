@@ -242,7 +242,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     func doWinCirleLogic(wins: Int, losses: Int) {
         var circleFrame = CGRectZero
         let circleWidth = 8
-        let circleY = 42
+        let circleY = 37
         let circleX = Int(UIScreen.mainScreen().bounds.width/2)
         
         // Need to add cases for best of five, seven

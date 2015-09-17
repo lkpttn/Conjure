@@ -39,11 +39,14 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     let greenColor = UIColor(red: 92/255.0, green: 176/255.0, blue: 0, alpha: 1)
     
     // Picker Lists
+    var activeTextField: UITextField?
     var numberOfGamesPicker: UIPickerView!
     var numberofGamesOptions = [1,3,5]
-    
     var timeLimitPicker: UIPickerView!
     var timeLimitOptions = [600.0,1500.0,3000.0]
+    
+    var tempNumberOfGames = 0
+    var tempTimeLimit = 0.0
     
     var gamesComponent = 0
     var timesComponent = 1
@@ -115,7 +118,7 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     // MARK: PickerView stuff
     func setupPicker() {
         numberOfGamesPicker = UIPickerView()
-        numberOfGamesPicker.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1)
+        numberOfGamesPicker.backgroundColor = UIColor.whiteColor()
         
         numberOfGamesPicker.dataSource = self
         numberOfGamesPicker.delegate = self
@@ -124,7 +127,7 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         numberOfGamesField.tintColor = .whiteColor()
         
         timeLimitPicker = UIPickerView()
-        timeLimitPicker.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1)
+        timeLimitPicker.backgroundColor = UIColor.whiteColor()
         
         timeLimitPicker.dataSource = self
         timeLimitPicker.delegate = self
@@ -134,14 +137,52 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         
         numberOfGamesPicker.tag = 0
         timeLimitPicker.tag = 1
+        
+        let toolBar = UIToolbar()
+        toolBar.barStyle = UIBarStyle.Default
+        toolBar.translucent = true
+        toolBar.tintColor = UIColor.blueColor()
+        toolBar.sizeToFit()
+        
+        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Plain, target: self, action: "donePicker:")
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.Plain, target: self, action: "cancelPicker:")
+        
+        toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
+        toolBar.userInteractionEnabled = true
+        
+        numberOfGamesField.inputAccessoryView = toolBar
+        timeLimitTextField.inputAccessoryView = toolBar
+    }
+    
+    func donePicker(sender: UIBarButtonItem) {
+        if tempNumberOfGames != 0 {
+            numberOfGames = tempNumberOfGames
+            numberCase(numberOfGames)
+            tempNumberOfGames = 0
+        }
+        if tempTimeLimit != 0.0 {
+            timeLimit = tempTimeLimit
+            timeCase(timeLimit)
+            tempTimeLimit = 0.0
+        }
+        activeTextField?.resignFirstResponder()
+    }
+    
+    func cancelPicker(sender: UIBarButtonItem) {
+        tempTimeLimit = 0.0
+        tempNumberOfGames = 0
+        activeTextField?.resignFirstResponder()
     }
     
     @IBAction func numberOfGamesbutton(sender: UIButton) {
         numberOfGamesField.becomeFirstResponder()
+        activeTextField = numberOfGamesField
     }
     
     @IBAction func timeLimitButton(sender: UIButton) {
         timeLimitTextField.becomeFirstResponder()
+        activeTextField = timeLimitTextField
     }
     
     // Number of options
@@ -181,18 +222,13 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     // set the string to reflect the choice
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if (pickerView.tag == 0) {
-            numberCase(numberofGamesOptions[row])
-            numberOfGames = numberofGamesOptions[row]
-            self.view.endEditing(true)
+            tempNumberOfGames = numberofGamesOptions[row]
         }
         else if (pickerView.tag == 1) {
-            timeCase(timeLimitOptions[row])
-            timeLimit = timeLimitOptions[row]
-            self.view.endEditing(true)
+            tempTimeLimit = timeLimitOptions[row]
         }
-        
     }
-    
+
     func numberCase(int: Int) {
         switch int {
         case 1:
