@@ -145,8 +145,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
                 // Find the index path for the cell that sent the segue
                 let indexPath = seriesTable.indexPathForCell(selectedSeriesCell)!
                 
-                // selected series is set to the series at that indexPath
-                let date : String = Array(dateDictionary.keys)[indexPath.section]
+                let date = dateArray[indexPath.section]
                 let seriesOnDate = dateDictionary[date]!
                 let series = seriesOnDate[indexPath.row]
                 let selectedSeries = series
