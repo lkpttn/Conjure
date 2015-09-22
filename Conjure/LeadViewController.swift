@@ -62,8 +62,12 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         // Allows the screen to fall asleep.
         UIApplication.sharedApplication().idleTimerDisabled = false
         
+        
         let lightBlueColor = UIColor(red: 8/255.0, green: 129/255.0, blue: 220/255.0, alpha: 1.0)
         startSeriesButton.backgroundColor = lightBlueColor
+        
+        // Using UIAppearance to change colors.
+        // GameHeader.appearance().backgroundColor = UIColor.redColor()
         
         // Load saved series
         if let savedSeries = loadSeries() {

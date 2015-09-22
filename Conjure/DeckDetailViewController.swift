@@ -16,6 +16,7 @@ class DeckDetailViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var winsLabel: UILabel!
     @IBOutlet weak var lossesLabel: UILabel!
     @IBOutlet weak var winPercentageLabel: UILabel!
+    @IBOutlet weak var notesTextView: UITextView!
     
     @IBOutlet weak var headerView: UIView!
     
