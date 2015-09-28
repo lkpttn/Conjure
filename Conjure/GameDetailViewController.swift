@@ -61,7 +61,7 @@ class GameDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         navBar?.shadowImage = UIImage()
         navBar?.translucent = true
         navBar!.barTintColor = UIColor.clearColor()
-
+        
         headerView.backgroundColor = darkBlueColor
     }
     
@@ -109,7 +109,6 @@ class GameDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         // It was execiuting all the game code before reseting the table.
         // This means it was looking for turns in the new game instead of at the end of the current game.
         let turn = series.games[gamenumber-1].turns[indexPath.row]
-        print(turn.turnPlayerOneChange)
         cell.playerOneChange.text = turn.turnPlayerOneChange
         cell.playerTwoChange.text = turn.turnPlayerTwoChange
         

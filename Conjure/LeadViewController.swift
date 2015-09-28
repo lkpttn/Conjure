@@ -67,6 +67,7 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         startSeriesButton.backgroundColor = lightBlueColor
         
         // Using UIAppearance to change colors.
+        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
         // GameHeader.appearance().backgroundColor = UIColor.redColor()
         
         // Load saved series
@@ -182,11 +183,30 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     @IBAction func numberOfGamesbutton(sender: UIButton) {
         numberOfGamesField.becomeFirstResponder()
         activeTextField = numberOfGamesField
+        var tempNoG = 0
+        if numberOfGames == 3 {
+            tempNoG = 1
+        }
+        else if numberOfGames == 5 {
+            tempNoG = 2
+        }
+        numberOfGamesPicker.selectRow(tempNoG, inComponent: 0, animated: false)
     }
     
     @IBAction func timeLimitButton(sender: UIButton) {
         timeLimitTextField.becomeFirstResponder()
         activeTextField = timeLimitTextField
+        var tempTime = 0
+        if timeLimit == 600.0 {
+            tempTime = 0
+        }
+        else if  timeLimit == 1500.0 {
+            tempTime = 1
+        }
+        else if timeLimit == 3000.0 {
+            tempTime = 2
+        }
+        timeLimitPicker.selectRow(tempTime, inComponent: 0, animated: false)
     }
     
     // Number of options

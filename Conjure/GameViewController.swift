@@ -43,6 +43,11 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Keep the phone from going to sleep
         UIApplication.sharedApplication().idleTimerDisabled = true
         
+        // Setup reset button
+        gameHeader.settingsButton.setTitle("Quit", forState: .Normal)
+        gameHeader.settingsButton.addTarget(self, action: "quitGame:", forControlEvents: .TouchUpInside)
+
+        
         // Start the first game
         startGame(gamenumber, series: series)
         
@@ -55,6 +60,15 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func quitGame(sender:UIButton!) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+        
+//        series.games.removeLast()
+//        gamenumber -= 1
+//        turnNumber = 0
+//        startGame(gamenumber, series: series)
     }
     
     func setupTimers() {
@@ -367,14 +381,5 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Programmatically preform the segue specified in LeadViewController
         self.performSegueWithIdentifier("unwindToLeadView", sender: self)
     }
-    
-    // MARK: Reset
-    @IBAction func resetButton(sender: UIButton) {
-        series.games.removeLast()
-        gamenumber -= 1
-        turnNumber = 0
-        startGame(gamenumber, series: series)
-    }
-    
 } // END
 
