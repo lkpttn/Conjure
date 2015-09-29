@@ -8,19 +8,30 @@
 
 import UIKit
 
+protocol ThemeTableViewControllerDelegate {
+    func updatePreview()
+}
+
 class ThemeTableViewController: UITableViewController {
     
-    var cellData = [Int]()
+    var delegate: ThemeViewController! = nil
+    // Delegation methods
+    func updatePreview() {
+        delegate?.updatePreview()
+    }
+    
+    var parentView = ThemeViewController?()
+    
+    var cellData = ["Classic", "Mardu"]
+    var selectedTheme = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "settingCell")
 
         // Uncomment the following line to preserve selection between presentations
         self.clearsSelectionOnViewWillAppear = false
-        
-        // Testing data
-        cellData.append(0)
-        cellData.append(1)
 
     }
 
@@ -41,15 +52,38 @@ class ThemeTableViewController: UITableViewController {
         return cellData.count
     }
 
-    /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("settingCell", forIndexPath: indexPath)
 
         // Configure the cell...
-
+        cell.textLabel?.text = cellData[indexPath.row]
+        
         return cell
     }
-    */
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
+        selectedTheme = indexPath.row
+        changeTheme(selectedTheme)
+        
+        
+        cell!.accessoryType = .Checkmark
+    }
+    
+    // MARK: Theme drawing
+    func changeTheme(selectedTheme: Int) {
+        print("Changing the theme to \(selectedTheme)")
+        if selectedTheme == 0 {
+            GameHeader.appearance().backgroundColor = UIColor.blueColor()
+        }
+        else if selectedTheme == 1 {
+            GameHeader.appearance().backgroundColor = UIColor.redColor()
+        }
+        
+        updatePreview()
+    }
 
     /*
     // Override to support conditional editing of the table view.

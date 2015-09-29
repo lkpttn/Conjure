@@ -897,7 +897,7 @@
                                     <constraint firstAttribute="height" constant="60" id="U1b-to-Bl9"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="21"/>
-                                <state key="normal" title="START NEW MATCH">
+                                <state key="normal" title="BUTTON PREVIEW">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
@@ -945,7 +945,7 @@
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="themeView" destination="1uR-Rk-AMA" id="2xS-Xu-FWO"/>
+                        <outlet property="themePreview" destination="mi9-yM-cZG" id="WC9-j0-FhG"/>
                     </connections>
                 </viewController>
             </objects>
@@ -1021,7 +1021,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6cM-Cx-j6I" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3048" y="-365"/>
+            <point key="canvasLocation" x="3056" y="-365"/>
         </scene>
         <!--Settings Detail Table View Controller-->
         <scene sceneID="fJv-9M-e2U">
