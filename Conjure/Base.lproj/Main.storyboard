@@ -870,11 +870,11 @@
             </objects>
             <point key="canvasLocation" x="1672" y="315"/>
         </scene>
-        <!--View Controller-->
+        <!--Theme View Controller-->
         <scene sceneID="nNy-I1-nYc">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GVV-vx-Sch" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="2aS-JR-0Gd" sceneMemberID="viewController">
+                <viewController id="2aS-JR-0Gd" customClass="ThemeViewController" customModule="Conjure" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="me2-fS-Otm"/>
                         <viewControllerLayoutGuide type="bottom" id="SaE-YU-Lja"/>
@@ -914,7 +914,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <segue destination="EUR-5m-rsD" kind="embed" id="4pg-Ep-ZhI"/>
+                                    <segue destination="EUR-5m-rsD" kind="embed" identifier="themeTableEmbed" id="4pg-Ep-ZhI"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -944,14 +944,17 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="themeView" destination="1uR-Rk-AMA" id="2xS-Xu-FWO"/>
+                    </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="2355" y="-365"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Theme Table View Controller-->
         <scene sceneID="RSo-90-3mw">
             <objects>
-                <tableViewController id="EUR-5m-rsD" sceneMemberID="viewController">
+                <tableViewController id="EUR-5m-rsD" customClass="ThemeTableViewController" customModule="Conjure" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="tDJ-Yw-5wd">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="228"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -35,6 +35,7 @@
 		0D7ED9F51B4B387700A6C2B0 /* ConjureUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7ED9F41B4B387700A6C2B0 /* ConjureUITests.swift */; };
 		0D7EDA031B4B38D900A6C2B0 /* LifeCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7EDA021B4B38D900A6C2B0 /* LifeCounter.swift */; };
 		0DD5D36E1BB9FFEA00CF1C0B /* ThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD5D36D1BB9FFEA00CF1C0B /* ThemeViewController.swift */; };
+		0DD5D3701BBA236E00CF1C0B /* ThemeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD5D36F1BBA236E00CF1C0B /* ThemeTableViewController.swift */; };
 		0DDFC71D1B5A85A100DAB4DB /* DeckDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDFC71C1B5A85A100DAB4DB /* DeckDetailViewController.swift */; };
 		0DF8F8561B4EFA08000C6AF6 /* GameHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF8F8551B4EFA08000C6AF6 /* GameHeader.swift */; };
 		29B06F921B8FA36A005D3BE1 /* SettingsDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B06F911B8FA36A005D3BE1 /* SettingsDetailTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -89,6 +90,7 @@
 		0D7EDA021B4B38D900A6C2B0 /* LifeCounter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LifeCounter.swift; sourceTree = "<group>"; };
 		0DC448D11B8EC5EE00DDA93A /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		0DD5D36D1BB9FFEA00CF1C0B /* ThemeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeViewController.swift; sourceTree = "<group>"; };
+		0DD5D36F1BBA236E00CF1C0B /* ThemeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeTableViewController.swift; sourceTree = "<group>"; };
 		0DDFC71C1B5A85A100DAB4DB /* DeckDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeckDetailViewController.swift; sourceTree = "<group>"; };
 		0DF8F8551B4EFA08000C6AF6 /* GameHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameHeader.swift; sourceTree = "<group>"; };
 		29B06F911B8FA36A005D3BE1 /* SettingsDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsDetailTableViewController.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 				0DC448D11B8EC5EE00DDA93A /* SettingsTableViewController.swift */,
 				29B06F911B8FA36A005D3BE1 /* SettingsDetailTableViewController.swift */,
 				0DD5D36D1BB9FFEA00CF1C0B /* ThemeViewController.swift */,
+				0DD5D36F1BBA236E00CF1C0B /* ThemeTableViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -353,6 +356,7 @@
 				0D7ED9D71B4B387700A6C2B0 /* GameViewController.swift in Sources */,
 				0D796E061B4F556300840211 /* Game.swift in Sources */,
 				0D3278EA1B56DB0A00B58ECD /* SeriesCell.swift in Sources */,
+				0DD5D3701BBA236E00CF1C0B /* ThemeTableViewController.swift in Sources */,
 				0D3278E31B569D5800B58ECD /* Deck.swift in Sources */,
 				0D11DE941B6C3F0400697EAD /* GameDetailViewController.swift in Sources */,
 				0DD5D36E1BB9FFEA00CF1C0B /* ThemeViewController.swift in Sources */,

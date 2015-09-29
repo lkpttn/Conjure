@@ -8,24 +8,28 @@
 
 import UIKit
 
-class ThemeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ThemeViewController: UIViewController {
     
     @IBOutlet weak var themeTable: UITableView!
     
+    var themeController: ThemeTableViewController?
+    var themeView: UIView?
     var cellData = [Int]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        themeTable.dataSource = self
-        themeTable.delegate = self
-        
-        // Testing data
-        cellData.append(0)
-        cellData.append(1)
+    }
+    
+    // MARK: Getting access to child view controller
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let segueName = segue.identifier
+        if segueName == "showThemes" {
+            themeController = segue.destinationViewController as? ThemeTableViewController
+            themeView = themeController!.view
+        }
     }
 
-    // MARK: - Table view data source
+    // MARK: Table view data source
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
