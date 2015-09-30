@@ -13,6 +13,7 @@ class ThemeViewController: UIViewController, ThemeTableViewControllerDelegate {
     @IBOutlet weak var themePreview: GameHeader!
     
     var themeController: ThemeTableViewController?
+    var selectedTheme = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,10 +25,19 @@ class ThemeViewController: UIViewController, ThemeTableViewControllerDelegate {
         
     }
     
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if (self.isMovingFromParentViewController()) {
+            let parent = navigationController?.topViewController as! SettingsTableViewController
+            parent.selectedTheme = selectedTheme
+        }
+    }
+
+    
     // MARK: Getting access to child view controller
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "themeTableEmbed" {
-            print("themeTableEmbed works")
             themeController = segue.destinationViewController as? ThemeTableViewController
             themeController!.delegate = self
         }
@@ -35,8 +45,6 @@ class ThemeViewController: UIViewController, ThemeTableViewControllerDelegate {
     
     // MARK: Delegate methods
     func updatePreview() {
-        print("Delegate is working")
-        themePreview.reloadInputViews()
         let windows = UIApplication.sharedApplication().windows
         for window in windows {
             for view in window.subviews {

@@ -78,7 +78,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="250" placeholderIntrinsicHeight="21" text="No Deck Chosen" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="42" translatesAutoresizingMaskIntoConstraints="NO" id="maI-rE-Qs3">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" placeholderIntrinsicWidth="250" placeholderIntrinsicHeight="21" text="No Deck Chosen" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="42" translatesAutoresizingMaskIntoConstraints="NO" id="maI-rE-Qs3">
                                 <rect key="frame" x="20" y="341" width="250" height="21"/>
                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="21"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -90,7 +90,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mQ6-vj-FTy" customClass="GameHeader" customModule="Conjure" customModuleProvider="target">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mQ6-vj-FTy" customClass="GameHeader" customModule="Conjure" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="248"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="248" id="TMz-Jf-CeT"/>
@@ -109,7 +109,7 @@
                                     <segue destination="jA6-mA-r8K" kind="show" identifier="showHistory" id="IKF-va-G6z"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="150" placeholderIntrinsicHeight="21" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DdO-g7-hPi">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" placeholderIntrinsicWidth="150" placeholderIntrinsicHeight="21" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DdO-g7-hPi">
                                 <rect key="frame" x="430" y="348" width="150" height="21"/>
                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="13"/>
                                 <color key="textColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -121,7 +121,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="60" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9aC-Kb-sNL" customClass="BigButton" customModule="Conjure" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="60" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9aC-Kb-sNL" customClass="BigButton" customModule="Conjure" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="248" width="600" height="60"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -135,13 +135,13 @@
                                     <segue destination="BYZ-38-t0r" kind="showDetail" identifier="startSeries" id="7Wn-dK-KYo"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="97" placeholderIntrinsicHeight="21" contentHorizontalAlignment="left" contentVerticalAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rrL-ej-Yjy">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" placeholderIntrinsicWidth="97" placeholderIntrinsicHeight="21" contentHorizontalAlignment="left" contentVerticalAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rrL-ej-Yjy">
                                 <rect key="frame" x="20" y="405" width="97" height="21"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="21"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="100" placeholderIntrinsicHeight="44" contentHorizontalAlignment="left" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8A3-dM-8YE">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" placeholderIntrinsicWidth="100" placeholderIntrinsicHeight="44" contentHorizontalAlignment="left" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8A3-dM-8YE">
                                 <rect key="frame" x="20" y="381" width="100" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="HeY-6C-1LK"/>
@@ -154,12 +154,12 @@
                                     <action selector="numberOfGamesbutton:" destination="7RX-FA-elj" eventType="touchUpInside" id="1oB-tx-3jT"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="97" placeholderIntrinsicHeight="21" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="25:00" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h5P-2t-f8B">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" placeholderIntrinsicWidth="97" placeholderIntrinsicHeight="21" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="25:00" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h5P-2t-f8B">
                                 <rect key="frame" x="220" y="405" width="97" height="21"/>
                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="21"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="98" placeholderIntrinsicHeight="44" contentHorizontalAlignment="left" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GgR-Ro-zzf">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" placeholderIntrinsicWidth="98" placeholderIntrinsicHeight="44" contentHorizontalAlignment="left" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GgR-Ro-zzf">
                                 <rect key="frame" x="220" y="381" width="98" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="7XQ-qE-Glj"/>
@@ -172,7 +172,7 @@
                                     <action selector="timeLimitButton:" destination="7RX-FA-elj" eventType="touchUpInside" id="cz8-vQ-F4k"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="92" placeholderIntrinsicHeight="17" contentHorizontalAlignment="left" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d5h-br-EAa">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" placeholderIntrinsicWidth="92" placeholderIntrinsicHeight="17" contentHorizontalAlignment="left" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d5h-br-EAa">
                                 <rect key="frame" x="20" y="317" width="560" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="NL3-vj-1EE"/>
@@ -1337,7 +1337,7 @@
                         <barButtonItem key="leftBarButtonItem" systemItem="stop" id="bDc-EG-gd1">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <segue destination="vmP-qu-uUX" kind="unwind" unwindAction="unwindToLeadView:" id="a9s-Bj-wUo"/>
+                                <segue destination="7RX-FA-elj" kind="show" id="63Q-vK-Cpw"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1347,7 +1347,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dFA-Ja-r9s" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="vmP-qu-uUX" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="305" y="1056"/>
         </scene>

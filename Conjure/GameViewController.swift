@@ -64,11 +64,6 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func quitGame(sender:UIButton!) {
         self.dismissViewControllerAnimated(true, completion: nil)
-        
-//        series.games.removeLast()
-//        gamenumber -= 1
-//        turnNumber = 0
-//        startGame(gamenumber, series: series)
     }
     
     func setupTimers() {

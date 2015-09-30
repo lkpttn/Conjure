@@ -26,6 +26,7 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate {
     var timeLimitOptions: NSArray = [600.0,1500.0,3000.0]
     
     // Holder variables
+    var selectedTheme = ""
     var tempPlayerOneName = "Me"
     var tempPlayerTwoName = "Opponent"
     var tempLifeTotal = 20
@@ -43,6 +44,10 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate {
     }
     
     func loadAllSettings() {
+        // Selected theme
+        selectedTheme = settings.stringForKey("selectedTheme") ?? "Beleren"
+        print("The theme is \(selectedTheme)")
+        
         // Player names
         playerOneNameField.text = settings.stringForKey("playerOneName") ?? "Me"
         playerTwoNameField.text = settings.stringForKey("playerTwoName") ?? "Opponent"
@@ -154,6 +159,9 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate {
     
     @IBAction func cancelButton(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
+        print("I need to refresh the main view")
     }
-
+    
 }
+
+

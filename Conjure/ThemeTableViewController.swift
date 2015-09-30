@@ -18,6 +18,7 @@ class ThemeTableViewController: UITableViewController {
     // Delegation methods
     func updatePreview() {
         delegate?.updatePreview()
+        delegate?.selectedTheme = selectedTheme
     }
     
     var parentView = ThemeViewController?()
@@ -90,7 +91,6 @@ class ThemeTableViewController: UITableViewController {
     // MARK: Theme drawing
     func changeTheme(selectedTheme: String) {
         print("Changing the theme to \(selectedTheme)")
-        defaults.setObject(selectedTheme, forKey: "selectedTheme")
         
         switch selectedTheme {
             case "Beleren":

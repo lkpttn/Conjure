@@ -113,6 +113,12 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         setupPicker()
     }
     
+    override func viewWillAppear(animated: Bool) {
+        print("View will appear trigger")
+        changeTheme(defaults.stringForKey("selectedTheme") ?? "Beleren")
+        self.reloadInputViews()
+    }
+    
     func changeLabels() {
         if seriesArray.isEmpty == false {
             let lastSeries = seriesArray[0]
@@ -340,11 +346,10 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         gameHeader.playerTwoCounter.lifeTotal = lifeTotal
         
         changeTheme(defaults.stringForKey("selectedTheme") ?? "Beleren")
+        print(defaults.stringForKey("selectedTheme"))
     }
     
     func changeTheme(selectedTheme: String) {
-        print("Changing the theme to \(selectedTheme)")
-        
         switch selectedTheme {
         case "Beleren":
             GameHeader.appearance().backgroundColor = darkBlueColor
@@ -380,7 +385,6 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     
     // MARK: Navigation
     func showSettings(sender:UIButton!) {
-        print("Button tapped")
         self.performSegueWithIdentifier("showSettings", sender: self)
     }
     
@@ -477,6 +481,8 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         }
         if let source = sender.sourceViewController as? SettingsTableViewController {
             print("Trigger unwindToLeadView")
+            
+            defaults.setObject(source.selectedTheme, forKey: "selectedTheme")
             
             defaults.setObject(source.tempPlayerOneName, forKey: "playerOneName")
             defaults.setObject(source.tempPlayerTwoName, forKey: "playerTwoName")
