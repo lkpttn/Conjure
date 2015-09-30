@@ -21,9 +21,24 @@ class ThemeTableViewController: UITableViewController {
     }
     
     var parentView = ThemeViewController?()
+    var defaults = NSUserDefaults.standardUserDefaults()
     
-    var cellData = ["Classic", "Mardu"]
-    var selectedTheme = 0
+    var cellData = ["Beleren", "Aggro", "Nissa", "Aeons Torn", "Scalding", "Scapeshift", "Living End", "Golden"]
+    var selectedTheme = ""
+    
+    // Giant color library
+    // Beleren
+    let darkBlueColor = UIColor(red: 22/255.0, green: 48/255.0, blue: 63/255.0, alpha: 1.0)
+    let lightBlueColor = UIColor(red: 8/255.0, green: 129/255.0, blue: 220/255.0, alpha: 1.0)
+    
+    // Aggro
+    let brightRedColor = UIColor(red: 245/255.0, green: 54/255.0, blue: 49/255.0, alpha: 1.0)
+    let darkRedColor = UIColor(red: 208/255.0, green: 2/255.0, blue: 27/255.0, alpha: 1.0)
+    
+    // Nissa
+    let darkGreenColor = UIColor(red: 49/255.0, green: 159/255.0, blue: 58/255.0, alpha: 1.0)
+    let lightGreenColor = UIColor(red: 60/255.0, green: 220/255.0, blue: 8/255.0, alpha: 1.0)
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,7 +80,7 @@ class ThemeTableViewController: UITableViewController {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
         let cell = tableView.cellForRowAtIndexPath(indexPath)
-        selectedTheme = indexPath.row
+        selectedTheme = cellData[indexPath.row]
         changeTheme(selectedTheme)
         
         
@@ -73,52 +88,42 @@ class ThemeTableViewController: UITableViewController {
     }
     
     // MARK: Theme drawing
-    func changeTheme(selectedTheme: Int) {
+    func changeTheme(selectedTheme: String) {
         print("Changing the theme to \(selectedTheme)")
-        if selectedTheme == 0 {
-            GameHeader.appearance().backgroundColor = UIColor.blueColor()
-        }
-        else if selectedTheme == 1 {
-            GameHeader.appearance().backgroundColor = UIColor.redColor()
-        }
+        defaults.setObject(selectedTheme, forKey: "selectedTheme")
         
+        switch selectedTheme {
+            case "Beleren":
+                GameHeader.appearance().backgroundColor = darkBlueColor
+                BigButton.appearance().backgroundColor = lightBlueColor
+                BigButton.appearance().setTitleColor(.whiteColor(), forState: .Normal)
+                UINavigationBar.appearance().barTintColor = darkBlueColor
+            case "Aggro":
+                GameHeader.appearance().backgroundColor = brightRedColor
+                BigButton.appearance().backgroundColor = darkRedColor
+                BigButton.appearance().setTitleColor(.whiteColor(), forState: .Normal)
+                UINavigationBar.appearance().barTintColor = brightRedColor
+            case "Nissa":
+                UINavigationBar.appearance().barTintColor = darkGreenColor
+                GameHeader.appearance().backgroundColor = darkGreenColor
+                BigButton.appearance().backgroundColor = lightGreenColor
+                BigButton.appearance().setTitleColor(.whiteColor(), forState: .Normal)
+            case "Aeons Torn":
+                GameHeader.appearance().backgroundColor = UIColor.blueColor()
+            case "Scalding":
+                GameHeader.appearance().backgroundColor = UIColor.blueColor()
+            case "Scapeshift":
+                GameHeader.appearance().backgroundColor = UIColor.blueColor()
+            case "Living End":
+                GameHeader.appearance().backgroundColor = UIColor.blueColor()
+            case "Golden":
+                GameHeader.appearance().backgroundColor = UIColor.blueColor()
+            default:
+                GameHeader.appearance().backgroundColor = UIColor.blueColor()
+        }
+
         updatePreview()
     }
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the item to be re-orderable.
-        return true
-    }
-    */
 
     /*
     // MARK: - Navigation

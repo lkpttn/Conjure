@@ -35,6 +35,20 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     var timeLimit: Double = 3000.0
     var lifeTotal = 20
     
+    // Giant color library
+    // Beleren
+    let darkBlueColor = UIColor(red: 22/255.0, green: 48/255.0, blue: 63/255.0, alpha: 1.0)
+    let lightBlueColor = UIColor(red: 8/255.0, green: 129/255.0, blue: 220/255.0, alpha: 1.0)
+    
+    // Aggro
+    let brightRedColor = UIColor(red: 245/255.0, green: 54/255.0, blue: 49/255.0, alpha: 1.0)
+    let darkRedColor = UIColor(red: 208/255.0, green: 2/255.0, blue: 27/255.0, alpha: 1.0)
+    
+    // Nissa
+    let darkGreenColor = UIColor(red: 49/255.0, green: 159/255.0, blue: 58/255.0, alpha: 1.0)
+    let lightGreenColor = UIColor(red: 60/255.0, green: 220/255.0, blue: 8/255.0, alpha: 1.0)
+    
+    // Other UI Colors
     let redColor = UIColor(red: 208/255.0, green: 2/255.0, blue: 27/255.0, alpha: 1)
     let greenColor = UIColor(red: 92/255.0, green: 176/255.0, blue: 0, alpha: 1)
     
@@ -63,12 +77,8 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         UIApplication.sharedApplication().idleTimerDisabled = false
         
         
-        let lightBlueColor = UIColor(red: 8/255.0, green: 129/255.0, blue: 220/255.0, alpha: 1.0)
-        startSeriesButton.backgroundColor = lightBlueColor
-        
         // Using UIAppearance to change colors.
         UINavigationBar.appearance().tintColor = UIColor.whiteColor()
-        // GameHeader.appearance().backgroundColor = UIColor.redColor()
         
         // Load saved series
         if let savedSeries = loadSeries() {
@@ -328,7 +338,44 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         }
         gameHeader.playerOneCounter.lifeTotal = lifeTotal
         gameHeader.playerTwoCounter.lifeTotal = lifeTotal
+        
+        changeTheme(defaults.stringForKey("selectedTheme") ?? "Beleren")
     }
+    
+    func changeTheme(selectedTheme: String) {
+        print("Changing the theme to \(selectedTheme)")
+        
+        switch selectedTheme {
+        case "Beleren":
+            GameHeader.appearance().backgroundColor = darkBlueColor
+            BigButton.appearance().backgroundColor = lightBlueColor
+            BigButton.appearance().setTitleColor(.whiteColor(), forState: .Normal)
+            UINavigationBar.appearance().barTintColor = darkBlueColor
+        case "Aggro":
+            GameHeader.appearance().backgroundColor = brightRedColor
+            BigButton.appearance().backgroundColor = darkRedColor
+            BigButton.appearance().setTitleColor(.whiteColor(), forState: .Normal)
+            UINavigationBar.appearance().barTintColor = brightRedColor
+        case "Nissa":
+            UINavigationBar.appearance().barTintColor = darkGreenColor
+            GameHeader.appearance().backgroundColor = darkGreenColor
+            BigButton.appearance().backgroundColor = lightGreenColor
+            BigButton.appearance().setTitleColor(.whiteColor(), forState: .Normal)
+        case "Aeons Torn":
+            GameHeader.appearance().backgroundColor = UIColor.blueColor()
+        case "Scalding":
+            GameHeader.appearance().backgroundColor = UIColor.blueColor()
+        case "Scapeshift":
+            GameHeader.appearance().backgroundColor = UIColor.blueColor()
+        case "Living End":
+            GameHeader.appearance().backgroundColor = UIColor.blueColor()
+        case "Golden":
+            GameHeader.appearance().backgroundColor = UIColor.blueColor()
+        default:
+            GameHeader.appearance().backgroundColor = UIColor.blueColor()
+        }
+    }
+ 
     
     
     // MARK: Navigation

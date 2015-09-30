@@ -103,7 +103,6 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate {
     func styleNavBar() {
         let navBar = self.navigationController?.navigationBar
         navBar?.translucent = false
-        navBar!.barTintColor = UIColor(red: 22/255.0, green: 48/255.0, blue: 63/255.0, alpha: 1)
     }
 
     // MARK: UITextFieldDelegate
