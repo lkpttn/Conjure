@@ -57,6 +57,12 @@ class ThemeTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
+    override func tableView(tableView: UITableView, willDisplayHeaderView view: UIView,
+        forSection section: Int) {
+            let header = view as! UITableViewHeaderFooterView
+            // header.textLabel!.textColor = UIColor.greenColor()
+            header.textLabel!.font = UIFont(name: "SourceSansPro-Regular", size: 13)
+    }
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -72,6 +78,7 @@ class ThemeTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("settingCell", forIndexPath: indexPath)
 
         // Configure the cell...
+        cell.textLabel?.font = UIFont(name: "SourceSansPro-Regular", size: 21)
         cell.textLabel?.text = cellData[indexPath.row]
         
         return cell

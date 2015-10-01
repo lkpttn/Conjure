@@ -78,6 +78,8 @@ class SettingsDetailTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("settingCell", forIndexPath: indexPath) as UITableViewCell
         
+        cell.textLabel?.font = UIFont(name: "SourceSansPro-Regular", size: 21)
+        
         if detailType == 0 {
             cell.textLabel?.text = String(cellData[indexPath.row])
         }
