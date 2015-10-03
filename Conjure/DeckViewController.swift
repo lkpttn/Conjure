@@ -11,7 +11,6 @@ import UIKit
 class DeckViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate {
     
     @IBOutlet weak var deckTable: UITableView!
-    @IBOutlet weak var headerView: UIView!
     
     var deckDictionary = [String: Deck]()
     var deckArray = [Deck]()
@@ -60,9 +59,6 @@ class DeckViewController: UIViewController, UITableViewDelegate, UITableViewData
         navBar?.shadowImage = UIImage()
         navBar?.translucent = true
         navBar!.barTintColor = UIColor.clearColor()
-        
-        let headerColor = UIColor(red: 22/255.0, green: 48/255.0, blue: 63/255.0, alpha: 1)
-        headerView.backgroundColor = headerColor
     }    
 
     // MARK: Segue actions

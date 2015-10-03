@@ -322,7 +322,7 @@
                                 <color key="textColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="152" translatesAutoresizingMaskIntoConstraints="NO" id="c4Q-5x-UF7">
+                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="152" translatesAutoresizingMaskIntoConstraints="NO" id="c4Q-5x-UF7" customClass="HeaderView" customModule="Conjure" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="152"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="350" placeholderIntrinsicHeight="30" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Deck Title" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HnT-vZ-pqp">
@@ -397,7 +397,6 @@
                     <connections>
                         <outlet property="deckNameField" destination="HnT-vZ-pqp" id="BWF-Eb-oz0"/>
                         <outlet property="deckSelectButton" destination="Gty-ej-0uq" id="Gs8-ah-Ucs"/>
-                        <outlet property="headerView" destination="c4Q-5x-UF7" id="7oc-Vh-3ex"/>
                         <outlet property="lossesLabel" destination="jTm-1m-GP4" id="NYU-v9-TzZ"/>
                         <outlet property="winPercentageLabel" destination="e97-ex-sWu" id="rfM-b6-Gya"/>
                         <outlet property="winsLabel" destination="XPG-LC-7mq" id="92h-yi-lhH"/>
@@ -968,7 +967,7 @@
         <!--Theme Table View Controller-->
         <scene sceneID="RSo-90-3mw">
             <objects>
-                <tableViewController id="EUR-5m-rsD" customClass="ThemeTableViewController" customModule="Conjure" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController clearsSelectionOnViewWillAppear="NO" id="EUR-5m-rsD" customClass="ThemeTableViewController" customModule="Conjure" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="tDJ-Yw-5wd">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="228"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1305,7 +1304,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iuf-sK-rrz">
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iuf-sK-rrz" customClass="HeaderView" customModule="Conjure" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="-1" width="600" height="152"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qQg-t8-aVp">
@@ -1396,7 +1395,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="headerView" destination="iuf-sK-rrz" id="1CJ-d9-jNK"/>
                         <outlet property="seriesTable" destination="LcS-w3-Edt" id="jui-Dp-7Y3"/>
                     </connections>
                 </viewController>
@@ -1425,7 +1423,7 @@
                                 </segments>
                                 <color key="tintColor" red="0.13725490200000001" green="0.71764705880000002" blue="0.98431372549999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </segmentedControl>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jt3-gS-4F2">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jt3-gS-4F2" customClass="HeaderView" customModule="Conjure" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="152"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="68" placeholderIntrinsicHeight="21" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FWc-Dl-6c3">
@@ -1562,7 +1560,6 @@
                     <connections>
                         <outlet property="deckNameLabel" destination="bRj-4K-lrW" id="4fQ-B6-RXn"/>
                         <outlet property="gamesSegmentControl" destination="Bnf-PS-B6B" id="qfY-Cd-rX0"/>
-                        <outlet property="headerView" destination="jt3-gS-4F2" id="FJn-7F-eXF"/>
                         <outlet property="turnTable" destination="yjV-0z-Jbz" id="juu-is-x89"/>
                         <outlet property="winLossLabel" destination="FWc-Dl-6c3" id="9kB-vm-mqS"/>
                     </connections>
@@ -1601,7 +1598,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TB2-la-5Mv">
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TB2-la-5Mv" customClass="HeaderView" customModule="Conjure" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="152"/>
                                 <color key="backgroundColor" red="0.094117647060000004" green="0.18823529410000001" blue="0.2470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
@@ -1686,7 +1683,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="deckTable" destination="N6z-hm-FO9" id="MX2-Ho-Vc3"/>
-                        <outlet property="headerView" destination="TB2-la-5Mv" id="EUv-Ue-XAs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Uf-UA-Lrw" userLabel="First Responder" sceneMemberID="firstResponder"/>

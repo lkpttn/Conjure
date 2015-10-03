@@ -22,6 +22,8 @@ class ThemeTableViewController: UITableViewController {
     }
     
     var parentView = ThemeViewController?()
+    var selectedThemeRow: NSIndexPath? = nil
+    var firstSelection = true
     var defaults = NSUserDefaults.standardUserDefaults()
     
     var cellData = ["Beleren", "Aggro", "Nissa", "Aeons Torn", "Scalding", "Scapeshift", "Living End", "Golden"]
@@ -40,6 +42,20 @@ class ThemeTableViewController: UITableViewController {
     let darkGreenColor = UIColor(red: 49/255.0, green: 159/255.0, blue: 58/255.0, alpha: 1.0)
     let lightGreenColor = UIColor(red: 60/255.0, green: 220/255.0, blue: 8/255.0, alpha: 1.0)
     
+    // Aeons Torn
+    let darkPurpleColor = UIColor(red: 48/255.0, green: 25/255.0, blue: 90/255.0, alpha: 1.0)
+    let lightPurpleColor = UIColor(red: 162/255.0, green: 6/255.0, blue: 138/255.0, alpha: 1.0)
+    
+    // Scalding
+    let mutedBlueColor = UIColor(red: 39/255.0, green: 124/255.0, blue: 142/255.0, alpha: 1.0)
+    let mutedRedColor = UIColor(red: 214/255.0, green: 54/255.0, blue: 49/255.0, alpha: 1.0)
+    
+    // Scapeshift
+    
+    // Living End
+    let blackColor = UIColor.blackColor()
+    let greyColor = UIColor(red: 74/255.0, green: 74/255.0, blue: 74/255.0, alpha: 1.0)
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,7 +64,6 @@ class ThemeTableViewController: UITableViewController {
 
         // Uncomment the following line to preserve selection between presentations
         self.clearsSelectionOnViewWillAppear = false
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -60,7 +75,6 @@ class ThemeTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, willDisplayHeaderView view: UIView,
         forSection section: Int) {
             let header = view as! UITableViewHeaderFooterView
-            // header.textLabel!.textColor = UIColor.greenColor()
             header.textLabel!.font = UIFont(name: "SourceSansPro-Regular", size: 13)
     }
 
@@ -80,19 +94,35 @@ class ThemeTableViewController: UITableViewController {
         // Configure the cell...
         cell.textLabel?.font = UIFont(name: "SourceSansPro-Regular", size: 21)
         cell.textLabel?.text = cellData[indexPath.row]
+        cell.selectionStyle = .None
+        
+        if cell.textLabel!.text == defaults.stringForKey("selectedTheme") {
+            cell.accessoryType = .Checkmark
+            selectedThemeRow = indexPath
+        }
         
         return cell
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
         let cell = tableView.cellForRowAtIndexPath(indexPath)
+        cell!.accessoryType = .Checkmark
+        
+        if firstSelection == true && selectedThemeRow != cell {
+            tableView.cellForRowAtIndexPath(selectedThemeRow!)?.accessoryType = .None
+            firstSelection = false
+        }
+        
         selectedTheme = cellData[indexPath.row]
         changeTheme(selectedTheme)
-        
-        
-        cell!.accessoryType = .Checkmark
+        print("Selecting table row \(cell?.textLabel?.text)")
+    }
+    
+    override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
+        cell!.accessoryType = .None
+        print("Deselecting table row \(cell?.textLabel?.text)")
     }
     
     // MARK: Theme drawing
@@ -102,31 +132,50 @@ class ThemeTableViewController: UITableViewController {
         switch selectedTheme {
             case "Beleren":
                 GameHeader.appearance().backgroundColor = darkBlueColor
+                HeaderView.appearance().backgroundColor = darkBlueColor
                 BigButton.appearance().backgroundColor = lightBlueColor
                 BigButton.appearance().setTitleColor(.whiteColor(), forState: .Normal)
                 UINavigationBar.appearance().barTintColor = darkBlueColor
             case "Aggro":
                 GameHeader.appearance().backgroundColor = brightRedColor
+                HeaderView.appearance().backgroundColor = brightRedColor
                 BigButton.appearance().backgroundColor = darkRedColor
                 BigButton.appearance().setTitleColor(.whiteColor(), forState: .Normal)
                 UINavigationBar.appearance().barTintColor = brightRedColor
             case "Nissa":
-                UINavigationBar.appearance().barTintColor = darkGreenColor
                 GameHeader.appearance().backgroundColor = darkGreenColor
+                HeaderView.appearance().backgroundColor = darkGreenColor
                 BigButton.appearance().backgroundColor = lightGreenColor
                 BigButton.appearance().setTitleColor(.whiteColor(), forState: .Normal)
+                UINavigationBar.appearance().barTintColor = darkGreenColor
             case "Aeons Torn":
-                GameHeader.appearance().backgroundColor = UIColor.blueColor()
+                GameHeader.appearance().backgroundColor = darkPurpleColor
+                HeaderView.appearance().backgroundColor = darkPurpleColor
+                BigButton.appearance().backgroundColor = lightPurpleColor
+                BigButton.appearance().setTitleColor(.whiteColor(), forState: .Normal)
+                UINavigationBar.appearance().barTintColor = darkPurpleColor
             case "Scalding":
-                GameHeader.appearance().backgroundColor = UIColor.blueColor()
+                GameHeader.appearance().backgroundColor = mutedBlueColor
+                HeaderView.appearance().backgroundColor = mutedBlueColor
+                BigButton.appearance().backgroundColor = mutedRedColor
+                BigButton.appearance().setTitleColor(.whiteColor(), forState: .Normal)
+                UINavigationBar.appearance().barTintColor = mutedBlueColor
             case "Scapeshift":
                 GameHeader.appearance().backgroundColor = UIColor.blueColor()
             case "Living End":
-                GameHeader.appearance().backgroundColor = UIColor.blueColor()
+                GameHeader.appearance().backgroundColor = blackColor
+                HeaderView.appearance().backgroundColor = blackColor
+                BigButton.appearance().backgroundColor = greyColor
+                BigButton.appearance().setTitleColor(.whiteColor(), forState: .Normal)
+                UINavigationBar.appearance().barTintColor = blackColor
             case "Golden":
                 GameHeader.appearance().backgroundColor = UIColor.blueColor()
             default:
-                GameHeader.appearance().backgroundColor = UIColor.blueColor()
+                GameHeader.appearance().backgroundColor = darkBlueColor
+                HeaderView.appearance().backgroundColor = darkBlueColor
+                BigButton.appearance().backgroundColor = lightBlueColor
+                BigButton.appearance().setTitleColor(.whiteColor(), forState: .Normal)
+                UINavigationBar.appearance().barTintColor = darkBlueColor
         }
 
         updatePreview()

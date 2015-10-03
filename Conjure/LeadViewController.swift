@@ -48,6 +48,20 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     let darkGreenColor = UIColor(red: 49/255.0, green: 159/255.0, blue: 58/255.0, alpha: 1.0)
     let lightGreenColor = UIColor(red: 60/255.0, green: 220/255.0, blue: 8/255.0, alpha: 1.0)
     
+    // Aeons Torn
+    let darkPurpleColor = UIColor(red: 48/255.0, green: 25/255.0, blue: 90/255.0, alpha: 1.0)
+    let lightPurpleColor = UIColor(red: 162/255.0, green: 6/255.0, blue: 138/255.0, alpha: 1.0)
+    
+    // Scalding
+    let mutedBlueColor = UIColor(red: 39/255.0, green: 124/255.0, blue: 142/255.0, alpha: 1.0)
+    let mutedRedColor = UIColor(red: 214/255.0, green: 54/255.0, blue: 49/255.0, alpha: 1.0)
+    
+    // Scapeshift
+    
+    // Living End
+    let blackColor = UIColor.blackColor()
+    let greyColor = UIColor(red: 74/255.0, green: 74/255.0, blue: 74/255.0, alpha: 1.0)
+    
     // Other UI Colors
     let redColor = UIColor(red: 208/255.0, green: 2/255.0, blue: 27/255.0, alpha: 1)
     let greenColor = UIColor(red: 92/255.0, green: 176/255.0, blue: 0, alpha: 1)
@@ -353,31 +367,50 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         switch selectedTheme {
         case "Beleren":
             GameHeader.appearance().backgroundColor = darkBlueColor
+            HeaderView.appearance().backgroundColor = darkBlueColor
             BigButton.appearance().backgroundColor = lightBlueColor
             BigButton.appearance().setTitleColor(.whiteColor(), forState: .Normal)
             UINavigationBar.appearance().barTintColor = darkBlueColor
         case "Aggro":
             GameHeader.appearance().backgroundColor = brightRedColor
+            HeaderView.appearance().backgroundColor = brightRedColor
             BigButton.appearance().backgroundColor = darkRedColor
             BigButton.appearance().setTitleColor(.whiteColor(), forState: .Normal)
             UINavigationBar.appearance().barTintColor = brightRedColor
         case "Nissa":
-            UINavigationBar.appearance().barTintColor = darkGreenColor
             GameHeader.appearance().backgroundColor = darkGreenColor
+            HeaderView.appearance().backgroundColor = darkGreenColor
             BigButton.appearance().backgroundColor = lightGreenColor
             BigButton.appearance().setTitleColor(.whiteColor(), forState: .Normal)
+            UINavigationBar.appearance().barTintColor = darkGreenColor
         case "Aeons Torn":
-            GameHeader.appearance().backgroundColor = UIColor.blueColor()
+            GameHeader.appearance().backgroundColor = darkPurpleColor
+            HeaderView.appearance().backgroundColor = darkPurpleColor
+            BigButton.appearance().backgroundColor = lightPurpleColor
+            BigButton.appearance().setTitleColor(.whiteColor(), forState: .Normal)
+            UINavigationBar.appearance().barTintColor = darkPurpleColor
         case "Scalding":
-            GameHeader.appearance().backgroundColor = UIColor.blueColor()
+            GameHeader.appearance().backgroundColor = mutedBlueColor
+            HeaderView.appearance().backgroundColor = mutedBlueColor
+            BigButton.appearance().backgroundColor = mutedRedColor
+            BigButton.appearance().setTitleColor(.whiteColor(), forState: .Normal)
+            UINavigationBar.appearance().barTintColor = mutedBlueColor
         case "Scapeshift":
             GameHeader.appearance().backgroundColor = UIColor.blueColor()
         case "Living End":
-            GameHeader.appearance().backgroundColor = UIColor.blueColor()
+            GameHeader.appearance().backgroundColor = blackColor
+            HeaderView.appearance().backgroundColor = blackColor
+            BigButton.appearance().backgroundColor = greyColor
+            BigButton.appearance().setTitleColor(.whiteColor(), forState: .Normal)
+            UINavigationBar.appearance().barTintColor = blackColor
         case "Golden":
             GameHeader.appearance().backgroundColor = UIColor.blueColor()
         default:
-            GameHeader.appearance().backgroundColor = UIColor.blueColor()
+            GameHeader.appearance().backgroundColor = darkBlueColor
+            HeaderView.appearance().backgroundColor = darkBlueColor
+            BigButton.appearance().backgroundColor = lightBlueColor
+            BigButton.appearance().setTitleColor(.whiteColor(), forState: .Normal)
+            UINavigationBar.appearance().barTintColor = darkBlueColor
         }
     }
  

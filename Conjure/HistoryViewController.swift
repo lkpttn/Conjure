@@ -61,9 +61,6 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         navBar?.shadowImage = UIImage()
         navBar?.translucent = true
         navBar!.barTintColor = UIColor.clearColor()
-        
-        let headerColor = UIColor(red: 22/255.0, green: 48/255.0, blue: 63/255.0, alpha: 1)
-        headerView.backgroundColor = headerColor
     }
     
     // MARK: Table methods

@@ -12,7 +12,6 @@ class GameDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     
     // MARK: Properties
     @IBOutlet weak var turnTable: UITableView!
-    @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var deckNameLabel: UILabel!
     @IBOutlet weak var winLossLabel: UILabel!
     @IBOutlet weak var gamesSegmentControl: UISegmentedControl!
@@ -61,8 +60,6 @@ class GameDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         navBar?.shadowImage = UIImage()
         navBar?.translucent = true
         navBar!.barTintColor = UIColor.clearColor()
-        
-        headerView.backgroundColor = darkBlueColor
     }
     
     // MARK: Segment control

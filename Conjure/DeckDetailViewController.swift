@@ -18,8 +18,6 @@ class DeckDetailViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var winPercentageLabel: UILabel!
     @IBOutlet weak var notesTextView: UITextView!
     
-    @IBOutlet weak var headerView: UIView!
-    
     var deck: Deck?
     var deckDictionary = [String: Deck]()
     var oldDeckName = ""
@@ -93,9 +91,6 @@ class DeckDetailViewController: UIViewController, UITextFieldDelegate {
         navBar?.shadowImage = UIImage()
         navBar?.translucent = true
         navBar!.barTintColor = UIColor.clearColor()
-        
-        let headerColor = UIColor(red: 22/255.0, green: 48/255.0, blue: 63/255.0, alpha: 1)
-        headerView.backgroundColor = headerColor
     }
     
     // MARK: Button actions
