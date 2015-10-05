@@ -12,6 +12,7 @@ class Deck: NSObject, NSCoding {
     
     // MARK: Properties
     var deckName: String
+    var notes = ""
     var wins = 0
     var losses = 0
     var newDeck = false
@@ -25,21 +26,25 @@ class Deck: NSObject, NSCoding {
     // MARK: Initialization
     init(deckName: String) {
         self.deckName = deckName
+
     }
     
     // MARK: NSCoding
     func encodeWithCoder(aCoder: NSCoder) {
         aCoder.encodeObject(deckName, forKey: "deckName")
+        aCoder.encodeObject(notes, forKey: "notes")
         aCoder.encodeInteger(wins, forKey: "wins")
         aCoder.encodeInteger(losses, forKey: "losses")
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
         let deckName = aDecoder.decodeObjectForKey("deckName") as? String
+        let notes = aDecoder.decodeObjectForKey("notes") as? String ?? ""
         let wins = aDecoder.decodeIntegerForKey("wins")
         let losses = aDecoder.decodeIntegerForKey("losses")
         
         self.init(deckName: deckName!)
+        self.notes = notes
         self.wins = wins
         self.losses = losses
     }

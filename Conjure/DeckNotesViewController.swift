@@ -12,6 +12,8 @@ class DeckNotesViewController: UIViewController {
     
     @IBOutlet weak var notesTextView: UITextView!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+    
+    var noteString = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,23 +49,29 @@ class DeckNotesViewController: UIViewController {
     
     func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
-            let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
             bottomConstraint.constant = keyboardSize.size.height + 20
         }
     }
     
     func keyboardWillHide(notification: NSNotification) {
-        //
+        bottomConstraint.constant = 0
+    }
+    
+    func donePicker(sender: UIBarButtonItem) {
+        notesTextView.resignFirstResponder()
+        noteString = notesTextView.text
+    }
+    
+    func cancelPicker(sender: UIBarButtonItem) {
+        notesTextView.resignFirstResponder()
     }
 
-    /*
+
+    
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+         // Get the new view controller using segue.destinationViewController.
+        let destination = segue.destinationViewController as! DeckDetailViewController
+            noteString = (destination.deck?.notes)!
     }
-    */
-
 }
