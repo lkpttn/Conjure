@@ -52,6 +52,8 @@ class DeckDetailViewController: UIViewController, UITextFieldDelegate {
         
         checkValidName()
     }
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

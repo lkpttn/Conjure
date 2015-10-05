@@ -77,6 +77,9 @@
             <string>SourceSansPro-Regular</string>
             <string>SourceSansPro-Regular</string>
             <string>SourceSansPro-Regular</string>
+            <string>SourceSansPro-Regular</string>
+            <string>SourceSansPro-Regular</string>
+            <string>SourceSansPro-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -363,13 +366,33 @@
                                     <segue destination="Ymo-33-eMa" kind="unwind" identifier="unwindToLeadView" unwindAction="unwindToLeadView:" id="Ktb-s7-s94"/>
                                 </connections>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f34-5H-DQT">
+                                <rect key="frame" x="20" y="280" width="560" height="320"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T7k-zv-B39">
+                                <rect key="frame" x="20" y="250" width="560" height="350"/>
+                                <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="13"/>
+                                <state key="normal" title="NOTES"/>
+                                <connections>
+                                    <segue destination="AD2-ya-Vv1" kind="show" id="hxR-uO-xSO"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="c4Q-5x-UF7" secondAttribute="trailing" constant="-20" id="0Kg-F5-5SR"/>
+                            <constraint firstItem="T7k-zv-B39" firstAttribute="top" secondItem="XPG-LC-7mq" secondAttribute="bottom" constant="8" id="1dS-by-5w4"/>
+                            <constraint firstItem="f34-5H-DQT" firstAttribute="leading" secondItem="xhM-L7-ljz" secondAttribute="leadingMargin" id="1z5-aY-gW1"/>
+                            <constraint firstItem="f34-5H-DQT" firstAttribute="trailing" secondItem="xhM-L7-ljz" secondAttribute="trailingMargin" id="7Bh-Y7-prt"/>
                             <constraint firstItem="DfY-mV-K9X" firstAttribute="top" secondItem="Gty-ej-0uq" secondAttribute="bottom" constant="8" id="7WW-H3-J9s"/>
                             <constraint firstItem="Gty-ej-0uq" firstAttribute="top" secondItem="c4Q-5x-UF7" secondAttribute="bottom" id="8pm-yy-LrQ"/>
                             <constraint firstItem="jTm-1m-GP4" firstAttribute="top" secondItem="gwO-eL-3I8" secondAttribute="bottom" id="Aho-wa-Mt3"/>
+                            <constraint firstItem="T7k-zv-B39" firstAttribute="leading" secondItem="xhM-L7-ljz" secondAttribute="leadingMargin" id="D6y-aU-sX9"/>
+                            <constraint firstItem="Q4x-sm-oz2" firstAttribute="top" secondItem="f34-5H-DQT" secondAttribute="bottom" id="EYj-m4-T3e"/>
                             <constraint firstItem="gwO-eL-3I8" firstAttribute="top" secondItem="Gty-ej-0uq" secondAttribute="bottom" constant="8" id="GST-A7-JL0"/>
                             <constraint firstItem="e97-ex-sWu" firstAttribute="top" secondItem="oSD-Pq-dKS" secondAttribute="bottom" id="Hev-nS-rOz"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Gty-ej-0uq" secondAttribute="trailing" constant="-20" id="MkE-MP-TbF"/>
@@ -378,12 +401,17 @@
                             <constraint firstItem="Gty-ej-0uq" firstAttribute="leading" secondItem="xhM-L7-ljz" secondAttribute="leadingMargin" constant="-20" id="Ryf-W4-QkE"/>
                             <constraint firstItem="XPG-LC-7mq" firstAttribute="leading" secondItem="xhM-L7-ljz" secondAttribute="leadingMargin" id="UT0-bZ-S9K"/>
                             <constraint firstItem="Gty-ej-0uq" firstAttribute="top" secondItem="c4Q-5x-UF7" secondAttribute="bottom" id="Ul6-NM-pFU"/>
+                            <constraint firstItem="Q4x-sm-oz2" firstAttribute="top" secondItem="T7k-zv-B39" secondAttribute="bottom" id="Wrn-Dn-4dW"/>
                             <constraint firstItem="XPG-LC-7mq" firstAttribute="top" secondItem="DfY-mV-K9X" secondAttribute="bottom" id="YhO-t6-uyN"/>
                             <constraint firstItem="c4Q-5x-UF7" firstAttribute="leading" secondItem="xhM-L7-ljz" secondAttribute="leadingMargin" constant="-20" id="ZMe-zg-41r"/>
+                            <constraint firstItem="T7k-zv-B39" firstAttribute="leading" secondItem="xhM-L7-ljz" secondAttribute="leadingMargin" id="d44-8B-LV7"/>
                             <constraint firstItem="jTm-1m-GP4" firstAttribute="leading" secondItem="XPG-LC-7mq" secondAttribute="trailing" constant="35" id="ikS-Q1-4hv"/>
                             <constraint firstItem="oSD-Pq-dKS" firstAttribute="leading" secondItem="gwO-eL-3I8" secondAttribute="trailing" constant="68" id="keV-9o-4SG"/>
+                            <constraint firstItem="T7k-zv-B39" firstAttribute="trailing" secondItem="xhM-L7-ljz" secondAttribute="trailingMargin" id="mh1-nh-nLS"/>
+                            <constraint firstItem="f34-5H-DQT" firstAttribute="top" secondItem="T7k-zv-B39" secondAttribute="bottom" id="nN8-zK-ZVt"/>
                             <constraint firstItem="c4Q-5x-UF7" firstAttribute="top" secondItem="k6w-tX-KTY" secondAttribute="bottom" constant="-64" id="tBY-2k-ZZg"/>
                             <constraint firstItem="Gty-ej-0uq" firstAttribute="top" secondItem="k6w-tX-KTY" secondAttribute="bottom" constant="80" id="x6N-fk-Hw6"/>
+                            <constraint firstItem="f34-5H-DQT" firstAttribute="top" secondItem="e97-ex-sWu" secondAttribute="bottom" constant="8" id="y1F-AF-QnL"/>
                             <constraint firstItem="e97-ex-sWu" firstAttribute="leading" secondItem="jTm-1m-GP4" secondAttribute="trailing" constant="35" id="yCh-Y3-8L6"/>
                             <constraint firstItem="gwO-eL-3I8" firstAttribute="leading" secondItem="DfY-mV-K9X" secondAttribute="trailing" constant="81" id="yWL-Mx-4sb"/>
                         </constraints>
@@ -391,6 +419,9 @@
                             <mask key="constraints">
                                 <exclude reference="8pm-yy-LrQ"/>
                                 <exclude reference="x6N-fk-Hw6"/>
+                                <exclude reference="D6y-aU-sX9"/>
+                                <exclude reference="nN8-zK-ZVt"/>
+                                <exclude reference="y1F-AF-QnL"/>
                             </mask>
                         </variation>
                     </view>
@@ -398,6 +429,7 @@
                         <outlet property="deckNameField" destination="HnT-vZ-pqp" id="BWF-Eb-oz0"/>
                         <outlet property="deckSelectButton" destination="Gty-ej-0uq" id="Gs8-ah-Ucs"/>
                         <outlet property="lossesLabel" destination="jTm-1m-GP4" id="NYU-v9-TzZ"/>
+                        <outlet property="notesTextView" destination="f34-5H-DQT" id="51s-YU-QWD"/>
                         <outlet property="winPercentageLabel" destination="e97-ex-sWu" id="rfM-b6-Gya"/>
                         <outlet property="winsLabel" destination="XPG-LC-7mq" id="92h-yi-lhH"/>
                     </connections>
@@ -406,6 +438,77 @@
                 <exit id="Ymo-33-eMa" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="983" y="-365"/>
+        </scene>
+        <!--Deck Notes View Controller-->
+        <scene sceneID="Pli-rl-rUU">
+            <objects>
+                <viewController id="AD2-ya-Vv1" customClass="DeckNotesViewController" customModule="Conjure" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cJg-5q-KGS"/>
+                        <viewControllerLayoutGuide type="bottom" id="5Ff-66-2NS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="PuK-EP-mZJ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="152" translatesAutoresizingMaskIntoConstraints="NO" id="aUs-RA-AQl" customClass="HeaderView" customModule="Conjure" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="152"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="350" placeholderIntrinsicHeight="30" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Deck Title" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6lS-P6-X4x">
+                                        <rect key="frame" x="20" y="106" width="350" height="30"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="21"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ofr-1U-0ba">
+                                        <rect key="frame" x="469" y="106" width="111" height="30"/>
+                                        <state key="normal" title="Delete this deck"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.094117647060000004" green="0.18823529410000001" blue="0.2470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="ofr-1U-0ba" secondAttribute="trailing" constant="20" id="5Wm-ky-c9Z"/>
+                                    <constraint firstAttribute="height" constant="152" id="67c-tE-uCg"/>
+                                    <constraint firstItem="ofr-1U-0ba" firstAttribute="top" secondItem="aUs-RA-AQl" secondAttribute="top" constant="106" id="6Vs-wL-Sep"/>
+                                    <constraint firstItem="6lS-P6-X4x" firstAttribute="leading" secondItem="aUs-RA-AQl" secondAttribute="leading" constant="20" id="W0k-hd-tkv"/>
+                                    <constraint firstItem="6lS-P6-X4x" firstAttribute="top" secondItem="aUs-RA-AQl" secondAttribute="top" constant="106" id="WvK-BZ-g5J"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NOTES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6wa-xW-SJh">
+                                <rect key="frame" x="20" y="160" width="38" height="17"/>
+                                <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="13"/>
+                                <color key="textColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mjh-dI-Wbv">
+                                <rect key="frame" x="20" y="177" width="560" height="423"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" spellCheckingType="no"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Mjh-dI-Wbv" firstAttribute="top" secondItem="6wa-xW-SJh" secondAttribute="bottom" id="4KZ-s1-zbh"/>
+                            <constraint firstItem="aUs-RA-AQl" firstAttribute="top" secondItem="PuK-EP-mZJ" secondAttribute="topMargin" id="4cE-Hw-C3u"/>
+                            <constraint firstItem="Mjh-dI-Wbv" firstAttribute="trailing" secondItem="PuK-EP-mZJ" secondAttribute="trailingMargin" id="8vH-pq-rsC"/>
+                            <constraint firstItem="Mjh-dI-Wbv" firstAttribute="leading" secondItem="PuK-EP-mZJ" secondAttribute="leadingMargin" id="9Vh-DI-QJk"/>
+                            <constraint firstItem="aUs-RA-AQl" firstAttribute="leading" secondItem="PuK-EP-mZJ" secondAttribute="leadingMargin" constant="-20" id="Qv9-Mv-zRA"/>
+                            <constraint firstItem="6wa-xW-SJh" firstAttribute="top" secondItem="aUs-RA-AQl" secondAttribute="bottom" constant="8" id="WVQ-EO-x9b"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="aUs-RA-AQl" secondAttribute="trailing" constant="-20" id="dq2-fW-Wch"/>
+                            <constraint firstItem="6wa-xW-SJh" firstAttribute="leading" secondItem="PuK-EP-mZJ" secondAttribute="leadingMargin" id="dqr-mC-bPX"/>
+                            <constraint firstItem="5Ff-66-2NS" firstAttribute="top" secondItem="Mjh-dI-Wbv" secondAttribute="bottom" id="pKu-T2-U6e"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="bottomConstraint" destination="pKu-T2-U6e" id="foc-xw-GUp"/>
+                        <outlet property="notesTextView" destination="Mjh-dI-Wbv" id="w6o-uu-PeU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ypd-dW-PgX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1648" y="-365"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="tne-QT-ifu">

@@ -12,7 +12,8 @@ class SettingsDetailTableViewController: UITableViewController {
     
     var detailType = 0
     var cellData: NSArray = []
-    var lastSelectedRow: NSIndexPath? = nil
+    var selectedRow: NSIndexPath? = nil
+    var firstSelection = true
     
     var lifeTotal = 0
     var numberOfGames = 0
@@ -79,6 +80,7 @@ class SettingsDetailTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("settingCell", forIndexPath: indexPath) as UITableViewCell
         
         cell.textLabel?.font = UIFont(name: "SourceSansPro-Regular", size: 21)
+        cell.selectionStyle = .None
         
         if detailType == 0 {
             cell.textLabel?.text = String(cellData[indexPath.row])
@@ -113,17 +115,20 @@ class SettingsDetailTableViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
+        cell!.accessoryType = .None
+        print("Deselecting table row \(cell?.textLabel?.text)")
+    }
+    
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
         let cell = tableView.cellForRowAtIndexPath(indexPath)
+        cell!.accessoryType = .Checkmark
         
-        if let last = lastSelectedRow {
-            let oldSelectedCell = tableView.cellForRowAtIndexPath(last)
-            oldSelectedCell?.accessoryType = .None
-        }
+        print("Selecting table row \(cell?.textLabel?.text)")
         
-        lastSelectedRow = indexPath
+        
         if detailType == 0 {
             lifeTotal = Int(cellData[indexPath.row] as! NSNumber)
         }
@@ -153,7 +158,5 @@ class SettingsDetailTableViewController: UITableViewController {
                 timeLimitString = "50 Minutes"
             }
         }
-        
-        cell!.accessoryType = .Checkmark
-    }
+    } // didSelect Row
 }

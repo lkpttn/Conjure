@@ -38,6 +38,7 @@
 		0DD5D3701BBA236E00CF1C0B /* ThemeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD5D36F1BBA236E00CF1C0B /* ThemeTableViewController.swift */; };
 		0DD5D3721BBB01C500CF1C0B /* BigButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD5D3711BBB01C500CF1C0B /* BigButton.swift */; };
 		0DD5D3741BBD881B00CF1C0B /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD5D3731BBD881B00CF1C0B /* HeaderView.swift */; };
+		0DD5D3761BC3004F00CF1C0B /* DeckNotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD5D3751BC3004F00CF1C0B /* DeckNotesViewController.swift */; };
 		0DDFC71D1B5A85A100DAB4DB /* DeckDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDFC71C1B5A85A100DAB4DB /* DeckDetailViewController.swift */; };
 		0DF8F8561B4EFA08000C6AF6 /* GameHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF8F8551B4EFA08000C6AF6 /* GameHeader.swift */; };
 		29B06F921B8FA36A005D3BE1 /* SettingsDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B06F911B8FA36A005D3BE1 /* SettingsDetailTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -95,6 +96,7 @@
 		0DD5D36F1BBA236E00CF1C0B /* ThemeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeTableViewController.swift; sourceTree = "<group>"; };
 		0DD5D3711BBB01C500CF1C0B /* BigButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigButton.swift; sourceTree = "<group>"; };
 		0DD5D3731BBD881B00CF1C0B /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		0DD5D3751BC3004F00CF1C0B /* DeckNotesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeckNotesViewController.swift; sourceTree = "<group>"; };
 		0DDFC71C1B5A85A100DAB4DB /* DeckDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeckDetailViewController.swift; sourceTree = "<group>"; };
 		0DF8F8551B4EFA08000C6AF6 /* GameHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameHeader.swift; sourceTree = "<group>"; };
 		29B06F911B8FA36A005D3BE1 /* SettingsDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsDetailTableViewController.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 				0D7ED9D61B4B387700A6C2B0 /* GameViewController.swift */,
 				0D11DE951B6C450000697EAD /* DeckViewController.swift */,
 				0DDFC71C1B5A85A100DAB4DB /* DeckDetailViewController.swift */,
+				0DD5D3751BC3004F00CF1C0B /* DeckNotesViewController.swift */,
 				0D11DE911B6BE69100697EAD /* HistoryViewController.swift */,
 				0D11DE931B6C3F0400697EAD /* GameDetailViewController.swift */,
 				0DC448D11B8EC5EE00DDA93A /* SettingsTableViewController.swift */,
@@ -371,6 +374,7 @@
 				29B06F921B8FA36A005D3BE1 /* SettingsDetailTableViewController.swift in Sources */,
 				0D796E0C1B51FB6500840211 /* TurnCell.swift in Sources */,
 				0D7ED9D51B4B387700A6C2B0 /* AppDelegate.swift in Sources */,
+				0DD5D3761BC3004F00CF1C0B /* DeckNotesViewController.swift in Sources */,
 				0DD5D3741BBD881B00CF1C0B /* HeaderView.swift in Sources */,
 				0D11DE921B6BE69100697EAD /* HistoryViewController.swift in Sources */,
 				0D2037161B535AF30058E059 /* LeadViewController.swift in Sources */,

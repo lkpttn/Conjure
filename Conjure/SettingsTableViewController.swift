@@ -138,6 +138,7 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate {
             print("Choosing match type")
             let destination = segue.destinationViewController as! SettingsDetailTableViewController
             destination.detailType = 1
+            destination.numberOfGames = numberOfGames
             
             destination.cellData = numberofGamesOptions
         }
@@ -152,6 +153,7 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate {
             print("Choosing time limit")
             let destination = segue.destinationViewController as! SettingsDetailTableViewController
             destination.detailType = 2
+            destination.timeLimit = timeLimit
             
             destination.cellData = timeLimitOptions
         }
