@@ -12,6 +12,7 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate {
     
     let settings = NSUserDefaults.standardUserDefaults()
 
+    @IBOutlet weak var concedeSwitch: UISwitch!
     @IBOutlet weak var playerOneNameField: UITextField!
     @IBOutlet weak var playerTwoNameField: UITextField!
     
@@ -67,6 +68,10 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate {
         }
         print("The starting life total is is \(tempLifeTotal)")
         startingLifeTotalLabel.text = String(tempLifeTotal)
+        
+        if settings.boolForKey("tapAndHoldToConcede") == true {
+            concedeSwitch.setOn(true, animated: true)
+        }
     }
     
     func numberCase(int: Int) {
@@ -156,6 +161,18 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate {
             destination.timeLimit = timeLimit
             
             destination.cellData = timeLimitOptions
+        }
+    }
+    
+    
+    @IBAction func concedeSwitch(sender: UISwitch) {
+        if concedeSwitch.on  == true {
+            print(concedeSwitch.on)
+            settings.setBool(true, forKey: "tapAndHoldToConcede")
+        }
+        else if concedeSwitch.on == false {
+            print(concedeSwitch.on)
+            settings.setBool(false, forKey: "tapAndHoldToConcede")
         }
     }
     

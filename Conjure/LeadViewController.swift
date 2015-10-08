@@ -346,7 +346,6 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     
     func setForSettings() {
         // Player names
-        print(defaults.stringForKey("playerOneName"))
         gameHeader.playerOneCounter.playerName.text = defaults.stringForKey("playerOneName") ?? "Me"
         gameHeader.playerTwoCounter.playerName.text = defaults.stringForKey("playerTwoName") ?? "Opponent"
         
@@ -357,7 +356,6 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         timeLimit = defaults.doubleForKey("timeLimit")
         timeCase(timeLimit)
         
-        print(defaults.integerForKey("lifeTotal"))
         lifeTotal = defaults.integerForKey("lifeTotal")
         if lifeTotal == 0 {
             lifeTotal = 20
@@ -366,7 +364,6 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         gameHeader.playerTwoCounter.lifeTotal = lifeTotal
         
         changeTheme(defaults.stringForKey("selectedTheme") ?? "Beleren")
-        print(defaults.stringForKey("selectedTheme"))
     }
     
     func changeTheme(selectedTheme: String) {

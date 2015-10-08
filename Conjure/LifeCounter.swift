@@ -27,6 +27,7 @@ class LifeCounter: UIView {
     // All created views need a defined frame for where they sit
     // Is this neccesary outside of the init? Is there a better way?
     var counter = UILabel(frame: CGRect(x: 0, y: 40, width: 100, height: 90))
+    var counterButton = UIButton(frame: CGRect(x: 0, y: 40, width: 100, height: 90))
     var playerName = UILabel(frame: CGRect(x: 0, y: 5, width: 100, height: 40))
     
     let deviceWidth = UIScreen.mainScreen().bounds.width
@@ -52,6 +53,7 @@ class LifeCounter: UIView {
         
         let counterFrame = CGRect(x: 0, y: 40, width: frameWidth, height: 90)
         counter.frame = counterFrame
+        counterButton.frame = counterFrame
         
         let nameFrame = CGRect(x: 0, y: 5, width: self.bounds.width, height: 40)
         playerName.frame = nameFrame
@@ -73,6 +75,9 @@ class LifeCounter: UIView {
         counter.font = UIFont(name: "SourceSansPro-Bold", size: 90)
         counter.text = String(lifeTotal)
         
+        // Styles the invisible button
+        counterButton.backgroundColor = UIColor.clearColor()
+        
         // Styles playerName label
         playerName.text = "Player Name"
         playerName.textAlignment = .Center
@@ -81,7 +86,6 @@ class LifeCounter: UIView {
         
         
         // Button
-        
         let minusButton = UIButton(frame: CGRect(x: (bounds.width/8)+6, y: 125, width: 60, height: 60))
         let plusButton = UIButton(frame: CGRect(x: (bounds.width/4)+48, y: 125, width: 60, height: 60))
         
@@ -92,9 +96,6 @@ class LifeCounter: UIView {
         plusButton.setImage(plusImage, forState: .Normal)
         
         // Button action
-        // minusButton.addTarget(self, action: "minusLife:", forControlEvents: .TouchDown)
-        //plusButton.addTarget(self, action: "plusLife:", forControlEvents: .TouchDown)
-        
         let minusTapGestureRecognizer = UITapGestureRecognizer(target: self, action: "minusTapped:")
         let minusLongPressRecognizer = UILongPressGestureRecognizer(target: self, action: "minusLongPressed:")
         minusButton.addGestureRecognizer(minusTapGestureRecognizer)
@@ -105,8 +106,15 @@ class LifeCounter: UIView {
         plusButton.addGestureRecognizer(plusTapGestureRecognizer)
         plusButton.addGestureRecognizer(plusLongPressRecognizer)
         
+        // Tap-and-hold to concede
+        if settings.boolForKey("tapAndHoldToConcede") == true {
+            let counterLongPressRecognizer = UILongPressGestureRecognizer(target: self, action: "counterLongPressed:")
+            counterButton.addGestureRecognizer(counterLongPressRecognizer)
+        }
+        
         addSubview(playerName)
         addSubview(counter)
+        addSubview(counterButton)
         addSubview(minusButton)
         addSubview(plusButton)
     }
@@ -121,10 +129,8 @@ class LifeCounter: UIView {
     }
     
     func plus() {
-        if lifeTotal != 0 {
-            lifeTotal += 1
-            counter.text = String(lifeTotal)
-        }
+        lifeTotal += 1
+        counter.text = String(lifeTotal)
     }
     
     func minusTapped(sender: UITapGestureRecognizer) {
@@ -162,6 +168,15 @@ class LifeCounter: UIView {
                 plusTimer = NSTimer(timeInterval: 0.3, target: self, selector: "plus", userInfo: nil, repeats: true)
             }
             NSRunLoop.currentRunLoop().addTimer(plusTimer, forMode: NSRunLoopCommonModes)
+        }
+    }
+    
+    func counterLongPressed(sender: UILongPressGestureRecognizer) {
+        print("Long press began")
+        if sender.state == UIGestureRecognizerState.Began {
+            lifeTotal = 0
+            counter.adjustsFontSizeToFitWidth = true
+            counter.text = "0"
         }
     }
     

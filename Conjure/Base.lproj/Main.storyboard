@@ -728,8 +728,11 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ul5-LW-YPZ">
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ul5-LW-YPZ">
                                                     <rect key="frame" x="535" y="11" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="concedeSwitch:" destination="zQA-ec-IQH" eventType="valueChanged" id="dqH-g5-IBW"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -968,6 +971,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="concedeSwitch" destination="ul5-LW-YPZ" id="Z0J-Cr-hwg"/>
                         <outlet property="numberOfGamesLabel" destination="ywV-Yn-82K" id="XaX-4i-1Lf"/>
                         <outlet property="playerOneNameField" destination="LRb-ZV-1Oz" id="eO0-zS-01a"/>
                         <outlet property="playerTwoNameField" destination="EfU-a4-RQK" id="ApZ-mq-0w4"/>
