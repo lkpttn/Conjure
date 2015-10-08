@@ -54,6 +54,9 @@ class DeckDetailViewController: UIViewController, UITextFieldDelegate {
             deckNameField.becomeFirstResponder()
         }
         
+        // Fix text inset
+        notesTextView.textContainerInset = UIEdgeInsetsMake(0, 0, 0, 0)
+        
         checkValidName()
     }
 

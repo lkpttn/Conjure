@@ -109,10 +109,10 @@ class ThemeTableViewController: UITableViewController {
         let cell = tableView.cellForRowAtIndexPath(indexPath)
         cell!.accessoryType = .Checkmark
         
-        if firstSelection == true && selectedThemeRow != cell {
-            tableView.cellForRowAtIndexPath(selectedThemeRow!)?.accessoryType = .None
-            firstSelection = false
-        }
+//        if firstSelection == true && selectedThemeRow != cell {
+//            tableView.cellForRowAtIndexPath(selectedThemeRow!)?.accessoryType = .None
+//            firstSelection = false
+//        }
         
         selectedTheme = cellData[indexPath.row]
         changeTheme(selectedTheme)

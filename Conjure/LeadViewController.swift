@@ -432,8 +432,8 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
                 svc.timeLimit = timeLimit
             }
             else {
-                let alert = UIAlertController(title: "No Deck Selected", message: "You need to select a deck to record a match.", preferredStyle: UIAlertControllerStyle.Alert)
-                alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.Default, handler: nil))
+                let alert = UIAlertController(title: "No Deck Selected", message: "You need to create or select a deck in order to record a match.", preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title: "Curses!", style: UIAlertActionStyle.Cancel, handler: nil))
                 self.presentViewController(alert, animated: true, completion: nil)
             }
         }

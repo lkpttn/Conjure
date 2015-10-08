@@ -367,16 +367,18 @@
                                     <segue destination="Ymo-33-eMa" kind="unwind" identifier="unwindToLeadView" unwindAction="unwindToLeadView:" id="Ktb-s7-s94"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T7k-zv-B39">
-                                <rect key="frame" x="20" y="250" width="560" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T7k-zv-B39">
+                                <rect key="frame" x="20" y="250" width="560" height="350"/>
                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="13"/>
-                                <state key="normal" title="NOTES"/>
+                                <state key="normal" title="NOTES &gt;">
+                                    <color key="titleColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
                                     <segue destination="AD2-ya-Vv1" kind="show" identifier="deckNotes" id="hxR-uO-xSO"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f34-5H-DQT">
-                                <rect key="frame" x="20" y="288" width="560" height="320"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f34-5H-DQT">
+                                <rect key="frame" x="20" y="279" width="560" height="321"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="15"/>
@@ -405,6 +407,8 @@
                             <constraint firstItem="Q4x-sm-oz2" firstAttribute="top" secondItem="T7k-zv-B39" secondAttribute="bottom" id="Wrn-Dn-4dW"/>
                             <constraint firstItem="XPG-LC-7mq" firstAttribute="top" secondItem="DfY-mV-K9X" secondAttribute="bottom" id="YhO-t6-uyN"/>
                             <constraint firstItem="c4Q-5x-UF7" firstAttribute="leading" secondItem="xhM-L7-ljz" secondAttribute="leadingMargin" constant="-20" id="ZMe-zg-41r"/>
+                            <constraint firstItem="Q4x-sm-oz2" firstAttribute="top" secondItem="T7k-zv-B39" secondAttribute="bottom" id="aNV-ue-yfu"/>
+                            <constraint firstItem="f34-5H-DQT" firstAttribute="top" secondItem="e97-ex-sWu" secondAttribute="bottom" constant="37" id="ch9-ft-jbx"/>
                             <constraint firstItem="T7k-zv-B39" firstAttribute="leading" secondItem="xhM-L7-ljz" secondAttribute="leadingMargin" id="d44-8B-LV7"/>
                             <constraint firstItem="jTm-1m-GP4" firstAttribute="leading" secondItem="XPG-LC-7mq" secondAttribute="trailing" constant="35" id="ikS-Q1-4hv"/>
                             <constraint firstItem="oSD-Pq-dKS" firstAttribute="leading" secondItem="gwO-eL-3I8" secondAttribute="trailing" constant="68" id="keV-9o-4SG"/>
@@ -412,7 +416,7 @@
                             <constraint firstItem="f34-5H-DQT" firstAttribute="top" secondItem="T7k-zv-B39" secondAttribute="bottom" id="nN8-zK-ZVt"/>
                             <constraint firstItem="c4Q-5x-UF7" firstAttribute="top" secondItem="k6w-tX-KTY" secondAttribute="bottom" constant="-64" id="tBY-2k-ZZg"/>
                             <constraint firstItem="Gty-ej-0uq" firstAttribute="top" secondItem="k6w-tX-KTY" secondAttribute="bottom" constant="80" id="x6N-fk-Hw6"/>
-                            <constraint firstItem="f34-5H-DQT" firstAttribute="top" secondItem="T7k-zv-B39" secondAttribute="bottom" constant="8" id="xee-af-8RG"/>
+                            <constraint firstItem="f34-5H-DQT" firstAttribute="top" secondItem="T7k-zv-B39" secondAttribute="bottom" id="xee-af-8RG"/>
                             <constraint firstItem="f34-5H-DQT" firstAttribute="top" secondItem="e97-ex-sWu" secondAttribute="bottom" constant="8" id="y1F-AF-QnL"/>
                             <constraint firstItem="e97-ex-sWu" firstAttribute="leading" secondItem="jTm-1m-GP4" secondAttribute="trailing" constant="35" id="yCh-Y3-8L6"/>
                             <constraint firstItem="gwO-eL-3I8" firstAttribute="leading" secondItem="DfY-mV-K9X" secondAttribute="trailing" constant="81" id="yWL-Mx-4sb"/>
@@ -423,6 +427,7 @@
                                 <exclude reference="x6N-fk-Hw6"/>
                                 <exclude reference="D6y-aU-sX9"/>
                                 <exclude reference="nN8-zK-ZVt"/>
+                                <exclude reference="xee-af-8RG"/>
                                 <exclude reference="y1F-AF-QnL"/>
                                 <exclude reference="Wrn-Dn-4dW"/>
                             </mask>
