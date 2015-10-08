@@ -538,6 +538,8 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             defaults.setInteger(source.numberOfGames, forKey: "numberOfGames")
             
             defaults.setDouble(source.timeLimit, forKey: "timeLimit")
+            
+            defaults.setBool(source.concedeSwitch.on, forKey: "tapAndHoldToConcede")
 
             
             setForSettings()

@@ -72,6 +72,9 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate {
         if settings.boolForKey("tapAndHoldToConcede") == true {
             concedeSwitch.setOn(true, animated: true)
         }
+        else if settings.boolForKey("tapAndHoldToConcede") == false {
+            concedeSwitch.setOn(false, animated: true)
+        }
     }
     
     func numberCase(int: Int) {
@@ -168,11 +171,11 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate {
     @IBAction func concedeSwitch(sender: UISwitch) {
         if concedeSwitch.on  == true {
             print(concedeSwitch.on)
-            settings.setBool(true, forKey: "tapAndHoldToConcede")
+            // settings.setBool(true, forKey: "tapAndHoldToConcede")
         }
         else if concedeSwitch.on == false {
             print(concedeSwitch.on)
-            settings.setBool(false, forKey: "tapAndHoldToConcede")
+            // settings.setBool(false, forKey: "tapAndHoldToConcede")
         }
     }
     
