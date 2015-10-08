@@ -57,10 +57,16 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     let mutedRedColor = UIColor(red: 214/255.0, green: 54/255.0, blue: 49/255.0, alpha: 1.0)
     
     // Scapeshift
+    let dreamyBlueColor = UIColor(red: 157/255.0, green: 207/255.0, blue: 208/255.0, alpha: 1.0)
+    let dreamyPurpleColor = UIColor(red: 129/255.0, green: 133/255.0, blue: 170/255.0, alpha: 1.0)
     
     // Living End
     let blackColor = UIColor.blackColor()
     let greyColor = UIColor(red: 74/255.0, green: 74/255.0, blue: 74/255.0, alpha: 1.0)
+    
+    // Golden
+    let goldColor = UIColor(red: 208/255.0, green: 195/255.0, blue: 67/255.0, alpha: 1.0)
+    let lightGoldColor = UIColor(red: 235/255.0, green: 223/255.0, blue: 108/255.0, alpha: 1.0)
     
     // Other UI Colors
     let redColor = UIColor(red: 208/255.0, green: 2/255.0, blue: 27/255.0, alpha: 1)
@@ -396,7 +402,11 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             BigButton.appearance().setTitleColor(.whiteColor(), forState: .Normal)
             UINavigationBar.appearance().barTintColor = mutedBlueColor
         case "Scapeshift":
-            GameHeader.appearance().backgroundColor = UIColor.blueColor()
+            GameHeader.appearance().backgroundColor = dreamyBlueColor
+            HeaderView.appearance().backgroundColor = dreamyBlueColor
+            BigButton.appearance().backgroundColor = dreamyPurpleColor
+            BigButton.appearance().setTitleColor(.whiteColor(), forState: .Normal)
+            UINavigationBar.appearance().barTintColor = dreamyBlueColor
         case "Living End":
             GameHeader.appearance().backgroundColor = blackColor
             HeaderView.appearance().backgroundColor = blackColor
@@ -404,7 +414,11 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             BigButton.appearance().setTitleColor(.whiteColor(), forState: .Normal)
             UINavigationBar.appearance().barTintColor = blackColor
         case "Golden":
-            GameHeader.appearance().backgroundColor = UIColor.blueColor()
+            GameHeader.appearance().backgroundColor = goldColor
+            HeaderView.appearance().backgroundColor = goldColor
+            BigButton.appearance().backgroundColor = lightGoldColor
+            BigButton.appearance().setTitleColor(.whiteColor(), forState: .Normal)
+            UINavigationBar.appearance().barTintColor = goldColor
         default:
             GameHeader.appearance().backgroundColor = darkBlueColor
             HeaderView.appearance().backgroundColor = darkBlueColor
