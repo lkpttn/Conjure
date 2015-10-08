@@ -19,6 +19,7 @@ class DeckNotesViewController: UIViewController {
         super.viewDidLoad()
         
         // Start with the keyboard
+        notesTextView.text = noteString
         notesTextView.becomeFirstResponder()
         
         // Toolbar stuff
@@ -44,9 +45,14 @@ class DeckNotesViewController: UIViewController {
     }
     
     override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
         NSNotificationCenter.defaultCenter().removeObserver(self)
+        if (self.isMovingFromParentViewController()) {
+            let parent = navigationController?.topViewController as! DeckDetailViewController
+            parent.deck?.notes = noteString
+        }
     }
-    
+
     func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
             bottomConstraint.constant = keyboardSize.size.height + 20
@@ -66,12 +72,5 @@ class DeckNotesViewController: UIViewController {
         notesTextView.resignFirstResponder()
     }
 
-
-    
-    // MARK: - Navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-         // Get the new view controller using segue.destinationViewController.
-        let destination = segue.destinationViewController as! DeckDetailViewController
-            noteString = (destination.deck?.notes)!
-    }
 }
+

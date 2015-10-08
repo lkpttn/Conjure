@@ -21,9 +21,12 @@ class DeckDetailViewController: UIViewController, UITextFieldDelegate {
     var deck: Deck?
     var deckDictionary = [String: Deck]()
     var oldDeckName = ""
+    var noteString: String = ""
     
     override func viewWillAppear(animated: Bool) {
         styleNavBar()
+        notesTextView.text = deck?.notes
+        saveDecks()
     }
     
     override func viewDidLoad() {
@@ -53,8 +56,6 @@ class DeckDetailViewController: UIViewController, UITextFieldDelegate {
         
         checkValidName()
     }
-    
-    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -88,6 +89,14 @@ class DeckDetailViewController: UIViewController, UITextFieldDelegate {
         deckDictionary.removeValueForKey(oldDeckName)
     }
     
+    func saveDecks() {
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(deckDictionary, toFile: Deck.ArchiveURL.path!)
+        print("Saved the decks")
+        if !isSuccessfulSave {
+            print("Failure!")
+        }
+    }
+    
     func styleNavBar() {
         let navBar = self.navigationController?.navigationBar
         navBar?.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
@@ -106,5 +115,15 @@ class DeckDetailViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func deckDelete(sender: UIButton) {
         self.performSegueWithIdentifier("unwindToDeckTableView", sender: self)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using segue.destinationViewController
+        if segue.identifier == "deckNotes" {
+            print("Moving to notes")
+            let svc = segue.destinationViewController as! DeckNotesViewController
+            svc.noteString = deck?.notes ?? ""
+        }
+
     }
 }

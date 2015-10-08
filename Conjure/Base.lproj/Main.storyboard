@@ -80,6 +80,7 @@
             <string>SourceSansPro-Regular</string>
             <string>SourceSansPro-Regular</string>
             <string>SourceSansPro-Regular</string>
+            <string>SourceSansPro-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -366,21 +367,21 @@
                                     <segue destination="Ymo-33-eMa" kind="unwind" identifier="unwindToLeadView" unwindAction="unwindToLeadView:" id="Ktb-s7-s94"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f34-5H-DQT">
-                                <rect key="frame" x="20" y="280" width="560" height="320"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T7k-zv-B39">
                                 <rect key="frame" x="20" y="250" width="560" height="30"/>
                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="13"/>
                                 <state key="normal" title="NOTES"/>
                                 <connections>
-                                    <segue destination="AD2-ya-Vv1" kind="show" id="hxR-uO-xSO"/>
+                                    <segue destination="AD2-ya-Vv1" kind="show" identifier="deckNotes" id="hxR-uO-xSO"/>
                                 </connections>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f34-5H-DQT">
+                                <rect key="frame" x="20" y="288" width="560" height="320"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
+                                <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -411,6 +412,7 @@
                             <constraint firstItem="f34-5H-DQT" firstAttribute="top" secondItem="T7k-zv-B39" secondAttribute="bottom" id="nN8-zK-ZVt"/>
                             <constraint firstItem="c4Q-5x-UF7" firstAttribute="top" secondItem="k6w-tX-KTY" secondAttribute="bottom" constant="-64" id="tBY-2k-ZZg"/>
                             <constraint firstItem="Gty-ej-0uq" firstAttribute="top" secondItem="k6w-tX-KTY" secondAttribute="bottom" constant="80" id="x6N-fk-Hw6"/>
+                            <constraint firstItem="f34-5H-DQT" firstAttribute="top" secondItem="T7k-zv-B39" secondAttribute="bottom" constant="8" id="xee-af-8RG"/>
                             <constraint firstItem="f34-5H-DQT" firstAttribute="top" secondItem="e97-ex-sWu" secondAttribute="bottom" constant="8" id="y1F-AF-QnL"/>
                             <constraint firstItem="e97-ex-sWu" firstAttribute="leading" secondItem="jTm-1m-GP4" secondAttribute="trailing" constant="35" id="yCh-Y3-8L6"/>
                             <constraint firstItem="gwO-eL-3I8" firstAttribute="leading" secondItem="DfY-mV-K9X" secondAttribute="trailing" constant="81" id="yWL-Mx-4sb"/>
@@ -976,7 +978,6 @@
         <!--Theme View Controller-->
         <scene sceneID="nNy-I1-nYc">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="GVV-vx-Sch" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="2aS-JR-0Gd" customClass="ThemeViewController" customModule="Conjure" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="me2-fS-Otm"/>
@@ -1051,6 +1052,7 @@
                         <outlet property="themePreview" destination="mi9-yM-cZG" id="WC9-j0-FhG"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GVV-vx-Sch" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2355" y="-365"/>
         </scene>
