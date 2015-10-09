@@ -203,7 +203,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             series.losses += 1
             
             // Add the win circle
-            doWinCirleLogic(series.wins, losses: series.losses)
+            doWinCirleLogic(series.wins, losses: series.losses, player: 1)
             
             // Check to see if the series is over.
             checkSeries()
@@ -215,7 +215,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             series.wins += 1
             
             // Add the win circle
-            doWinCirleLogic(series.wins, losses: series.losses)
+            doWinCirleLogic(series.wins, losses: series.losses, player: 2)
             
             checkSeries()
         }
@@ -248,25 +248,22 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     
-    func doWinCirleLogic(wins: Int, losses: Int) {
+    func doWinCirleLogic(wins: Int, losses: Int, player: Int) {
         var circleFrame = CGRectZero
         let circleWidth = 8
         let circleY = 37
         let circleX = Int(UIScreen.mainScreen().bounds.width/2)
+        let addCircleX = 15
         
-        // Need to add cases for best of five, seven
-        // Lots of weird logic bugginess
-        if losses == 1 && wins == 0 {
-            circleFrame = CGRect(x: circleX+30, y: circleY, width: circleWidth, height: circleWidth)
+        if player == 1 {
+            // Player Two wins, add a loss
+            let tempX = addCircleX*(losses-1)
+            circleFrame = CGRect(x: circleX-30-tempX, y: circleY, width: circleWidth, height: circleWidth)
         }
-        else if losses == 2 {
-            circleFrame = CGRect(x: circleX+45, y: circleY, width: circleWidth, height: circleWidth)
-        }
-        else if wins == 1 {
-            circleFrame = CGRect(x: circleX-30, y: circleY, width: circleWidth, height: circleWidth)
-        }
-        else if wins == 2 {
-            circleFrame = CGRect(x: circleX-45, y: circleY, width: circleWidth, height: circleWidth)
+        else if player == 2 {
+            // Player One wins, add a win
+            let tempX = addCircleX*(wins-1)
+            circleFrame = CGRect(x: circleX+30+tempX, y: circleY, width: circleWidth, height: circleWidth)
         }
         
         gameHeader.addWinCircle(circleFrame)

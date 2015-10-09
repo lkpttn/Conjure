@@ -80,7 +80,6 @@
             <string>SourceSansPro-Regular</string>
             <string>SourceSansPro-Regular</string>
             <string>SourceSansPro-Regular</string>
-            <string>SourceSansPro-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -915,8 +914,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="53"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tips &amp; Tricks" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="exn-oN-tf6">
-                                                    <rect key="frame" x="16" y="13" width="110" height="27"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About Conjure" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="exn-oN-tf6">
+                                                    <rect key="frame" x="16" y="13" width="127" height="27"/>
                                                     <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="21"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -925,26 +924,6 @@
                                             <constraints>
                                                 <constraint firstItem="exn-oN-tf6" firstAttribute="leading" secondItem="WoH-gU-eXT" secondAttribute="leadingMargin" constant="8" id="COe-nT-uDz"/>
                                                 <constraint firstItem="exn-oN-tf6" firstAttribute="centerY" secondItem="WoH-gU-eXT" secondAttribute="centerY" id="fbu-t5-3sF"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="54" id="dkD-BK-32J">
-                                        <rect key="frame" x="0.0" y="561" width="600" height="54"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dkD-BK-32J" id="GJK-Of-Sg4">
-                                            <rect key="frame" x="0.0" y="0.0" width="567" height="53"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About Conjure" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Sc-Ym-fyF">
-                                                    <rect key="frame" x="16" y="13" width="127" height="27"/>
-                                                    <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="21"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="6Sc-Ym-fyF" firstAttribute="centerY" secondItem="GJK-Of-Sg4" secondAttribute="centerY" id="6DW-fs-tjK"/>
-                                                <constraint firstItem="6Sc-Ym-fyF" firstAttribute="leading" secondItem="GJK-Of-Sg4" secondAttribute="leadingMargin" constant="8" id="D4c-QQ-Pnk"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
