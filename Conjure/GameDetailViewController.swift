@@ -51,8 +51,6 @@ class GameDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         turnTable.dataSource = self
         self.turnTable.reloadData()
         
-        print(series.games[0].turns)
-        
         setupSegmentControl()
     }
     
