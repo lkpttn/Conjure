@@ -20,7 +20,7 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate {
     @IBOutlet weak var numberOfGamesLabel: UILabel!
     @IBOutlet weak var timeLimitLabel: UILabel!
     
-    var numberOfGames: Int = 3
+    var numberOfGames: Int = 1
     var numberofGamesOptions: NSArray = [1,3,5]
     
     var timeLimit: Double = 3000.0

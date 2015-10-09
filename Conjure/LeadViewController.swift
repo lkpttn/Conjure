@@ -298,7 +298,8 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         case 5:
             numberOfGamesField.text = "Best of 5"
         default:
-            numberOfGamesField.text = "Best of 3"
+            numberOfGames = 1
+            numberOfGamesField.text = "Single Game"
         }
     }
     
