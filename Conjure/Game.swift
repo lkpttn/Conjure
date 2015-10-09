@@ -53,13 +53,15 @@ class Turn: NSObject, NSCoding {
     var turnPlayerOneLife: Int
     var turnPlayerTwoLife: Int
     
-    var turnPlayerOneChange = ""
-    var turnPlayerTwoChange = ""
+    var turnPlayerOneChange: String
+    var turnPlayerTwoChange: String
     
-    init(turnNumber: Int, turnPlayerOneLife: Int, turnPlayerTwoLife: Int) {
+    init(turnNumber: Int, turnPlayerOneLife: Int, turnPlayerTwoLife: Int, turnPlayerOneChange: String, turnPlayerTwoChange: String) {
         self.turnNumber = turnNumber
         self.turnPlayerOneLife = turnPlayerOneLife
         self.turnPlayerTwoLife = turnPlayerTwoLife
+        self.turnPlayerOneChange = turnPlayerOneChange
+        self.turnPlayerTwoChange = turnPlayerTwoChange
     }
     
     // MARK: NSCoding
@@ -67,13 +69,17 @@ class Turn: NSObject, NSCoding {
         aCoder.encodeInteger(turnNumber, forKey: "turnNumber")
         aCoder.encodeInteger(turnPlayerOneLife, forKey: "turnPlayerOneLife")
         aCoder.encodeInteger(turnPlayerTwoLife, forKey: "turnPlayerTwoLife")
+        aCoder.encodeObject(turnPlayerOneChange, forKey: "turnPlayerOneChange")
+        aCoder.encodeObject(turnPlayerTwoChange, forKey: "turnPlayerTwoChange")
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
         let turnNumber = aDecoder.decodeIntegerForKey("turnNumber")
         let turnPlayerOneLife = aDecoder.decodeIntegerForKey("turnPlayerOneLife")
         let turnPlayerTwoLife = aDecoder.decodeIntegerForKey("turnPlayerTwoLife")
+        let turnPlayerOneChange = aDecoder.decodeObjectForKey("turnPlayerOneChange") as! String
+        let turnPlayerTwoChange = aDecoder.decodeObjectForKey("turnPlayerTwoChange") as! String
         
-        self.init(turnNumber: turnNumber, turnPlayerOneLife: turnPlayerOneLife, turnPlayerTwoLife: turnPlayerTwoLife)
+        self.init(turnNumber: turnNumber, turnPlayerOneLife: turnPlayerOneLife, turnPlayerTwoLife: turnPlayerTwoLife, turnPlayerOneChange: turnPlayerOneChange, turnPlayerTwoChange: turnPlayerTwoChange)
     }
 } // END

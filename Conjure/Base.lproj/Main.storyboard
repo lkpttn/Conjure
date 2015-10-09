@@ -1549,12 +1549,9 @@
                                     <constraint firstAttribute="height" constant="152" id="ZKW-nM-7bI"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="yjV-0z-Jbz">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="yjV-0z-Jbz">
                                 <rect key="frame" x="20" y="205" width="560" height="395"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="300" id="g0L-dB-mG4"/>
-                                </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TurnCell" id="d5V-rL-mwP" customClass="TurnCell" customModule="Conjure" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="22" width="560" height="60"/>
@@ -1646,17 +1643,11 @@
                             <constraint firstItem="yjV-0z-Jbz" firstAttribute="trailing" secondItem="goD-Il-UNw" secondAttribute="trailingMargin" id="3kp-zw-Vod"/>
                             <constraint firstItem="HeD-cN-QDE" firstAttribute="top" secondItem="yjV-0z-Jbz" secondAttribute="bottom" id="8Os-J7-j57"/>
                             <constraint firstItem="jt3-gS-4F2" firstAttribute="top" secondItem="KCO-N7-UJp" secondAttribute="bottom" constant="-64" id="9Uo-a3-EzE"/>
-                            <constraint firstItem="yjV-0z-Jbz" firstAttribute="top" secondItem="Bnf-PS-B6B" secondAttribute="bottom" constant="8" id="Vtc-V1-gyW"/>
                             <constraint firstItem="Bnf-PS-B6B" firstAttribute="trailing" secondItem="goD-Il-UNw" secondAttribute="trailingMargin" id="awA-9g-GYZ"/>
                             <constraint firstItem="Bnf-PS-B6B" firstAttribute="leading" secondItem="goD-Il-UNw" secondAttribute="leadingMargin" id="oqt-sZ-vKm"/>
                             <constraint firstItem="yjV-0z-Jbz" firstAttribute="leading" secondItem="goD-Il-UNw" secondAttribute="leadingMargin" id="wRz-tJ-ftN"/>
                             <constraint firstAttribute="trailingMargin" secondItem="jt3-gS-4F2" secondAttribute="trailing" constant="-20" id="wqR-iC-e6P"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="Vtc-V1-gyW"/>
-                            </mask>
-                        </variation>
                     </view>
                     <connections>
                         <outlet property="deckNameLabel" destination="bRj-4K-lrW" id="4fQ-B6-RXn"/>

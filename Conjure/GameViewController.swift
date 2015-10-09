@@ -286,7 +286,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     // Can these be consolidated into one function?
-    func calcPlayerOneChange(turn: Turn) -> String {
+    func calcPlayerOneChange(playerLife: Int) -> String {
         var lastTurnPlayerOneLife = 20
         
         if turnNumber == 1 {
@@ -297,9 +297,8 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             lastTurnPlayerOneLife = series.games[gamenumber-1].turns[turnNumber-2].turnPlayerOneLife
         }
         
-        let turnPlayerOneLife = turn.turnPlayerOneLife
+        let turnPlayerOneLife = playerLife
         let playerOneChange = (lastTurnPlayerOneLife - turnPlayerOneLife) * -1
-        turn.turnPlayerOneChange = String(playerOneChange)
         
         if playerOneChange == 0 {
             return ""
@@ -312,7 +311,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     }
     
-    func calcPlayerTwoChange(turn: Turn) -> String {
+    func calcPlayerTwoChange(playerLife: Int) -> String {
         var lastTurnPlayerTwoLife = 20
         
         if turnNumber == 1 {
@@ -323,9 +322,8 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             lastTurnPlayerTwoLife = series.games[gamenumber-1].turns[turnNumber-2].turnPlayerTwoLife
         }
     
-        let turnPlayerTwoLife = turn.turnPlayerTwoLife
+        let turnPlayerTwoLife = playerLife
         let playerTwoChange = (lastTurnPlayerTwoLife - turnPlayerTwoLife) * -1
-        turn.turnPlayerTwoChange = String(playerTwoChange)
         
         if playerTwoChange == 0 {
             return ""
@@ -350,16 +348,17 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         let playerOneLife = gameHeader.playerOneCounter.lifeTotal
         let playerTwoLife = gameHeader.playerTwoCounter.lifeTotal
         
+        // Calculate turn change
+        let playerOneChange = calcPlayerOneChange(playerOneLife)
+        let playerTwoChange = calcPlayerTwoChange(playerTwoLife)
+        
         // Create a new turn, add the turn number and save life totals
-        let turn = Turn(turnNumber: turnNumber, turnPlayerOneLife: playerOneLife, turnPlayerTwoLife: playerTwoLife)
+        let turn = Turn(turnNumber: turnNumber, turnPlayerOneLife: playerOneLife, turnPlayerTwoLife: playerTwoLife, turnPlayerOneChange: playerOneChange, turnPlayerTwoChange: playerTwoChange)
+        
         
         // Add the new turn into the Turn array of the current game
         series.games[gamenumber-1].turns += [turn]
         print("Just commited game \(gamenumber), turn \(turn.turnNumber)")
-        
-        // Calculate turn change
-        turn.turnPlayerOneChange = calcPlayerOneChange(turn)
-        turn.turnPlayerTwoChange = calcPlayerTwoChange(turn)
         
         // Did anyone win?
         checkWinners()

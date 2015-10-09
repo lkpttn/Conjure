@@ -51,6 +51,8 @@ class GameDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         turnTable.dataSource = self
         self.turnTable.reloadData()
         
+        print(series.games[0].turns)
+        
         setupSegmentControl()
     }
     
@@ -99,12 +101,6 @@ class GameDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         let cellIdentifier = "TurnCell"
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! TurnCell
         
-        // Make a turn variable to store the indexPath
-        // Each cell has a different index, so it's matching up cells with parts of the array
-        
-        // What is resetting the IndexPath when the lifecount hits 0?
-        // It was execiuting all the game code before reseting the table.
-        // This means it was looking for turns in the new game instead of at the end of the current game.
         let turn = series.games[gamenumber-1].turns[indexPath.row]
         cell.playerOneChange.text = turn.turnPlayerOneChange
         cell.playerTwoChange.text = turn.turnPlayerTwoChange
