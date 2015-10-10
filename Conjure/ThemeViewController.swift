@@ -53,6 +53,11 @@ class ThemeViewController: UIViewController, ThemeTableViewControllerDelegate {
             }
         }
     }
+    
+    @IBAction func useTheme(sender: AnyObject) {
+        navigationController?.popViewControllerAnimated(true)
+    }
+    
 
     /*
     // MARK: - Navigation
