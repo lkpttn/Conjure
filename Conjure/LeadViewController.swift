@@ -128,6 +128,10 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         // Setup settings button
         gameHeader.settingsButton.addTarget(self, action: "showSettings:", forControlEvents: .TouchUpInside)
         
+        if defaults.stringForKey("selectedTheme") == nil {
+            defaults.setObject("Beleren", forKey: "selectedTheme")
+        }
+        
         setForSettings()
         changeLabels()
         setupPicker()

@@ -113,6 +113,10 @@ class DeckDetailViewController: UIViewController, UITextFieldDelegate {
         if deck?.newDeck == true {
             deckDictionary[(deck?.deckName)!] = deck
         }
+        if deckNameField.isFirstResponder() == true {
+            checkValidName()
+            deckNameField.resignFirstResponder()
+        }
         self.performSegueWithIdentifier("unwindToLeadView", sender: self)
     }
     
