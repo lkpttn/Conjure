@@ -38,11 +38,9 @@ class GameDetailViewController: UIViewController, UITableViewDelegate, UITableVi
             winLossLabel.text = "\(series.wins)-\(series.losses)"
             
             if series.wins > series.losses {
-                winLossLabel.textColor = greenColor
                 winLossLabel.text = "W \(series.wins)-\(series.losses)"
             }
             else if series.losses > series.wins {
-                winLossLabel.textColor = redColor
                 winLossLabel.text = "L \(series.wins)-\(series.losses)"
             }
         }

@@ -442,6 +442,7 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             if currentDeck != nil {
                 svc.series = Series(deck: currentDeck!, numberOfGames: numberOfGames)
                 svc.timeLimit = timeLimit
+                svc.butonColor = BigButton.appearance().backgroundColor
             }
             else {
                 let alert = UIAlertController(title: "No Deck Selected", message: "You need to create or select a deck in order to record a match.", preferredStyle: UIAlertControllerStyle.Alert)

@@ -17,6 +17,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     let settings = NSUserDefaults.standardUserDefaults()
     
+    var butonColor: UIColor!
     var series: Series!
     var timeLimit: Double!
     var gamenumber = 0
@@ -180,7 +181,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         gameButton.removeTarget(nil, action: nil, forControlEvents: .AllEvents)
         
         gameButton.setTitle("End Turn", forState: .Normal)
-        gameButton.backgroundColor = lightBlueColor
+        gameButton.backgroundColor = butonColor
         
         gameButton.addTarget(self, action: "nextTurn:", forControlEvents: .TouchDown)
         
@@ -234,7 +235,6 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             gameButton.removeTarget(nil, action: nil, forControlEvents: .AllEvents)
             
             gameButton.setTitle("End Series", forState: .Normal)
-            gameButton.backgroundColor = greenColor
             gameButton.addTarget(self, action: "endSeries:", forControlEvents: .TouchDown)
         }
         else {
@@ -242,7 +242,6 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             gameButton.removeTarget(nil, action: nil, forControlEvents: .AllEvents)
             
             gameButton.setTitle("Next Game", forState: .Normal)
-            gameButton.backgroundColor = redColor
             gameButton.addTarget(self, action: "nextGame:", forControlEvents: .TouchDown)
         }
     }
