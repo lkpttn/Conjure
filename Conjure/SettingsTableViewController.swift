@@ -23,6 +23,7 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate {
     @IBOutlet weak var timeLimitLabel: UILabel!
     
     var bannerView: UIView?
+    var purchaseTest = false
     
     var numberOfGames: Int = 1
     var numberofGamesOptions: NSArray = [1,3,5]
@@ -46,10 +47,10 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate {
         
         playerOneNameField.delegate = self
         playerTwoNameField.delegate = self
-        
-        saveButton.enabled = false
-        showBanner()
-        
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        checkPurchase()
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -130,6 +131,17 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate {
         navBar?.translucent = false
     }
     
+    // TESTING WITH FAKE STUFF
+    func checkPurchase() {
+        // settings.boolForKey("didPurchase")
+        if purchaseTest == false {
+            showBanner()
+            saveButton.enabled = false
+        } else if purchaseTest == true {
+            saveButton.enabled = true
+        }
+    }
+    
     func didPurchase() {
         saveButton.enabled = true
     }
@@ -141,7 +153,12 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate {
         let barHeight = self.navigationController!.navigationBar.bounds.height+20
         let screenWidth = UIScreen.mainScreen().bounds.width
         bannerView = PurchaseBanner(frame: CGRect(x: 0, y:barHeight, width: screenWidth, height: 70))
+        
+        let buyButton = bannerView?.viewWithTag(104) as! UIButton
+        buyButton.addTarget(self, action: "purchaseApp:", forControlEvents: UIControlEvents.TouchDown)
+        
         self.navigationController?.view.addSubview(bannerView!)
+        
         
     }
     
@@ -202,6 +219,15 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate {
     
     
     // MARK: - Switches and buttons
+    func purchaseApp(sender: UIButton) {
+        if purchaseTest == false {
+            purchaseTest = true
+        } else if purchaseTest == true {
+            purchaseTest = false
+        }
+        print(purchaseTest)
+        checkPurchase()
+    }
     @IBAction func concedeSwitch(sender: UISwitch) {
         if concedeSwitch.on  == true {
             print(concedeSwitch.on)

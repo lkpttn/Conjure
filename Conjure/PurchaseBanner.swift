@@ -24,6 +24,7 @@ class PurchaseBanner: UIView {
         
         textLabel.text = "Testing"
         buyButton.backgroundColor = .redColor()
+        buyButton.tag = 104
         
         addSubview(textLabel)
         addSubview(buyButton)
