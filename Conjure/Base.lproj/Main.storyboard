@@ -943,7 +943,7 @@
                                 <action selector="cancelButton:" destination="zQA-ec-IQH" id="OZU-PB-6eW"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="save" id="euP-cy-XIA">
+                        <barButtonItem key="rightBarButtonItem" title="Save" style="done" id="euP-cy-XIA">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <segue destination="w5g-9W-1A9" kind="unwind" unwindAction="unwindToLeadView:" id="hoB-6b-df3"/>
@@ -955,6 +955,7 @@
                         <outlet property="numberOfGamesLabel" destination="ywV-Yn-82K" id="XaX-4i-1Lf"/>
                         <outlet property="playerOneNameField" destination="LRb-ZV-1Oz" id="eO0-zS-01a"/>
                         <outlet property="playerTwoNameField" destination="EfU-a4-RQK" id="ApZ-mq-0w4"/>
+                        <outlet property="saveButton" destination="euP-cy-XIA" id="eDM-5E-Nkp"/>
                         <outlet property="startingLifeTotalLabel" destination="lNC-iH-kG0" id="dOq-3l-zGV"/>
                         <outlet property="timeLimitLabel" destination="1Rm-Sk-S4h" id="NBO-ms-LYA"/>
                     </connections>
@@ -1668,8 +1669,8 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kjl-dc-p0m">
-                                <rect key="frame" x="554" y="106" width="26" height="25"/>
-                                <state key="normal" image="Plus"/>
+                                <rect key="frame" x="552" y="106" width="28" height="28"/>
+                                <state key="normal" image="ThinPlus"/>
                                 <connections>
                                     <segue destination="JVW-mc-dEb" kind="show" identifier="addNewDeck" id="6ON-en-1O3"/>
                                 </connections>
@@ -1804,7 +1805,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Plus" width="26" height="25"/>
+        <image name="ThinPlus" width="28" height="28"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="jqd-ZT-Ozp"/>

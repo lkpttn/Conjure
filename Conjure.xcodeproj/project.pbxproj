@@ -34,6 +34,7 @@
 		0D7ED9EA1B4B387700A6C2B0 /* ConjureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7ED9E91B4B387700A6C2B0 /* ConjureTests.swift */; };
 		0D7ED9F51B4B387700A6C2B0 /* ConjureUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7ED9F41B4B387700A6C2B0 /* ConjureUITests.swift */; };
 		0D7EDA031B4B38D900A6C2B0 /* LifeCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7EDA021B4B38D900A6C2B0 /* LifeCounter.swift */; };
+		0DA3BC791BCBF15F00371F1B /* PurchaseBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA3BC781BCBF15F00371F1B /* PurchaseBanner.swift */; };
 		0DD5D36E1BB9FFEA00CF1C0B /* ThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD5D36D1BB9FFEA00CF1C0B /* ThemeViewController.swift */; };
 		0DD5D3701BBA236E00CF1C0B /* ThemeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD5D36F1BBA236E00CF1C0B /* ThemeTableViewController.swift */; };
 		0DD5D3721BBB01C500CF1C0B /* BigButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD5D3711BBB01C500CF1C0B /* BigButton.swift */; };
@@ -91,6 +92,7 @@
 		0D7ED9F41B4B387700A6C2B0 /* ConjureUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConjureUITests.swift; sourceTree = "<group>"; };
 		0D7ED9F61B4B387700A6C2B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0D7EDA021B4B38D900A6C2B0 /* LifeCounter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LifeCounter.swift; sourceTree = "<group>"; };
+		0DA3BC781BCBF15F00371F1B /* PurchaseBanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseBanner.swift; sourceTree = "<group>"; };
 		0DC448D11B8EC5EE00DDA93A /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		0DD5D36D1BB9FFEA00CF1C0B /* ThemeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeViewController.swift; sourceTree = "<group>"; };
 		0DD5D36F1BBA236E00CF1C0B /* ThemeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeTableViewController.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 				0DD5D3711BBB01C500CF1C0B /* BigButton.swift */,
 				0DD5D3731BBD881B00CF1C0B /* HeaderView.swift */,
 				0D796E081B51567100840211 /* winCircle.swift */,
+				0DA3BC781BCBF15F00371F1B /* PurchaseBanner.swift */,
 				0D7ED9D81B4B387700A6C2B0 /* Main.storyboard */,
 				0D7ED9DB1B4B387700A6C2B0 /* Assets.xcassets */,
 				0D7ED9DD1B4B387700A6C2B0 /* LaunchScreen.storyboard */,
@@ -373,6 +376,7 @@
 				0D11DE961B6C450000697EAD /* DeckViewController.swift in Sources */,
 				29B06F921B8FA36A005D3BE1 /* SettingsDetailTableViewController.swift in Sources */,
 				0D796E0C1B51FB6500840211 /* TurnCell.swift in Sources */,
+				0DA3BC791BCBF15F00371F1B /* PurchaseBanner.swift in Sources */,
 				0D7ED9D51B4B387700A6C2B0 /* AppDelegate.swift in Sources */,
 				0DD5D3761BC3004F00CF1C0B /* DeckNotesViewController.swift in Sources */,
 				0DD5D3741BBD881B00CF1C0B /* HeaderView.swift in Sources */,
