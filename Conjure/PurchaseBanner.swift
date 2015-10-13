@@ -21,6 +21,11 @@ class PurchaseBanner: UIView {
         super.init(frame: frame)
         self.backgroundColor = UIColor.whiteColor()
         
+        // COMPLEX MATH
+        // width - outside edges - button width - inside margin
+        let labelWidth = deviceWidth-108
+        textLabel.frame = CGRect(x: 92, y: 10, width: labelWidth, height: 44)
+        
         let bottomBorder = CALayer()
         bottomBorder.backgroundColor = UIColor.lightGrayColor().CGColor
         bottomBorder.frame = CGRect(x: 0, y: self.bounds.height, width: deviceWidth, height: 1)
