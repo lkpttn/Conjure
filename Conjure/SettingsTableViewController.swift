@@ -139,6 +139,7 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate {
             saveButton.enabled = false
         } else if purchaseTest == true {
             saveButton.enabled = true
+            hideBanner()
         }
     }
     
@@ -152,14 +153,12 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate {
         
         let barHeight = self.navigationController!.navigationBar.bounds.height+20
         let screenWidth = UIScreen.mainScreen().bounds.width
-        bannerView = PurchaseBanner(frame: CGRect(x: 0, y:barHeight, width: screenWidth, height: 70))
+        bannerView = PurchaseBanner(frame: CGRect(x: 0, y:barHeight, width: screenWidth, height: 66))
         
         let buyButton = bannerView?.viewWithTag(104) as! UIButton
         buyButton.addTarget(self, action: "purchaseApp:", forControlEvents: UIControlEvents.TouchDown)
         
         self.navigationController?.view.addSubview(bannerView!)
-        
-        
     }
     
     func hideBanner() {
@@ -216,7 +215,6 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate {
             destination.cellData = timeLimitOptions
         }
     }
-    
     
     // MARK: - Switches and buttons
     func purchaseApp(sender: UIButton) {

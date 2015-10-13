@@ -12,6 +12,8 @@ class DeckViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBOutlet weak var deckTable: UITableView!
     
+    var settings = NSUserDefaults.standardUserDefaults()
+    
     var deckDictionary = [String: Deck]()
     var deckArray = [Deck]()
     
@@ -53,13 +55,21 @@ class DeckViewController: UIViewController, UITableViewDelegate, UITableViewData
         return cell
     }
    
+    // Other functions
     func styleNavBar() {
         let navBar = self.navigationController?.navigationBar
         navBar?.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
         navBar?.shadowImage = UIImage()
         navBar?.translucent = true
         navBar!.barTintColor = UIColor.clearColor()
-    }    
+    }
+    
+    func checkPurchase() {
+        if settings.boolForKey("didPurchase") == false && deckArray.count == 3 {
+            // Disable the button
+            // Limit the tableview
+        }
+    }
 
     // MARK: Segue actions
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

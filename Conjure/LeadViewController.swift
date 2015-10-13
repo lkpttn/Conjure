@@ -108,22 +108,7 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             print("No saved series!")
         }
         
-        // Load saved decks
-        if let savedDecks = loadDecks() {
-            // For loop iteration?
-            deckDictionary = savedDecks
-            print(deckDictionary)
-            
-            // Load the most recent current deck from user defaults
-            if let name = defaults.stringForKey("currentDeckString") {
-                currentDeck = deckDictionary[name]
-                deckLabel.text = currentDeck?.deckName
-                deckWinLossLabel.text = "W: \(currentDeck!.wins)    L: \(currentDeck!.losses)"
-            }
-        }
-        else {
-            print("No saved decks!")
-        }
+        checkDecks()
         
         // Setup settings button
         gameHeader.settingsButton.addTarget(self, action: "showSettings:", forControlEvents: .TouchUpInside)
@@ -139,6 +124,8 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     
     override func viewWillAppear(animated: Bool) {
         print("View will appear trigger")
+        
+        checkDecks()
         changeTheme(defaults.stringForKey("selectedTheme") ?? "Beleren")
         self.reloadInputViews()
     }
@@ -157,6 +144,31 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
                 deckRecordHistoryLabel.text = "L \(lastSeries.wins)-\(lastSeries.losses)"
             }
 
+        }
+    }
+    
+    func checkDecks() {
+        if let savedDecks = loadDecks() {
+            // For loop iteration?
+            deckDictionary = savedDecks
+            print(deckDictionary)
+            
+            // Load the most recent current deck from user defaults
+            let name = defaults.stringForKey("currentDeckString")
+            if name != nil {
+                currentDeck = deckDictionary[name!]
+                if currentDeck != nil {
+                    deckLabel.text = currentDeck?.deckName
+                    deckWinLossLabel.text = "W: \(currentDeck!.wins)    L: \(currentDeck!.losses)"
+                }
+                else if currentDeck == nil {
+                    deckLabel.text = "No deck selected"
+                    deckWinLossLabel.text = ""
+                }
+            }
+        }
+        else {
+            print("No saved decks!")
         }
     }
     
@@ -367,6 +379,10 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         }
         gameHeader.playerOneCounter.lifeTotal = lifeTotal
         gameHeader.playerTwoCounter.lifeTotal = lifeTotal
+        
+        if defaults.boolForKey("didPurchase") != false && defaults.boolForKey("didPurchase") != true {
+            defaults.setBool(false, forKey: "didPurchase")
+        }
         
         changeTheme(defaults.stringForKey("selectedTheme") ?? "Beleren")
     }
