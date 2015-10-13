@@ -40,6 +40,7 @@ class DeckDetailViewController: UIViewController, UITextFieldDelegate {
             winsLabel.text = String(deck.wins)
             lossesLabel.text = String(deck.losses)
             notesTextView.text = deck.notes
+            notesTextView.contentInset = UIEdgeInsets(top: -4.0, left: -5.0, bottom: -5.0, right: -5.0)
             
             if deck.wins != 0 && deck.losses != 0 {
                 let games:Float = Float(deck.wins) + Float(deck.losses)

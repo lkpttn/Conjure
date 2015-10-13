@@ -20,6 +20,7 @@ class DeckNotesViewController: UIViewController {
         
         // Start with the keyboard
         notesTextView.text = noteString
+        notesTextView.contentInset = UIEdgeInsets(top: -4.0, left: -5.0, bottom: -5.0, right: -5.0)
         notesTextView.becomeFirstResponder()
         
         // Toolbar stuff
