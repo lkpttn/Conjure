@@ -35,6 +35,7 @@
 		0D7ED9F51B4B387700A6C2B0 /* ConjureUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7ED9F41B4B387700A6C2B0 /* ConjureUITests.swift */; };
 		0D7EDA031B4B38D900A6C2B0 /* LifeCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7EDA021B4B38D900A6C2B0 /* LifeCounter.swift */; };
 		0DA3BC791BCBF15F00371F1B /* PurchaseBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA3BC781BCBF15F00371F1B /* PurchaseBanner.swift */; };
+		0DA933841BCFF30900DCB3FC /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DA933831BCFF30900DCB3FC /* StoreKit.framework */; };
 		0DD5D36E1BB9FFEA00CF1C0B /* ThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD5D36D1BB9FFEA00CF1C0B /* ThemeViewController.swift */; };
 		0DD5D3701BBA236E00CF1C0B /* ThemeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD5D36F1BBA236E00CF1C0B /* ThemeTableViewController.swift */; };
 		0DD5D3721BBB01C500CF1C0B /* BigButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD5D3711BBB01C500CF1C0B /* BigButton.swift */; };
@@ -93,6 +94,7 @@
 		0D7ED9F61B4B387700A6C2B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0D7EDA021B4B38D900A6C2B0 /* LifeCounter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LifeCounter.swift; sourceTree = "<group>"; };
 		0DA3BC781BCBF15F00371F1B /* PurchaseBanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseBanner.swift; sourceTree = "<group>"; };
+		0DA933831BCFF30900DCB3FC /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		0DC448D11B8EC5EE00DDA93A /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		0DD5D36D1BB9FFEA00CF1C0B /* ThemeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeViewController.swift; sourceTree = "<group>"; };
 		0DD5D36F1BBA236E00CF1C0B /* ThemeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeTableViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DA933841BCFF30900DCB3FC /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,6 +174,7 @@
 		0D7ED9C81B4B387600A6C2B0 = {
 			isa = PBXGroup;
 			children = (
+				0DA933831BCFF30900DCB3FC /* StoreKit.framework */,
 				0D7ED9D31B4B387700A6C2B0 /* Conjure */,
 				0D7ED9E81B4B387700A6C2B0 /* ConjureTests */,
 				0D7ED9F31B4B387700A6C2B0 /* ConjureUITests */,
@@ -296,7 +300,12 @@
 				TargetAttributes = {
 					0D7ED9D01B4B387700A6C2B0 = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = KG4R9QVJMB;
+						DevelopmentTeam = BER6AW8TB5;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+						};
 					};
 					0D7ED9E41B4B387700A6C2B0 = {
 						CreatedOnToolsVersion = 7.0;
@@ -534,11 +543,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Conjure/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.friendofpixels.Conjure;
+				PRODUCT_BUNDLE_IDENTIFIER = com.friendofpixels.ConjureMTG;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -547,11 +559,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Conjure/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.friendofpixels.Conjure;
+				PRODUCT_BUNDLE_IDENTIFIER = com.friendofpixels.ConjureMTG;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
