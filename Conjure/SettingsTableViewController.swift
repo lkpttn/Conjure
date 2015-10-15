@@ -44,6 +44,7 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate, S
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        purchaseTest = settings.boolForKey("didPurchase")
         // Add purchasable product
         requestProductInfo()
         
@@ -207,6 +208,7 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate, S
                 SKPaymentQueue.defaultQueue().finishTransaction(transaction)
                 transactionInProgress = false
                 purchaseTest = true
+                settings.setBool(true, forKey: "didPurchase")
                 self.checkPurchase()
                 
             case SKPaymentTransactionState.Failed:
@@ -222,7 +224,6 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate, S
     }
     
     func checkPurchase() {
-        // settings.boolForKey("didPurchase")
         if purchaseTest == false {
             showBanner()
             saveButton.enabled = false
@@ -249,7 +250,7 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate, S
     func hideBanner() {
         // Change table view inset
         self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        bannerView!.removeFromSuperview()
+        bannerView?.removeFromSuperview()
     }
     
 

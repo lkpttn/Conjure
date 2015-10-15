@@ -380,10 +380,6 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         gameHeader.playerOneCounter.lifeTotal = lifeTotal
         gameHeader.playerTwoCounter.lifeTotal = lifeTotal
         
-        if defaults.boolForKey("didPurchase") != false && defaults.boolForKey("didPurchase") != true {
-            defaults.setBool(false, forKey: "didPurchase")
-        }
-        
         changeTheme(defaults.stringForKey("selectedTheme") ?? "Beleren")
     }
     
