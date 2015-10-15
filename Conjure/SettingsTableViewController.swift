@@ -9,23 +9,13 @@
 import UIKit
 import StoreKit
 
-protocol IAPurchaceViewControllerDelegate {
-    
-    func didBuyColorsCollection(collectionIndex: Int)
-    
-}
-
-class SettingsTableViewController: UITableViewController, UITextFieldDelegate, SKProductsRequestDelegate {
+class SettingsTableViewController: UITableViewController, UITextFieldDelegate, SKProductsRequestDelegate, SKPaymentTransactionObserver {
     
     let settings = NSUserDefaults.standardUserDefaults()
     
     // In-app purchase stuff
     var productArray: Array<SKProduct!> = []
-    
-    var selectedProductIndex: Int!
     var transactionInProgress = false
-    
-    var delegate: IAPurchaceViewControllerDelegate!
 
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var concedeSwitch: UISwitch!
@@ -56,9 +46,9 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate, S
         
         // Add purchasable product
         requestProductInfo()
-        showActions()
         
-        // SKPaymentQueue.defaultQueue().addTransactionObserver(self)
+        // Become an observer of the transaction
+        SKPaymentQueue.defaultQueue().addTransactionObserver(self)
         
         self.tableView.backgroundColor = UIColor.groupTableViewBackgroundColor()
         self.styleNavBar()
@@ -149,7 +139,7 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate, S
         navBar?.translucent = false
     }
     
-    // TESTING WITH FAKE STUFF
+    // Gets the list of products
     func requestProductInfo() {
         if SKPaymentQueue.canMakePayments() {
             let productID = NSSet(object: "com.friendofpixels.ConjureFull")
@@ -164,11 +154,15 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate, S
         }
     }
     
+    // Holds the response from the server with the products
     func productsRequest(request: SKProductsRequest, didReceiveResponse response: SKProductsResponse) {
         if response.products.count != 0 {
             print("There is a product!")
             for product in response.products {
                 productArray.append(product as SKProduct)
+                print(product.localizedTitle)
+                print(product.localizedDescription)
+                print(product.price)
             }
         }
         else {
@@ -176,15 +170,17 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate, S
         }
     }
     
-    func showActions() {
+    // Shows the initial buy view controller.
+    func showActions(sender: UIButton) {
         if transactionInProgress {
             return
         }
         
-        let actionSheetController = UIAlertController(title: "IAPDemo", message: "What do you want to do?", preferredStyle: UIAlertControllerStyle.Alert)
+        let actionSheetController = UIAlertController(title: "Unlock all Conjure Features", message: "What do you want to do?", preferredStyle: UIAlertControllerStyle.Alert)
         
         let buyAction = UIAlertAction(title: "Buy", style: UIAlertActionStyle.Default) { (action) -> Void in
             let payment = SKPayment(product: self.productArray[0] as SKProduct)
+            // Adds the payment to the queue
             SKPaymentQueue.defaultQueue().addPayment(payment)
             self.transactionInProgress = true
         }
@@ -201,18 +197,21 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate, S
     }
     
     // Monitors the payment in the background
-    func paymentQueue(queue: SKPaymentQueue!, updatedTransactions transactions: [AnyObject]!) {
-        for transaction in transactions as! [SKPaymentTransaction] {
+    func paymentQueue(queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+        print("Received Payment Transaction Response from Apple")
+        
+        for transaction in transactions as [SKPaymentTransaction] {
             switch transaction.transactionState {
             case SKPaymentTransactionState.Purchased:
                 print("Transaction completed successfully.")
                 SKPaymentQueue.defaultQueue().finishTransaction(transaction)
                 transactionInProgress = false
-                delegate.didBuyColorsCollection(selectedProductIndex)
-                
+                purchaseTest = true
+                self.checkPurchase()
                 
             case SKPaymentTransactionState.Failed:
-                print("Transaction Failed");
+                print("Transaction Failed")
+                print(transaction.error)
                 SKPaymentQueue.defaultQueue().finishTransaction(transaction)
                 transactionInProgress = false
                 
@@ -233,10 +232,6 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate, S
         }
     }
     
-    func didPurchase() {
-        saveButton.enabled = true
-    }
-    
     func showBanner() {
         // Change table view inset
         self.tableView.contentInset = UIEdgeInsets(top: 50, left: 0, bottom: 0, right: 0)
@@ -246,7 +241,7 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate, S
         bannerView = PurchaseBanner(frame: CGRect(x: 0, y:barHeight, width: screenWidth, height: 66))
         
         let buyButton = bannerView?.viewWithTag(104) as! UIButton
-        buyButton.addTarget(self, action: "purchaseApp:", forControlEvents: UIControlEvents.TouchDown)
+        buyButton.addTarget(self, action: "showActions:", forControlEvents: UIControlEvents.TouchDown)
         
         self.navigationController?.view.addSubview(bannerView!)
     }
@@ -316,6 +311,7 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate, S
         print(purchaseTest)
         checkPurchase()
     }
+    
     @IBAction func concedeSwitch(sender: UISwitch) {
         if concedeSwitch.on  == true {
             print(concedeSwitch.on)
