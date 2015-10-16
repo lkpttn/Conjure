@@ -64,6 +64,9 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate, S
         checkPurchase()
     }
     
+    override func viewDidAppear(animated: Bool) {
+    }
+    
     override func viewWillDisappear(animated: Bool) {
         hideBanner()
     }
@@ -144,7 +147,7 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate, S
     // Gets the list of products
     func requestProductInfo() {
         if SKPaymentQueue.canMakePayments() {
-            let productID = NSSet(object: "com.friendofpixels.ConjureFull")
+            let productID = NSSet(object: "com.friendofpixels.ConjureUnlock")
             let productsRequest:SKProductsRequest = SKProductsRequest(productIdentifiers: productID as! Set<String>)
             print(productsRequest)
             
@@ -172,30 +175,11 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate, S
         }
     }
     
-    // Shows the initial buy view controller.
-    func showActions(sender: UIButton) {
-        if transactionInProgress {
-            return
-        }
-        
-        let actionSheetController = UIAlertController(title: "Unlock all Conjure Features", message: "What do you want to do?", preferredStyle: UIAlertControllerStyle.Alert)
-        
-        let buyAction = UIAlertAction(title: "Buy", style: UIAlertActionStyle.Default) { (action) -> Void in
-            let payment = SKPayment(product: self.productArray[0] as SKProduct)
-            // Adds the payment to the queue
-            SKPaymentQueue.defaultQueue().addPayment(payment)
-            self.transactionInProgress = true
-        }
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) { (action) -> Void in
-            
-        }
-        
-        actionSheetController.addAction(buyAction)
-        actionSheetController.addAction(cancelAction)
-        
-        presentViewController(actionSheetController, animated: true, completion: nil)
-        
+    func purchase(sender: UIButton) {
+        let payment = SKPayment(product: self.productArray[0] as SKProduct)
+        // Adds the payment to the queue
+        SKPaymentQueue.defaultQueue().addPayment(payment)
+        self.transactionInProgress = true
     }
     
     // Monitors the payment in the background
@@ -236,15 +220,15 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate, S
     
     func showBanner() {
         // Change table view inset
-        self.tableView.contentInset = UIEdgeInsets(top: 204, left: 0, bottom: 0, right: 0)
-        self.tableView.scrollIndicatorInsets = UIEdgeInsets(top: 204, left: 0, bottom: 0, right: 0)
+        self.tableView.contentInset = UIEdgeInsets(top: 236, left: 0, bottom: 0, right: 0)
+        self.tableView.scrollIndicatorInsets = UIEdgeInsets(top: 236, left: 0, bottom: 0, right: 0)
         
         let barHeight = self.navigationController!.navigationBar.bounds.height+20
         let screenWidth = UIScreen.mainScreen().bounds.width
-        bannerView = PurchaseBanner(frame: CGRect(x: 0, y:barHeight, width: screenWidth, height: 204))
+        bannerView = PurchaseBanner(frame: CGRect(x: 0, y:barHeight, width: screenWidth, height: 236))
         
         let buyButton = bannerView?.viewWithTag(104) as! UIButton
-        buyButton.addTarget(self, action: "showActions:", forControlEvents: UIControlEvents.TouchDown)
+        buyButton.addTarget(self, action: "purchase:", forControlEvents: UIControlEvents.TouchDown)
         
         self.navigationController?.view.addSubview(bannerView!)
     }
