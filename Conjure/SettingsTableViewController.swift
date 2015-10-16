@@ -54,6 +54,7 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate, S
         self.tableView.backgroundColor = UIColor.groupTableViewBackgroundColor()
         self.styleNavBar()
         self.loadAllSettings()
+
         
         playerOneNameField.delegate = self
         playerTwoNameField.delegate = self
@@ -235,11 +236,12 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate, S
     
     func showBanner() {
         // Change table view inset
-        self.tableView.contentInset = UIEdgeInsets(top: 50, left: 0, bottom: 0, right: 0)
+        self.tableView.contentInset = UIEdgeInsets(top: 204, left: 0, bottom: 0, right: 0)
+        self.tableView.scrollIndicatorInsets = UIEdgeInsets(top: 204, left: 0, bottom: 0, right: 0)
         
         let barHeight = self.navigationController!.navigationBar.bounds.height+20
         let screenWidth = UIScreen.mainScreen().bounds.width
-        bannerView = PurchaseBanner(frame: CGRect(x: 0, y:barHeight, width: screenWidth, height: 66))
+        bannerView = PurchaseBanner(frame: CGRect(x: 0, y:barHeight, width: screenWidth, height: 204))
         
         let buyButton = bannerView?.viewWithTag(104) as! UIButton
         buyButton.addTarget(self, action: "showActions:", forControlEvents: UIControlEvents.TouchDown)
@@ -250,7 +252,7 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate, S
     func hideBanner() {
         // Change table view inset
         self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        bannerView?.removeFromSuperview()
+        bannerView!.removeFromSuperview()
     }
     
 
