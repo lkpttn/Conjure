@@ -13,6 +13,7 @@ class DeckViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var deckTable: UITableView!
     
     var settings = NSUserDefaults.standardUserDefaults()
+    var bannerView: UIView?
     var purchased = false
     
     var deckDictionary = [String: Deck]()
@@ -37,9 +38,6 @@ class DeckViewController: UIViewController, UITableViewDelegate, UITableViewData
         if purchased == false {
             // Add banner, limit decks
             print("Buy the app!")
-            while deckArray.count > 1 {
-                deckArray.removeLast()
-            }
         }
         
         deckTable.delegate = self
@@ -76,11 +74,10 @@ class DeckViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     // MARK: Button actions
-
     @IBAction func newDeckButton(sender: UIButton) {
         if purchased == false && deckArray.count == 1 {
             let alert = UIAlertController(title: "Only one deck is allowed in the free version", message: "Please purchase the full version for unlimited deck tracking.", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "Maybe I will!", style: UIAlertActionStyle.Cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: "Maybe I Will!", style: UIAlertActionStyle.Cancel, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
         } else {
             performSegueWithIdentifier("addNewDeck", sender: self)

@@ -16,6 +16,7 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate, S
     // In-app purchase stuff
     var productArray: Array<SKProduct!> = []
     var transactionInProgress = false
+    var buyButton: UIButton?
 
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var concedeSwitch: UISwitch!
@@ -168,6 +169,7 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate, S
                 print(product.localizedTitle)
                 print(product.localizedDescription)
                 print(product.price)
+                buyButton?.enabled = true
             }
         }
         else {
@@ -227,8 +229,9 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate, S
         let screenWidth = UIScreen.mainScreen().bounds.width
         bannerView = PurchaseBanner(frame: CGRect(x: 0, y:barHeight, width: screenWidth, height: 236))
         
-        let buyButton = bannerView?.viewWithTag(104) as! UIButton
-        buyButton.addTarget(self, action: "purchase:", forControlEvents: UIControlEvents.TouchDown)
+        buyButton = bannerView?.viewWithTag(104) as? UIButton
+        buyButton?.enabled = false
+        buyButton!.addTarget(self, action: "purchase:", forControlEvents: UIControlEvents.TouchDown)
         
         self.navigationController?.view.addSubview(bannerView!)
     }
