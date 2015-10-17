@@ -1720,7 +1720,7 @@
                                 <rect key="frame" x="552" y="106" width="28" height="28"/>
                                 <state key="normal" image="ThinPlus"/>
                                 <connections>
-                                    <segue destination="JVW-mc-dEb" kind="show" identifier="addNewDeck" id="6ON-en-1O3"/>
+                                    <action selector="newDeckButton:" destination="Odd-oq-IYF" eventType="touchUpInside" id="eSC-vZ-lub"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="100" placeholderIntrinsicHeight="21" text="My Decks" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4OX-ge-2T8">
@@ -1800,6 +1800,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="deckTable" destination="N6z-hm-FO9" id="MX2-Ho-Vc3"/>
+                        <segue destination="JVW-mc-dEb" kind="show" identifier="addNewDeck" id="Zow-2J-gL6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Uf-UA-Lrw" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1856,7 +1857,7 @@
         <image name="ThinPlus" width="28" height="28"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="Zow-2J-gL6"/>
         <segue reference="jqd-ZT-Ozp"/>
-        <segue reference="6ON-en-1O3"/>
     </inferredMetricsTieBreakers>
 </document>

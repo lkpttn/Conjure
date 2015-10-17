@@ -13,6 +13,7 @@ class DeckViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var deckTable: UITableView!
     
     var settings = NSUserDefaults.standardUserDefaults()
+    var purchased = false
     
     var deckDictionary = [String: Deck]()
     var deckArray = [Deck]()
@@ -24,11 +25,21 @@ class DeckViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        purchased = settings.boolForKey("didPurchase")
 
         // Turn the deckDictionary into a deckarray
         for (deckName, deck) in deckDictionary {
             print(deckName)
             deckArray.append(deck)
+        }
+        
+        if purchased == false {
+            // Add banner, limit decks
+            print("Buy the app!")
+            while deckArray.count > 1 {
+                deckArray.removeLast()
+            }
         }
         
         deckTable.delegate = self
@@ -64,13 +75,20 @@ class DeckViewController: UIViewController, UITableViewDelegate, UITableViewData
         navBar!.barTintColor = UIColor.clearColor()
     }
     
-    func checkPurchase() {
-        if settings.boolForKey("didPurchase") == false && deckArray.count == 3 {
-            // Disable the button
-            // Limit the tableview
-        }
-    }
+    // MARK: Button actions
 
+    @IBAction func newDeckButton(sender: UIButton) {
+        if purchased == false && deckArray.count == 1 {
+            let alert = UIAlertController(title: "Only one deck is allowed in the free version", message: "Please purchase the full version for unlimited deck tracking.", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Maybe I will!", style: UIAlertActionStyle.Cancel, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+        } else {
+            performSegueWithIdentifier("addNewDeck", sender: self)
+        }
+
+    }
+    
+    
     // MARK: Segue actions
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showDeckDetail" {
