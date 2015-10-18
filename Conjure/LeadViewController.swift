@@ -494,22 +494,27 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     @IBAction func unwindToLeadView(sender: UIStoryboardSegue) {
         // If the sourceViewController was GameViewController, add the new series into the array.
         if let source = sender.sourceViewController as? GameViewController, series = source.series {
-            // Do stuff with the new series here. Save maybe?
-            seriesArray.insert(series, atIndex: 0)
-            saveSeries()
+            if defaults.boolForKey("didPurchase") == true ||
+                defaults.boolForKey("didPurchase") == false && seriesArray.count <= 3 {
+                    print("Adding game")
+                    seriesArray.insert(series, atIndex: 0)
+                    saveSeries()
             
-            // Edit the deck as well.
-            if series.wins > series.losses {
-                deckDictionary[currentDeck!.deckName]?.wins += 1
+                    // Edit the deck as well.
+                    if series.wins > series.losses {
+                        deckDictionary[currentDeck!.deckName]?.wins += 1
+                    }
+                    else if series.losses > series.wins {
+                        deckDictionary[currentDeck!.deckName]?.losses += 1
+                    }
+            
+                    deckWinLossLabel.text = "W: \(deckDictionary[currentDeck!.deckName]!.wins)    L: \(deckDictionary[currentDeck!.deckName]!.losses)"
+            
+                    saveDecks()
+                    changeLabels()
+            } else {
+                print("Not adding game!")
             }
-            else if series.losses > series.wins {
-                deckDictionary[currentDeck!.deckName]?.losses += 1
-            }
-            
-            deckWinLossLabel.text = "W: \(deckDictionary[currentDeck!.deckName]!.wins)    L: \(deckDictionary[currentDeck!.deckName]!.losses)"
-            
-            saveDecks()
-            changeLabels()
         }
         if let source = sender.sourceViewController as? HistoryViewController {
             seriesArray = source.seriesArray
