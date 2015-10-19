@@ -15,6 +15,7 @@
 		0D11DEA11B6E6C1F00697EAD /* SourceSansPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0D11DE9E1B6E6C1F00697EAD /* SourceSansPro-Regular.otf */; };
 		0D11DEA51B6E710200697EAD /* SourceSansPro-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0D11DEA41B6E710200697EAD /* SourceSansPro-Semibold.otf */; };
 		0D17C27F1BD2F9AC00EF8AA1 /* SmallPurchaseBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D17C27E1BD2F9AC00EF8AA1 /* SmallPurchaseBanner.swift */; };
+		0D17C2811BD459DF00EF8AA1 /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D17C2801BD459DF00EF8AA1 /* IntroViewController.swift */; };
 		0D2037161B535AF30058E059 /* LeadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2037151B535AF30058E059 /* LeadViewController.swift */; };
 		0D3278E31B569D5800B58ECD /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3278DF1B55FC2600B58ECD /* Deck.swift */; };
 		0D3278E41B569D5900B58ECD /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3278DF1B55FC2600B58ECD /* Deck.swift */; };
@@ -74,6 +75,7 @@
 		0D11DE9E1B6E6C1F00697EAD /* SourceSansPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SourceSansPro-Regular.otf"; path = "../../../Resources/SourceSansPro-Regular.otf"; sourceTree = "<group>"; };
 		0D11DEA41B6E710200697EAD /* SourceSansPro-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SourceSansPro-Semibold.otf"; path = "../../../../../Documents/Fonts/Source Sans Pro/SourceSansPro-Semibold.otf"; sourceTree = "<group>"; };
 		0D17C27E1BD2F9AC00EF8AA1 /* SmallPurchaseBanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmallPurchaseBanner.swift; sourceTree = "<group>"; };
+		0D17C2801BD459DF00EF8AA1 /* IntroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
 		0D2037151B535AF30058E059 /* LeadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeadViewController.swift; sourceTree = "<group>"; };
 		0D3278DF1B55FC2600B58ECD /* Deck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
 		0D3278E91B56DB0A00B58ECD /* SeriesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeriesCell.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 		0D3278E81B56D8FC00B58ECD /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				0D17C2801BD459DF00EF8AA1 /* IntroViewController.swift */,
 				0D2037151B535AF30058E059 /* LeadViewController.swift */,
 				0D7ED9D61B4B387700A6C2B0 /* GameViewController.swift */,
 				0D11DE951B6C450000697EAD /* DeckViewController.swift */,
@@ -396,6 +399,7 @@
 				0D11DE921B6BE69100697EAD /* HistoryViewController.swift in Sources */,
 				0D2037161B535AF30058E059 /* LeadViewController.swift in Sources */,
 				0DF8F8561B4EFA08000C6AF6 /* GameHeader.swift in Sources */,
+				0D17C2811BD459DF00EF8AA1 /* IntroViewController.swift in Sources */,
 				0D796E091B51567100840211 /* winCircle.swift in Sources */,
 				0DDFC71D1B5A85A100DAB4DB /* DeckDetailViewController.swift in Sources */,
 				0D7EDA031B4B38D900A6C2B0 /* LifeCounter.swift in Sources */,

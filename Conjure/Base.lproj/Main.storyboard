@@ -80,9 +80,58 @@
             <string>SourceSansPro-Regular</string>
             <string>SourceSansPro-Regular</string>
             <string>SourceSansPro-Regular</string>
+            <string>SourceSansPro-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
+        <!--Intro View Controller-->
+        <scene sceneID="4Xd-uW-GCa">
+            <objects>
+                <viewController id="CNk-ZA-Os2" customClass="IntroViewController" customModule="Conjure" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ioa-wy-jFP"/>
+                        <viewControllerLayoutGuide type="bottom" id="lxd-Uu-ztj"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="tN0-ti-qlN">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lx8-M1-e55">
+                                <rect key="frame" x="20" y="236" width="560" height="36"/>
+                                <string key="text">Conjure is the a competitive TCG player's best friend. You can keep notes, track wins and losses and see all your games turn-by-turn.</string>
+                                <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QQZ-PV-6Cn">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="228"/>
+                                <color key="backgroundColor" red="0.094117647060000004" green="0.18823529410000001" blue="0.2470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="228" id="9Eg-8z-c7j"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Lx8-M1-e55" firstAttribute="top" secondItem="QQZ-PV-6Cn" secondAttribute="bottom" constant="8" id="1R1-12-0sC"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="QQZ-PV-6Cn" secondAttribute="trailing" constant="-20" id="8Nu-rP-4td"/>
+                            <constraint firstItem="Lx8-M1-e55" firstAttribute="top" secondItem="QQZ-PV-6Cn" secondAttribute="bottom" constant="8" id="Dct-Di-TY6"/>
+                            <constraint firstItem="Lx8-M1-e55" firstAttribute="trailing" secondItem="tN0-ti-qlN" secondAttribute="trailingMargin" id="Kr4-fw-wZ9"/>
+                            <constraint firstItem="QQZ-PV-6Cn" firstAttribute="leading" secondItem="tN0-ti-qlN" secondAttribute="leadingMargin" constant="-20" id="VQ3-as-Lcu"/>
+                            <constraint firstItem="Lx8-M1-e55" firstAttribute="leading" secondItem="tN0-ti-qlN" secondAttribute="leadingMargin" id="aeI-MU-rSl"/>
+                            <constraint firstItem="QQZ-PV-6Cn" firstAttribute="top" secondItem="tN0-ti-qlN" secondAttribute="topMargin" id="eQf-aM-isr"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Dct-Di-TY6"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="swr-n8-zoD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1083" y="315"/>
+        </scene>
         <!--Lead View Controller-->
         <scene sceneID="K5B-Rq-cUi">
             <objects>
@@ -262,6 +311,7 @@
                         <outlet property="timeLimitButton" destination="GgR-Ro-zzf" id="PgQ-zd-Ra9"/>
                         <outlet property="timeLimitTextField" destination="h5P-2t-f8B" id="JFz-3F-FQe"/>
                         <segue destination="ayL-OF-n3W" kind="presentation" identifier="showSettings" id="QDK-fY-DnH"/>
+                        <segue destination="CNk-ZA-Os2" kind="presentation" identifier="showIntro" id="f8r-le-trC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rVz-4H-SEv" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -93,6 +93,7 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     }
     
     override func viewDidLoad() {
+        
         // Allows the screen to fall asleep.
         UIApplication.sharedApplication().idleTimerDisabled = false
         
@@ -128,6 +129,13 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         checkDecks()
         changeTheme(defaults.stringForKey("selectedTheme") ?? "Beleren")
         self.reloadInputViews()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        if defaults.boolForKey("alreadyLaunched") == false {
+            performSegueWithIdentifier("showIntro", sender: self)
+            defaults.setBool(true, forKey: "alreadyLaunched")
+        }
     }
     
     func changeLabels() {
