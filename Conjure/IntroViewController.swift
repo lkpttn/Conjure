@@ -37,50 +37,8 @@ class IntroViewController: UIViewController {
     
     func setupLabels() {
         let labelWidth = deviceWidth-32
-        let labelHalfWidth = (deviceWidth/2)-24
-        
-        // Free features
-        freeFeaturesLabel.frame = CGRect(x: 16, y: 306, width: labelWidth, height: 16)
-        freeFeatureOne.frame = CGRect(x: 16, y: 326, width: labelWidth, height: 16)
-        freeFeatureTwo.frame = CGRect(x: 16, y: 347, width: labelWidth, height: 16)
-        
-        featuresLabel.frame = CGRect(x: 16, y: 406, width: labelWidth, height: 16)
-        featureOne.frame = CGRect(x: 16, y: 426, width: labelWidth, height: 16)
-        featureTwo.frame = CGRect(x: 16, y: 447, width: labelHalfWidth, height: 16)
-        featureThree.frame = CGRect(x: labelHalfWidth+24, y: 447, width: labelHalfWidth, height: 16)
         
         buyButton.frame = CGRect(x: 16, y: 500, width: labelWidth, height: 44)
-        
-        // Paid features
-        freeFeaturesLabel.font = UIFont(name: "SourceSansPro-Regular", size: 13)
-        freeFeaturesLabel.textColor = UIColor.lightGrayColor()
-        freeFeaturesLabel.textAlignment = .Center
-        freeFeaturesLabel.text = "FREE FEATURES"
-        
-        freeFeatureOne.font = UIFont(name: "SourceSansPro-Regular", size: 14)
-        freeFeatureOne.textAlignment = .Center
-        freeFeatureOne.text = "Win and loss tracking for a single deck"
-        
-        freeFeatureTwo.font = UIFont(name: "SourceSansPro-Regular", size: 14)
-        freeFeatureTwo.textAlignment = .Center
-        freeFeatureTwo.text = "Save up to four matches"
-        
-        featuresLabel.font = UIFont(name: "SourceSansPro-Regular", size: 13)
-        featuresLabel.textColor = UIColor.lightGrayColor()
-        featuresLabel.textAlignment = .Center
-        featuresLabel.text = "FULL VERSION FEATURES"
-        
-        featureOne.font = UIFont(name: "SourceSansPro-Regular", size: 14)
-        featureOne.textAlignment = .Center
-        featureOne.text = "Unlimited deck slots and match history"
-        
-        featureTwo.font = UIFont(name: "SourceSansPro-Regular", size: 14)
-        featureTwo.textAlignment = .Center
-        featureTwo.text = "Saving format defaults"
-        
-        featureThree.font = UIFont(name: "SourceSansPro-Regular", size: 14)
-        featureThree.textAlignment = .Center
-        featureThree.text = "9 additional themes"
         
         let cornerRadius : CGFloat = 5.0
         let buttonBG = UIImage(named: "ButtonBG")
@@ -96,17 +54,12 @@ class IntroViewController: UIViewController {
         buyButton.tag = 104
         
         buyButton.addTarget(self, action: "gotIt:", forControlEvents: .TouchDown)
-
-        self.view.addSubview(freeFeaturesLabel)
-        self.view.addSubview(freeFeatureOne)
-        self.view.addSubview(freeFeatureTwo)
-        
-        self.view.addSubview(featuresLabel)
-        self.view.addSubview(featureOne)
-        self.view.addSubview(featureTwo)
-        self.view.addSubview(featureThree)
         
         self.view.addSubview(buyButton)
+        
+        let bottomConstraint = NSLayoutConstraint(item: buyButton, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: view, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 8)
+        self.view.addConstraint(bottomConstraint)
+
     }
     
     func gotIt(sender: UIButton!) {

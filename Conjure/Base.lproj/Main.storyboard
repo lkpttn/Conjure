@@ -81,6 +81,12 @@
             <string>SourceSansPro-Regular</string>
             <string>SourceSansPro-Regular</string>
             <string>SourceSansPro-Regular</string>
+            <string>SourceSansPro-Regular</string>
+            <string>SourceSansPro-Regular</string>
+            <string>SourceSansPro-Regular</string>
+            <string>SourceSansPro-Regular</string>
+            <string>SourceSansPro-Regular</string>
+            <string>SourceSansPro-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -97,9 +103,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lx8-M1-e55">
-                                <rect key="frame" x="20" y="236" width="560" height="36"/>
+                                <rect key="frame" x="20" y="236" width="560" height="39"/>
                                 <string key="text">Conjure is the a competitive TCG player's best friend. You can keep notes, track wins and losses and see all your games turn-by-turn.</string>
-                                <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="15"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -110,20 +116,70 @@
                                     <constraint firstAttribute="height" constant="228" id="9Eg-8z-c7j"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FREE FEATURES" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BZh-yx-Agi">
+                                <rect key="frame" x="257" y="307" width="87" height="17"/>
+                                <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="13"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Win and loss tracking for a single deck" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fRz-eR-Edh">
+                                <rect key="frame" x="181" y="328" width="238" height="20"/>
+                                <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Save up to four matches" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UhV-JU-mJm">
+                                <rect key="frame" x="224" y="352" width="152" height="20"/>
+                                <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FULL VERSION FEATURES" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ob-eK-Z7s">
+                                <rect key="frame" x="232" y="388" width="137" height="17"/>
+                                <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="13"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unlimited deck slots and match history" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R6w-tK-IGn">
+                                <rect key="frame" x="178" y="409" width="245" height="20"/>
+                                <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Format defaults and customization" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bs1-Wg-omJ">
+                                <rect key="frame" x="190" y="433" width="220" height="20"/>
+                                <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Lx8-M1-e55" firstAttribute="top" secondItem="QQZ-PV-6Cn" secondAttribute="bottom" constant="8" id="1R1-12-0sC"/>
+                            <constraint firstItem="UhV-JU-mJm" firstAttribute="centerX" secondItem="tN0-ti-qlN" secondAttribute="centerX" id="2lw-8G-RbE"/>
                             <constraint firstAttribute="trailingMargin" secondItem="QQZ-PV-6Cn" secondAttribute="trailing" constant="-20" id="8Nu-rP-4td"/>
+                            <constraint firstItem="fRz-eR-Edh" firstAttribute="centerX" secondItem="tN0-ti-qlN" secondAttribute="centerX" id="Acx-WS-krT"/>
+                            <constraint firstItem="BZh-yx-Agi" firstAttribute="centerX" secondItem="tN0-ti-qlN" secondAttribute="centerX" id="BSe-Av-Tda"/>
+                            <constraint firstItem="bs1-Wg-omJ" firstAttribute="centerX" secondItem="tN0-ti-qlN" secondAttribute="centerX" id="Ccl-2s-Gnb"/>
                             <constraint firstItem="Lx8-M1-e55" firstAttribute="top" secondItem="QQZ-PV-6Cn" secondAttribute="bottom" constant="8" id="Dct-Di-TY6"/>
+                            <constraint firstItem="4Ob-eK-Z7s" firstAttribute="top" secondItem="UhV-JU-mJm" secondAttribute="bottom" constant="16" id="HGX-Zo-NOz"/>
                             <constraint firstItem="Lx8-M1-e55" firstAttribute="trailing" secondItem="tN0-ti-qlN" secondAttribute="trailingMargin" id="Kr4-fw-wZ9"/>
+                            <constraint firstItem="4Ob-eK-Z7s" firstAttribute="centerX" secondItem="tN0-ti-qlN" secondAttribute="centerX" id="R2Q-Qv-RfU"/>
                             <constraint firstItem="QQZ-PV-6Cn" firstAttribute="leading" secondItem="tN0-ti-qlN" secondAttribute="leadingMargin" constant="-20" id="VQ3-as-Lcu"/>
+                            <constraint firstItem="fRz-eR-Edh" firstAttribute="centerX" secondItem="tN0-ti-qlN" secondAttribute="centerX" id="ZOy-nN-ytX"/>
                             <constraint firstItem="Lx8-M1-e55" firstAttribute="leading" secondItem="tN0-ti-qlN" secondAttribute="leadingMargin" id="aeI-MU-rSl"/>
                             <constraint firstItem="QQZ-PV-6Cn" firstAttribute="top" secondItem="tN0-ti-qlN" secondAttribute="topMargin" id="eQf-aM-isr"/>
+                            <constraint firstItem="R6w-tK-IGn" firstAttribute="top" secondItem="4Ob-eK-Z7s" secondAttribute="bottom" constant="4" id="eje-BR-rPR"/>
+                            <constraint firstItem="UhV-JU-mJm" firstAttribute="top" secondItem="fRz-eR-Edh" secondAttribute="bottom" constant="4" id="hf4-PU-Lrt"/>
+                            <constraint firstItem="BZh-yx-Agi" firstAttribute="top" secondItem="Lx8-M1-e55" secondAttribute="bottom" constant="32" id="ibo-3Z-ipq"/>
+                            <constraint firstItem="bs1-Wg-omJ" firstAttribute="top" secondItem="R6w-tK-IGn" secondAttribute="bottom" constant="4" id="sVj-pl-pr2"/>
+                            <constraint firstItem="R6w-tK-IGn" firstAttribute="centerX" secondItem="tN0-ti-qlN" secondAttribute="centerX" id="u52-um-bRa"/>
+                            <constraint firstItem="fRz-eR-Edh" firstAttribute="top" secondItem="BZh-yx-Agi" secondAttribute="bottom" constant="4" id="xMs-gX-NlX"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="Dct-Di-TY6"/>
+                                <exclude reference="Acx-WS-krT"/>
                             </mask>
                         </variation>
                     </view>
