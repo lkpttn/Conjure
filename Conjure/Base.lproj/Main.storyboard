@@ -87,6 +87,12 @@
             <string>SourceSansPro-Regular</string>
             <string>SourceSansPro-Regular</string>
             <string>SourceSansPro-Regular</string>
+            <string>SourceSansPro-Regular</string>
+            <string>SourceSansPro-Regular</string>
+            <string>SourceSansPro-Regular</string>
+            <string>SourceSansPro-Regular</string>
+            <string>SourceSansPro-Regular</string>
+            <string>SourceSansPro-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -102,18 +108,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lx8-M1-e55">
-                                <rect key="frame" x="20" y="236" width="560" height="39"/>
-                                <string key="text">Conjure is the a competitive TCG player's best friend. You can keep notes, track wins and losses and see all your games turn-by-turn.</string>
-                                <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="15"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QQZ-PV-6Cn">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="228"/>
-                                <color key="backgroundColor" red="0.094117647060000004" green="0.18823529410000001" blue="0.2470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Header" translatesAutoresizingMaskIntoConstraints="NO" id="JIZ-VI-vCm">
+                                        <rect key="frame" x="16" y="16" width="568" height="204"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.086274509803921567" green="0.18823529411764706" blue="0.24705882352941178" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstItem="JIZ-VI-vCm" firstAttribute="centerX" secondItem="QQZ-PV-6Cn" secondAttribute="centerX" id="7U7-3A-3U8"/>
                                     <constraint firstAttribute="height" constant="228" id="9Eg-8z-c7j"/>
+                                    <constraint firstItem="JIZ-VI-vCm" firstAttribute="top" secondItem="QQZ-PV-6Cn" secondAttribute="top" constant="16" id="IdC-Y0-L9a"/>
+                                    <constraint firstAttribute="trailing" secondItem="JIZ-VI-vCm" secondAttribute="trailing" constant="16" id="ItH-SZ-scc"/>
+                                    <constraint firstItem="JIZ-VI-vCm" firstAttribute="leading" secondItem="QQZ-PV-6Cn" secondAttribute="leading" constant="16" id="nyp-H6-cNv"/>
+                                    <constraint firstAttribute="bottom" secondItem="JIZ-VI-vCm" secondAttribute="bottom" constant="8" id="tJG-I5-nQ9"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FREE FEATURES" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BZh-yx-Agi">
@@ -148,6 +157,13 @@
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Format defaults and customization" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bs1-Wg-omJ">
                                 <rect key="frame" x="190" y="433" width="220" height="20"/>
+                                <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lx8-M1-e55">
+                                <rect key="frame" x="20" y="236" width="560" height="39"/>
+                                <string key="text">Conjure is the a competitive TCG player's best friend. You can keep notes, track wins and losses and see all your games turn-by-turn.</string>
                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="15"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -434,14 +450,14 @@
                             <view contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="152" translatesAutoresizingMaskIntoConstraints="NO" id="c4Q-5x-UF7" customClass="HeaderView" customModule="Conjure" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="152"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" placeholderIntrinsicWidth="350" placeholderIntrinsicHeight="30" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Deck Title" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HnT-vZ-pqp">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" placeholderIntrinsicWidth="350" placeholderIntrinsicHeight="30" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Deck Title" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HnT-vZ-pqp">
                                         <rect key="frame" x="20" y="106" width="433" height="30"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="21"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ORJ-Jt-VFz">
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ORJ-Jt-VFz">
                                         <rect key="frame" x="469" y="106" width="111" height="30"/>
                                         <state key="normal" title="Delete this deck"/>
                                         <connections>
@@ -1499,37 +1515,163 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Oh hey there conjure is a super great app, I spent a lot of time on it" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VmF-2m-fZO">
-                                <rect key="frame" x="20" y="72" width="272" height="47"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WJo-eE-gyC" customClass="HeaderView" customModule="Conjure" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="600" height="192"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Header" translatesAutoresizingMaskIntoConstraints="NO" id="RV8-0E-3A2">
+                                        <rect key="frame" x="16" y="16" width="568" height="161"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.094117647060000004" green="0.18823529410000001" blue="0.2470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="RV8-0E-3A2" secondAttribute="bottom" constant="15" id="AHw-hT-vGg"/>
+                                    <constraint firstItem="RV8-0E-3A2" firstAttribute="top" secondItem="WJo-eE-gyC" secondAttribute="top" constant="16" id="IHc-5G-YIe"/>
+                                    <constraint firstAttribute="trailing" secondItem="RV8-0E-3A2" secondAttribute="trailing" constant="16" id="gaB-Pj-eVb"/>
+                                    <constraint firstItem="RV8-0E-3A2" firstAttribute="leading" secondItem="WJo-eE-gyC" secondAttribute="leading" constant="16" id="jzT-ga-fhL"/>
+                                    <constraint firstItem="RV8-0E-3A2" firstAttribute="centerX" secondItem="WJo-eE-gyC" secondAttribute="centerX" id="lY8-J9-Gy9"/>
+                                    <constraint firstAttribute="height" constant="192" id="n12-My-SHF"/>
+                                </constraints>
+                            </view>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C3D-tl-a5V">
+                                <rect key="frame" x="0.0" y="402" width="600" height="198"/>
+                                <connections>
+                                    <segue destination="9NQ-Rh-O7m" kind="embed" id="wSS-rh-OGI"/>
+                                </connections>
+                            </containerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Conjure is a passion project designed and developed by Friend of Pixels, a one person shop in NYC." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SAs-EG-lCb">
+                                <rect key="frame" x="20" y="264" width="560" height="39"/>
+                                <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="15"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="It's good for playing Magic" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Upm-n9-eIL">
-                                <rect key="frame" x="63" y="136" width="202" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NOZ-DC-2ZQ">
+                                <rect key="frame" x="20" y="336" width="560" height="58"/>
+                                <string key="text">Conjure is developed on nights and weekends, but I try to read every bug report and feature request that gets sent to me. The easiest way to get in contact is one of the links below.</string>
+                                <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="If you pay for it, I'll be super thankful and try to keep ma" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SAs-EG-lCb">
-                                <rect key="frame" x="34" y="298" width="298" height="54"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="king new features and stuff for the app" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AGv-DB-Po4">
-                                <rect key="frame" x="34" y="370" width="298" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HELP AND SUPPORT" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2si-mt-c1i">
+                                <rect key="frame" x="20" y="315" width="111" height="17"/>
+                                <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="13"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="SAs-EG-lCb" secondAttribute="trailing" id="1kn-HF-Yxd"/>
+                            <constraint firstItem="WJo-eE-gyC" firstAttribute="leading" secondItem="xWf-X4-l2e" secondAttribute="leadingMargin" constant="-20" id="2Xm-VE-0lQ"/>
+                            <constraint firstItem="2si-mt-c1i" firstAttribute="top" secondItem="SAs-EG-lCb" secondAttribute="bottom" constant="12" id="9EY-2G-XMv"/>
+                            <constraint firstItem="C3D-tl-a5V" firstAttribute="top" secondItem="NOZ-DC-2ZQ" secondAttribute="bottom" constant="44" id="Aaa-sv-ePP"/>
+                            <constraint firstItem="NOZ-DC-2ZQ" firstAttribute="top" secondItem="2si-mt-c1i" secondAttribute="bottom" constant="4" id="E5h-SS-pRC"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="NOZ-DC-2ZQ" secondAttribute="trailing" id="GtJ-bt-mWj"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="C3D-tl-a5V" secondAttribute="trailing" constant="-20" id="N28-x4-GRG"/>
+                            <constraint firstItem="cok-Jb-0ed" firstAttribute="top" secondItem="C3D-tl-a5V" secondAttribute="bottom" id="Otd-Ku-vb5"/>
+                            <constraint firstItem="C3D-tl-a5V" firstAttribute="top" secondItem="NOZ-DC-2ZQ" secondAttribute="bottom" constant="8" id="Uv0-t3-klK"/>
+                            <constraint firstItem="SAs-EG-lCb" firstAttribute="top" secondItem="WJo-eE-gyC" secondAttribute="bottom" constant="8" id="VVE-RP-9hK"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="WJo-eE-gyC" secondAttribute="trailing" constant="-20" id="Wvk-nx-daK"/>
+                            <constraint firstItem="2si-mt-c1i" firstAttribute="leading" secondItem="xWf-X4-l2e" secondAttribute="leadingMargin" id="aET-bD-gl3"/>
+                            <constraint firstItem="NOZ-DC-2ZQ" firstAttribute="leading" secondItem="xWf-X4-l2e" secondAttribute="leadingMargin" id="d36-NA-Gqc"/>
+                            <constraint firstItem="SAs-EG-lCb" firstAttribute="leading" secondItem="xWf-X4-l2e" secondAttribute="leadingMargin" id="hBj-Ze-2z6"/>
+                            <constraint firstItem="C3D-tl-a5V" firstAttribute="leading" secondItem="xWf-X4-l2e" secondAttribute="leadingMargin" constant="-20" id="v1x-OB-tX7"/>
+                            <constraint firstItem="WJo-eE-gyC" firstAttribute="top" secondItem="6MQ-eo-WyN" secondAttribute="bottom" id="y6S-Mj-Apj"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Aaa-sv-ePP"/>
+                            </mask>
+                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y3g-H6-ZPj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2355" y="1056"/>
+        </scene>
+        <!--About Table View Controller-->
+        <scene sceneID="3rE-zd-Iak">
+            <objects>
+                <tableViewController id="9NQ-Rh-O7m" customClass="AboutTableViewController" customModule="Conjure" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="jp7-ir-deO">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="198"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection headerTitle="Get in Contact" id="H9n-Jw-RYp">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="54" id="Tvp-DK-Qmw">
+                                        <rect key="frame" x="0.0" y="50" width="600" height="54"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Tvp-DK-Qmw" id="OZE-K9-P7A">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="53"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="friendofpixels.com" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oAU-Ww-Vb9">
+                                                    <rect key="frame" x="16" y="13" width="164" height="27"/>
+                                                    <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="21"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="oAU-Ww-Vb9" firstAttribute="leading" secondItem="OZE-K9-P7A" secondAttribute="leadingMargin" constant="8" id="2z3-ri-c4C"/>
+                                                <constraint firstItem="oAU-Ww-Vb9" firstAttribute="centerY" secondItem="OZE-K9-P7A" secondAttribute="centerY" id="hbb-h4-9gs"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="54" id="N4o-i8-ZZd">
+                                        <rect key="frame" x="0.0" y="104" width="600" height="54"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="N4o-i8-ZZd" id="VGJ-13-cgq">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="53"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Twitter" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TtH-O0-R5t">
+                                                    <rect key="frame" x="16" y="13" width="63" height="27"/>
+                                                    <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="21"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="TtH-O0-R5t" firstAttribute="centerY" secondItem="VGJ-13-cgq" secondAttribute="centerY" id="Lgh-lb-nJM"/>
+                                                <constraint firstItem="TtH-O0-R5t" firstAttribute="leading" secondItem="VGJ-13-cgq" secondAttribute="leadingMargin" constant="8" id="hKy-47-qRz"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="54" id="G9t-Mu-lVD">
+                                        <rect key="frame" x="0.0" y="158" width="600" height="54"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="G9t-Mu-lVD" id="QsC-cT-9fX">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="53"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RrS-nQ-xir">
+                                                    <rect key="frame" x="16" y="13" width="50" height="27"/>
+                                                    <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="21"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="RrS-nQ-xir" firstAttribute="centerY" secondItem="QsC-cT-9fX" secondAttribute="centerY" id="g8a-0c-MJX"/>
+                                                <constraint firstItem="RrS-nQ-xir" firstAttribute="leading" secondItem="QsC-cT-9fX" secondAttribute="leadingMargin" constant="8" id="tMd-Pv-6xp"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="9NQ-Rh-O7m" id="OKb-0W-Nfx"/>
+                            <outlet property="delegate" destination="9NQ-Rh-O7m" id="rCn-vx-yvJ"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eN2-xt-pbR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3070" y="1275"/>
         </scene>
         <!--History View Controller-->
         <scene sceneID="wfo-Qh-Ht4">
@@ -1960,6 +2102,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Header" width="251" height="133"/>
         <image name="ThinPlus" width="28" height="28"/>
     </resources>
     <inferredMetricsTieBreakers>

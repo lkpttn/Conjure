@@ -16,6 +16,8 @@
 		0D11DEA51B6E710200697EAD /* SourceSansPro-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0D11DEA41B6E710200697EAD /* SourceSansPro-Semibold.otf */; };
 		0D17C27F1BD2F9AC00EF8AA1 /* SmallPurchaseBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D17C27E1BD2F9AC00EF8AA1 /* SmallPurchaseBanner.swift */; };
 		0D17C2811BD459DF00EF8AA1 /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D17C2801BD459DF00EF8AA1 /* IntroViewController.swift */; };
+		0D17C2831BD6C03D00EF8AA1 /* AboutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D17C2821BD6C03D00EF8AA1 /* AboutTableViewController.swift */; };
+		0D17C2851BD6C87C00EF8AA1 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D17C2841BD6C87C00EF8AA1 /* MessageUI.framework */; };
 		0D2037161B535AF30058E059 /* LeadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2037151B535AF30058E059 /* LeadViewController.swift */; };
 		0D3278E31B569D5800B58ECD /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3278DF1B55FC2600B58ECD /* Deck.swift */; };
 		0D3278E41B569D5900B58ECD /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3278DF1B55FC2600B58ECD /* Deck.swift */; };
@@ -76,6 +78,8 @@
 		0D11DEA41B6E710200697EAD /* SourceSansPro-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SourceSansPro-Semibold.otf"; path = "../../../../../Documents/Fonts/Source Sans Pro/SourceSansPro-Semibold.otf"; sourceTree = "<group>"; };
 		0D17C27E1BD2F9AC00EF8AA1 /* SmallPurchaseBanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmallPurchaseBanner.swift; sourceTree = "<group>"; };
 		0D17C2801BD459DF00EF8AA1 /* IntroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
+		0D17C2821BD6C03D00EF8AA1 /* AboutTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutTableViewController.swift; sourceTree = "<group>"; };
+		0D17C2841BD6C87C00EF8AA1 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		0D2037151B535AF30058E059 /* LeadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeadViewController.swift; sourceTree = "<group>"; };
 		0D3278DF1B55FC2600B58ECD /* Deck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
 		0D3278E91B56DB0A00B58ECD /* SeriesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeriesCell.swift; sourceTree = "<group>"; };
@@ -115,6 +119,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D17C2851BD6C87C00EF8AA1 /* MessageUI.framework in Frameworks */,
 				0DA933841BCFF30900DCB3FC /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -170,6 +175,7 @@
 				0D11DE931B6C3F0400697EAD /* GameDetailViewController.swift */,
 				0DC448D11B8EC5EE00DDA93A /* SettingsTableViewController.swift */,
 				29B06F911B8FA36A005D3BE1 /* SettingsDetailTableViewController.swift */,
+				0D17C2821BD6C03D00EF8AA1 /* AboutTableViewController.swift */,
 				0DD5D36D1BB9FFEA00CF1C0B /* ThemeViewController.swift */,
 				0DD5D36F1BBA236E00CF1C0B /* ThemeTableViewController.swift */,
 			);
@@ -179,6 +185,7 @@
 		0D7ED9C81B4B387600A6C2B0 = {
 			isa = PBXGroup;
 			children = (
+				0D17C2841BD6C87C00EF8AA1 /* MessageUI.framework */,
 				0DA933831BCFF30900DCB3FC /* StoreKit.framework */,
 				0D7ED9D31B4B387700A6C2B0 /* Conjure */,
 				0D7ED9E81B4B387700A6C2B0 /* ConjureTests */,
@@ -380,6 +387,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				29B06F931B8FA57C005D3BE1 /* SettingsTableViewController.swift in Sources */,
+				0D17C2831BD6C03D00EF8AA1 /* AboutTableViewController.swift in Sources */,
 				0D7ED9D71B4B387700A6C2B0 /* GameViewController.swift in Sources */,
 				0D796E061B4F556300840211 /* Game.swift in Sources */,
 				0D3278EA1B56DB0A00B58ECD /* SeriesCell.swift in Sources */,
