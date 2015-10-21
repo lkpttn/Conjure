@@ -28,7 +28,7 @@ class GameHeader: UIView {
         setupSubviews()
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setupSubviews()
     }

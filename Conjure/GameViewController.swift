@@ -204,7 +204,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             series.losses += 1
             
             // Add the win circle
-            doWinCirleLogic(series.wins, losses: series.losses, player: 1)
+            doWinCirleLogic(series.wins, losses: series.losses, player: 2)
             
             // Check to see if the series is over.
             checkSeries()
@@ -214,9 +214,10 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             // and check to see if the series is over.
             print("Player One wins")
             series.wins += 1
+            print(series.wins)
             
             // Add the win circle
-            doWinCirleLogic(series.wins, losses: series.losses, player: 2)
+            doWinCirleLogic(series.wins, losses: series.losses, player: 1)
             
             checkSeries()
         }
@@ -256,12 +257,14 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         if player == 1 {
             // Player Two wins, add a loss
-            let tempX = addCircleX*(losses-1)
+            let tempX = addCircleX*(wins-1)
+            print(tempX)
             circleFrame = CGRect(x: circleX-30-tempX, y: circleY, width: circleWidth, height: circleWidth)
         }
         else if player == 2 {
             // Player One wins, add a win
-            let tempX = addCircleX*(wins-1)
+            let tempX = addCircleX*(losses-1)
+            print(tempX)
             circleFrame = CGRect(x: circleX+30+tempX, y: circleY, width: circleWidth, height: circleWidth)
         }
         

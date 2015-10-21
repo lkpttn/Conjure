@@ -88,7 +88,7 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     let defaults = NSUserDefaults.standardUserDefaults()
     
     // MARK: Initialization
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     

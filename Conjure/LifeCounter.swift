@@ -64,7 +64,7 @@ class LifeCounter: UIView {
     // We aren't calling this view in Interface Builder, so this doesn't execute. It's just neccesary for all UIView subclasses.
     required init(coder aDecoder: NSCoder) {
         // Calls the super class (UIView) initializer
-        super.init(coder: aDecoder)
+        super.init(coder: aDecoder)!
     }
     
     func addLifeCounter() {
