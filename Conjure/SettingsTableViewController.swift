@@ -140,9 +140,20 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate, S
             header.textLabel!.font = UIFont(name: "SourceSansPro-Regular", size: 13)
     }
     
+    // Sets the font for the section footers
+    override func tableView(tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
+        let footer = view as! UITableViewHeaderFooterView
+        footer.textLabel!.font = UIFont(name: "SourceSansPro-Regular", size: 13)
+        footer.textLabel?.textAlignment = .Center
+    }
+    
     func styleNavBar() {
         let navBar = self.navigationController?.navigationBar
         navBar?.translucent = false
+    }
+    
+    override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
     // Gets the list of products

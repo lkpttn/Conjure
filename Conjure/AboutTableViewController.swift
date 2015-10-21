@@ -45,8 +45,10 @@ class AboutTableViewController: UITableViewController, MFMailComposeViewControll
     }
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print(indexPath.row)
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
         let url = linkArray[indexPath.row]
+        
         if url != "email" {
             UIApplication.sharedApplication().openURL(NSURL(string: url)!)
         } else {

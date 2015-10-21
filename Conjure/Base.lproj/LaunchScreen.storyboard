@@ -3,7 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8101.16"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -18,27 +18,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Copyright © 2015 Luke Patton. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="obG-Y5-kRd">
-                                <rect key="frame" x="20" y="559" width="560" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Conjure" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="GJd-Yh-RWb">
-                                <rect key="frame" x="20" y="180" width="560" height="43"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5vG-iq-IZ5" customClass="HeaderView" customModule="Conjure" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Header" translatesAutoresizingMaskIntoConstraints="NO" id="gGQ-S2-Q2j">
+                                        <rect key="frame" x="16" y="16" width="568" height="204"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.086274509799999996" green="0.18823529410000001" blue="0.2470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="gGQ-S2-Q2j" firstAttribute="top" secondItem="5vG-iq-IZ5" secondAttribute="top" constant="16" id="0Kl-KV-JFW"/>
+                                    <constraint firstItem="gGQ-S2-Q2j" firstAttribute="leading" secondItem="5vG-iq-IZ5" secondAttribute="leading" constant="16" id="H0u-JT-IDa"/>
+                                    <constraint firstAttribute="bottom" secondItem="gGQ-S2-Q2j" secondAttribute="bottom" constant="8" id="TCM-LR-qV3"/>
+                                    <constraint firstAttribute="trailing" secondItem="gGQ-S2-Q2j" secondAttribute="trailing" constant="16" id="WzE-C7-egc"/>
+                                    <constraint firstAttribute="height" constant="228" id="cgS-Lv-rAQ"/>
+                                    <constraint firstItem="gGQ-S2-Q2j" firstAttribute="centerX" secondItem="5vG-iq-IZ5" secondAttribute="centerX" id="kKy-Dl-jyB"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="cgS-Lv-rAQ"/>
+                                    </mask>
+                                </variation>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="obG-Y5-kRd" secondAttribute="centerX" id="5cz-MP-9tL"/>
-                            <constraint firstAttribute="centerX" secondItem="GJd-Yh-RWb" secondAttribute="centerX" id="Q3B-4B-g5h"/>
-                            <constraint firstItem="obG-Y5-kRd" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="20" symbolic="YES" id="SfN-ll-jLj"/>
-                            <constraint firstAttribute="bottom" secondItem="obG-Y5-kRd" secondAttribute="bottom" constant="20" id="Y44-ml-fuU"/>
-                            <constraint firstItem="GJd-Yh-RWb" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="bottom" multiplier="1/3" constant="1" id="moa-c2-u7t"/>
-                            <constraint firstItem="GJd-Yh-RWb" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="20" symbolic="YES" id="x7j-FC-K8j"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="5vG-iq-IZ5" secondAttribute="bottom" id="NCh-JG-Gbs"/>
+                            <constraint firstItem="5vG-iq-IZ5" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="-20" id="VwX-6E-pS2"/>
+                            <constraint firstItem="5vG-iq-IZ5" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="topMargin" id="kFF-UU-P0j"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="5vG-iq-IZ5" secondAttribute="trailing" constant="-20" id="uYd-ve-x9R"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -47,4 +55,7 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Header" width="251" height="133"/>
+    </resources>
 </document>

@@ -18,6 +18,8 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     var dateArray = [String]()
     var dateDictionary = [String: [Series]]()
     
+    let settings = NSUserDefaults.standardUserDefaults()
+    
     
     let redColor = UIColor(red: 208/255.0, green: 2/255.0, blue: 27/255.0, alpha: 1)
     let greenColor = UIColor(red: 92/255.0, green: 176/255.0, blue: 0, alpha: 1)
@@ -52,6 +54,13 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             // Add the series to the "Friday" key value pair
             dateDictionary[day]?.append(series)
+        }
+        
+        let didPurchase = settings.boolForKey("didPurchase")
+        if didPurchase == false && seriesArray.count == 4 {
+            let alert = UIAlertController(title: "You can only store four matches in the free version", message: "You can delete previous matches or purchase the full version of the app to save new matches.", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Ok, got it.", style: UIAlertActionStyle.Cancel, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
         }
     }
 
