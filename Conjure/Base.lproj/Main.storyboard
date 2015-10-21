@@ -465,7 +465,7 @@
                                             <constraint firstAttribute="width" constant="100" id="zFG-mp-0Je"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="21"/>
-                                        <state key="normal" image="ThinPlus"/>
+                                        <state key="normal" image="ThinX"/>
                                         <connections>
                                             <segue destination="Ymo-33-eMa" kind="unwind" unwindAction="unwindToDeckTableView:" id="43U-NH-INx"/>
                                         </connections>
@@ -2130,6 +2130,7 @@
     <resources>
         <image name="Header" width="251" height="133"/>
         <image name="ThinPlus" width="28" height="28"/>
+        <image name="ThinX" width="17" height="17"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Zow-2J-gL6"/>
