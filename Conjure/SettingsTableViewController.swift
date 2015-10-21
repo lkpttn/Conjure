@@ -227,7 +227,7 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate, S
             saveButton.enabled = false
         } else if purchaseTest == true {
             saveButton.enabled = true
-            hideBanner()
+            // hideBanner()
         }
     }
     
@@ -250,7 +250,7 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate, S
     func hideBanner() {
         // Change table view inset
         self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        bannerView!.removeFromSuperview()
+        bannerView?.removeFromSuperview()
     }
     
 
@@ -326,7 +326,6 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate, S
     
     @IBAction func cancelButton(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
-        print("I need to refresh the main view")
     }
     
 }

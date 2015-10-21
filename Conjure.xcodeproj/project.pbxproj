@@ -14,7 +14,6 @@
 		0D11DEA01B6E6C1F00697EAD /* SourceSansPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0D11DE9D1B6E6C1F00697EAD /* SourceSansPro-Bold.otf */; };
 		0D11DEA11B6E6C1F00697EAD /* SourceSansPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0D11DE9E1B6E6C1F00697EAD /* SourceSansPro-Regular.otf */; };
 		0D11DEA51B6E710200697EAD /* SourceSansPro-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0D11DEA41B6E710200697EAD /* SourceSansPro-Semibold.otf */; };
-		0D17C27F1BD2F9AC00EF8AA1 /* SmallPurchaseBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D17C27E1BD2F9AC00EF8AA1 /* SmallPurchaseBanner.swift */; };
 		0D17C2811BD459DF00EF8AA1 /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D17C2801BD459DF00EF8AA1 /* IntroViewController.swift */; };
 		0D17C2831BD6C03D00EF8AA1 /* AboutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D17C2821BD6C03D00EF8AA1 /* AboutTableViewController.swift */; };
 		0D17C2851BD6C87C00EF8AA1 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D17C2841BD6C87C00EF8AA1 /* MessageUI.framework */; };
@@ -76,7 +75,6 @@
 		0D11DE9D1B6E6C1F00697EAD /* SourceSansPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SourceSansPro-Bold.otf"; path = "../../../Resources/SourceSansPro-Bold.otf"; sourceTree = "<group>"; };
 		0D11DE9E1B6E6C1F00697EAD /* SourceSansPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SourceSansPro-Regular.otf"; path = "../../../Resources/SourceSansPro-Regular.otf"; sourceTree = "<group>"; };
 		0D11DEA41B6E710200697EAD /* SourceSansPro-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SourceSansPro-Semibold.otf"; path = "../../../../../Documents/Fonts/Source Sans Pro/SourceSansPro-Semibold.otf"; sourceTree = "<group>"; };
-		0D17C27E1BD2F9AC00EF8AA1 /* SmallPurchaseBanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmallPurchaseBanner.swift; sourceTree = "<group>"; };
 		0D17C2801BD459DF00EF8AA1 /* IntroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
 		0D17C2821BD6C03D00EF8AA1 /* AboutTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutTableViewController.swift; sourceTree = "<group>"; };
 		0D17C2841BD6C87C00EF8AA1 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
@@ -219,7 +217,6 @@
 				0DD5D3731BBD881B00CF1C0B /* HeaderView.swift */,
 				0D796E081B51567100840211 /* winCircle.swift */,
 				0DA3BC781BCBF15F00371F1B /* PurchaseBanner.swift */,
-				0D17C27E1BD2F9AC00EF8AA1 /* SmallPurchaseBanner.swift */,
 				0D7ED9D81B4B387700A6C2B0 /* Main.storyboard */,
 				0D7ED9DB1B4B387700A6C2B0 /* Assets.xcassets */,
 				0D7ED9DD1B4B387700A6C2B0 /* LaunchScreen.storyboard */,
@@ -393,7 +390,6 @@
 				0D3278EA1B56DB0A00B58ECD /* SeriesCell.swift in Sources */,
 				0DD5D3701BBA236E00CF1C0B /* ThemeTableViewController.swift in Sources */,
 				0D3278E31B569D5800B58ECD /* Deck.swift in Sources */,
-				0D17C27F1BD2F9AC00EF8AA1 /* SmallPurchaseBanner.swift in Sources */,
 				0D11DE941B6C3F0400697EAD /* GameDetailViewController.swift in Sources */,
 				0DD5D36E1BB9FFEA00CF1C0B /* ThemeViewController.swift in Sources */,
 				0DD5D3721BBB01C500CF1C0B /* BigButton.swift in Sources */,
