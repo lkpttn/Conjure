@@ -214,7 +214,6 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate, S
                 print(transaction.error)
                 SKPaymentQueue.defaultQueue().finishTransaction(transaction)
                 transactionInProgress = false
-                
             default:
                 print(transaction.transactionState.rawValue)
             }
