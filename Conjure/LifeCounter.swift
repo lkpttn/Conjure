@@ -86,8 +86,8 @@ class LifeCounter: UIView {
         
         
         // Button
-        let minusButton = UIButton(frame: CGRect(x: (bounds.width/8)+6, y: 125, width: 60, height: 60))
-        let plusButton = UIButton(frame: CGRect(x: (bounds.width/4)+48, y: 125, width: 60, height: 60))
+        let minusButton = UIButton(frame: CGRect(x: (bounds.width/2)-60, y: 125, width: 60, height: 60))
+        let plusButton = UIButton(frame: CGRect(x: (bounds.width/2), y: 125, width: 60, height: 60))
         
         let minusImage = UIImage(named: "Minus")
         minusButton.setImage(minusImage, forState: .Normal)

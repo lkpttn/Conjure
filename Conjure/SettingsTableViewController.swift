@@ -25,6 +25,7 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate, S
     @IBOutlet weak var startingLifeTotalLabel: UILabel!
     @IBOutlet weak var numberOfGamesLabel: UILabel!
     @IBOutlet weak var timeLimitLabel: UILabel!
+    @IBOutlet weak var restorePurchaseCell: UITableViewCell!
     
     var bannerView: UIView?
     var purchaseTest = false
@@ -45,13 +46,6 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate, S
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        purchaseTest = settings.boolForKey("didPurchase")
-        // Add purchasable product
-        requestProductInfo()
-        
-        // Become an observer of the transaction
-        SKPaymentQueue.defaultQueue().addTransactionObserver(self)
-        
         self.tableView.backgroundColor = UIColor.groupTableViewBackgroundColor()
         self.styleNavBar()
         self.loadAllSettings()
@@ -59,10 +53,20 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate, S
         
         playerOneNameField.delegate = self
         playerTwoNameField.delegate = self
+        
+        let restoreTapGestureRecognizer = UITapGestureRecognizer(target: self, action: "restorePurchases:")
+        restorePurchaseCell.addGestureRecognizer(restoreTapGestureRecognizer)
     }
     
     override func viewWillAppear(animated: Bool) {
         checkPurchase()
+        
+        purchaseTest = settings.boolForKey("didPurchase")
+        requestProductInfo()
+        
+        // Become an observer of the transaction
+        SKPaymentQueue.defaultQueue().addTransactionObserver(self)
+
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -165,6 +169,7 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate, S
             
             productsRequest.delegate = self
             productsRequest.start()
+            UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         }
         else {
             print("Cannot perform In App Purchases.")
@@ -177,10 +182,9 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate, S
             print("There is a product!")
             for product in response.products {
                 productArray.append(product as SKProduct)
-                print(product.localizedTitle)
-                print(product.localizedDescription)
-                print(product.price)
-                buyButton?.enabled = true
+                buyButton!.enabled = true
+                buyButton!.addTarget(self, action: "purchase:", forControlEvents: UIControlEvents.TouchDown)
+                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
             }
         }
         else {
@@ -192,6 +196,7 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate, S
         let payment = SKPayment(product: self.productArray[0] as SKProduct)
         // Adds the payment to the queue
         SKPaymentQueue.defaultQueue().addPayment(payment)
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         self.transactionInProgress = true
     }
     
@@ -201,9 +206,10 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate, S
         
         for transaction in transactions as [SKPaymentTransaction] {
             switch transaction.transactionState {
-            case SKPaymentTransactionState.Purchased:
+            case SKPaymentTransactionState.Purchased, SKPaymentTransactionState.Restored:
                 print("Transaction completed successfully.")
                 SKPaymentQueue.defaultQueue().finishTransaction(transaction)
+                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
                 transactionInProgress = false
                 purchaseTest = true
                 settings.setBool(true, forKey: "didPurchase")
@@ -213,6 +219,7 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate, S
                 print("Transaction Failed")
                 print(transaction.error)
                 SKPaymentQueue.defaultQueue().finishTransaction(transaction)
+                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
                 transactionInProgress = false
             default:
                 print(transaction.transactionState.rawValue)
@@ -240,8 +247,7 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate, S
         bannerView = PurchaseBanner(frame: CGRect(x: 0, y:barHeight, width: screenWidth, height: 236))
         
         buyButton = bannerView?.viewWithTag(104) as? UIButton
-        buyButton?.enabled = false
-        buyButton!.addTarget(self, action: "purchase:", forControlEvents: UIControlEvents.TouchDown)
+        buyButton!.enabled = false
         
         self.navigationController?.view.addSubview(bannerView!)
     }
@@ -312,14 +318,21 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate, S
         checkPurchase()
     }
     
+    func restorePurchases(sender: UIGestureRecognizer) {
+        if (SKPaymentQueue.canMakePayments()) {
+            SKPaymentQueue.defaultQueue().restoreCompletedTransactions()
+            UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        }
+    }
+    
     @IBAction func concedeSwitch(sender: UISwitch) {
         if concedeSwitch.on  == true {
             print(concedeSwitch.on)
-            // settings.setBool(true, forKey: "tapAndHoldToConcede")
+            settings.setBool(true, forKey: "tapAndHoldToConcede")
         }
         else if concedeSwitch.on == false {
             print(concedeSwitch.on)
-            // settings.setBool(false, forKey: "tapAndHoldToConcede")
+            settings.setBool(false, forKey: "tapAndHoldToConcede")
         }
     }
     
