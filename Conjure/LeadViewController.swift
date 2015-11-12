@@ -545,7 +545,7 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             let defaults = NSUserDefaults.standardUserDefaults()
             defaults.setObject(deck.deckName, forKey: "currentDeckString")
     
-            deckWinLossLabel.text = "W: \(deck.wins)    L: \(deck.losses)"
+            deckWinLossLabel.text = "W: \(deck.wins)    L: \(deck.losses)    T: \(deck.ties)"
             
             // Set the passed in deckDictionary to the lead view
             deckDictionary = source.deckDictionary

@@ -59,7 +59,7 @@ class DeckViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Configure the cell...
         let deck = deckArray[indexPath.row]
         cell.deckNameLabel.text = String(deck.deckName)
-        cell.winLossLabel.text = "W: \(deck.wins)    L: \(deck.losses)"
+        cell.winLossLabel.text = "W: \(deck.wins)    L: \(deck.losses)    T: \(deck.ties)"
         
         return cell
     }

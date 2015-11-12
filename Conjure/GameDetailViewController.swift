@@ -37,7 +37,10 @@ class GameDetailViewController: UIViewController, UITableViewDelegate, UITableVi
             deckNameLabel.text = series.deck.deckName
             winLossLabel.text = "\(series.wins)-\(series.losses)"
             
-            if series.wins > series.losses {
+            if series.tie == true {
+                winLossLabel.text = "T \(series.wins)-\(series.losses)"
+            }
+            else if series.wins > series.losses {
                 winLossLabel.text = "W \(series.wins)-\(series.losses)"
             }
             else if series.losses > series.wins {
