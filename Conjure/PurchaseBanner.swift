@@ -77,7 +77,7 @@ class PurchaseBanner: UIView {
         let cornerRadius : CGFloat = 5.0
         let buttonBG = UIImage(named: "ButtonBG")
         buyButton.titleLabel?.font = UIFont(name: "SourceSansPro-Regular", size: 16)
-        buyButton.setTitle("Unlock all features for $0.99", forState: UIControlState.Normal)
+        buyButton.setTitle("Loading....", forState: UIControlState.Normal)
         buyButton.setTitleColor(UIColor.blueColor(), forState: UIControlState.Normal)
         buyButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Highlighted)
         buyButton.setBackgroundImage(buttonBG, forState: UIControlState.Highlighted)

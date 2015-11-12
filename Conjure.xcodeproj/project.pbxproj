@@ -46,7 +46,7 @@
 		0DD5D3761BC3004F00CF1C0B /* DeckNotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD5D3751BC3004F00CF1C0B /* DeckNotesViewController.swift */; };
 		0DDFC71D1B5A85A100DAB4DB /* DeckDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDFC71C1B5A85A100DAB4DB /* DeckDetailViewController.swift */; };
 		0DF8F8561B4EFA08000C6AF6 /* GameHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF8F8551B4EFA08000C6AF6 /* GameHeader.swift */; };
-		29B06F921B8FA36A005D3BE1 /* SettingsDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B06F911B8FA36A005D3BE1 /* SettingsDetailTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		29B06F921B8FA36A005D3BE1 /* SettingsDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B06F911B8FA36A005D3BE1 /* SettingsDetailTableViewController.swift */; };
 		29B06F931B8FA57C005D3BE1 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC448D11B8EC5EE00DDA93A /* SettingsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -305,7 +305,7 @@
 		0D7ED9C91B4B387600A6C2B0 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = "Luke Patton";
 				TargetAttributes = {
 					0D7ED9D01B4B387700A6C2B0 = {
@@ -562,7 +562,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.friendofpixels.ConjureTCG;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SDKROOT = iphoneos9.0;
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -579,7 +579,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.friendofpixels.ConjureTCG;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SDKROOT = iphoneos9.0;
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

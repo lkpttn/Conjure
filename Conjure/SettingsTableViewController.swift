@@ -46,7 +46,9 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate, S
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
         self.tableView.backgroundColor = UIColor.groupTableViewBackgroundColor()
+        
         self.styleNavBar()
         self.loadAllSettings()
 
@@ -59,10 +61,12 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate, S
     }
     
     override func viewWillAppear(animated: Bool) {
-        checkPurchase()
         
         purchaseTest = settings.boolForKey("didPurchase")
-        requestProductInfo()
+        checkPurchase()
+        if purchaseTest == false  {
+            requestProductInfo()
+        }
         
         // Become an observer of the transaction
         SKPaymentQueue.defaultQueue().addTransactionObserver(self)
@@ -178,17 +182,21 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate, S
     
     // Holds the response from the server with the products
     func productsRequest(request: SKProductsRequest, didReceiveResponse response: SKProductsResponse) {
-        if response.products.count != 0 {
+        if response.products.count != 0 && purchaseTest == false {
             print("There is a product!")
             for product in response.products {
                 productArray.append(product as SKProduct)
-                buyButton!.enabled = true
-                buyButton!.addTarget(self, action: "purchase:", forControlEvents: UIControlEvents.TouchDown)
+                buyButton?.enabled = true
+                buyButton?.addTarget(self, action: "purchase:", forControlEvents: UIControlEvents.TouchDown)
+                buyButton?.setTitleColor(UIColor.blueColor(), forState: UIControlState.Normal)
+                buyButton?.layer.borderColor = UIColor.blueColor().CGColor
+                buyButton?.setTitle("Unlock all features for $0.99", forState: UIControlState.Normal)
                 UIApplication.sharedApplication().networkActivityIndicatorVisible = false
             }
         }
         else {
             print("There are no products.")
+            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
         }
     }
     
@@ -221,6 +229,11 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate, S
                 SKPaymentQueue.defaultQueue().finishTransaction(transaction)
                 UIApplication.sharedApplication().networkActivityIndicatorVisible = false
                 transactionInProgress = false
+                
+                let alert = UIAlertController(title: "Your purchase failed!", message: "Check your account info and your internet connection then try again.", preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title: "Ok, thanks", style: UIAlertActionStyle.Cancel, handler: nil))
+                self.presentViewController(alert, animated: true, completion: nil)
+                
             default:
                 print(transaction.transactionState.rawValue)
             }
@@ -233,7 +246,7 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate, S
             saveButton.enabled = false
         } else if purchaseTest == true {
             saveButton.enabled = true
-            // hideBanner()
+            hideBanner()
         }
     }
     
@@ -248,6 +261,8 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate, S
         
         buyButton = bannerView?.viewWithTag(104) as? UIButton
         buyButton!.enabled = false
+        buyButton!.setTitleColor(UIColor.grayColor(), forState: UIControlState.Normal)
+        buyButton!.layer.borderColor = UIColor.grayColor().CGColor
         
         self.navigationController?.view.addSubview(bannerView!)
     }
@@ -338,6 +353,7 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate, S
     
     @IBAction func cancelButton(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
     }
     
 }
