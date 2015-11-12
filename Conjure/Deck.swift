@@ -15,6 +15,7 @@ class Deck: NSObject, NSCoding {
     var notes = ""
     var wins = 0
     var losses = 0
+    var ties = 0
     var newDeck = false
     
     // MARK: Archiving Paths
@@ -35,6 +36,7 @@ class Deck: NSObject, NSCoding {
         aCoder.encodeObject(notes, forKey: "notes")
         aCoder.encodeInteger(wins, forKey: "wins")
         aCoder.encodeInteger(losses, forKey: "losses")
+        aCoder.encodeInteger(ties, forKey: "ties")
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
@@ -42,10 +44,12 @@ class Deck: NSObject, NSCoding {
         let notes = aDecoder.decodeObjectForKey("notes") as? String ?? ""
         let wins = aDecoder.decodeIntegerForKey("wins")
         let losses = aDecoder.decodeIntegerForKey("losses")
+        let ties = aDecoder.decodeIntegerForKey("ties")
         
         self.init(deckName: deckName!)
         self.notes = notes
         self.wins = wins
         self.losses = losses
+        self.ties = ties
     }
 }

@@ -143,7 +143,11 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             let lastSeries = seriesArray[0]
             deckNameHistoryLabel.text = lastSeries.deck.deckName
             
-            if lastSeries.wins > lastSeries.losses {
+            if lastSeries.tie == true {
+                deckRecordHistoryLabel.textColor = UIColor.lightGrayColor()
+                deckRecordHistoryLabel.text = "T \(lastSeries.wins)-\(lastSeries.losses)"
+            }
+            else if lastSeries.wins > lastSeries.losses {
                 deckRecordHistoryLabel.textColor = greenColor
                 deckRecordHistoryLabel.text = "W \(lastSeries.wins)-\(lastSeries.losses)"
             }
@@ -509,14 +513,17 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
                     saveSeries()
             
                     // Edit the deck as well.
-                    if series.wins > series.losses {
+                    if series.tie == true {
+                        deckDictionary[currentDeck!.deckName]?.ties += 1
+                    }
+                    else if series.wins > series.losses {
                         deckDictionary[currentDeck!.deckName]?.wins += 1
                     }
                     else if series.losses > series.wins {
                         deckDictionary[currentDeck!.deckName]?.losses += 1
                     }
             
-                    deckWinLossLabel.text = "W: \(deckDictionary[currentDeck!.deckName]!.wins)    L: \(deckDictionary[currentDeck!.deckName]!.losses)"
+                    deckWinLossLabel.text = "W: \(deckDictionary[currentDeck!.deckName]!.wins)    L: \(deckDictionary[currentDeck!.deckName]!.losses)    T: \(deckDictionary[currentDeck!.deckName]!.ties)"
             
                     saveDecks()
                     changeLabels()
