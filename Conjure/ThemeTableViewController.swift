@@ -28,6 +28,7 @@ class ThemeTableViewController: UITableViewController {
     
     var cellData = ["Beleren", "Aggro", "Nissa", "Aeons Torn", "Scalding", "Scapeshift", "Living End", "Golden"]
     var selectedTheme = ""
+    var tempTheme: String?
     var cellArray = NSMutableArray()
     
     // Giant color library

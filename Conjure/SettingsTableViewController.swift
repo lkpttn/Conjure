@@ -172,8 +172,9 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate, S
             print(productsRequest)
             
             productsRequest.delegate = self
-            productsRequest.start()
             UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+            productsRequest.start()
+            
         }
         else {
             print("Cannot perform In App Purchases.")
