@@ -14,6 +14,7 @@ class ThemeViewController: UIViewController, ThemeTableViewControllerDelegate {
     
     var themeController: ThemeTableViewController?
     var selectedTheme = ""
+    var tempTheme: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +32,7 @@ class ThemeViewController: UIViewController, ThemeTableViewControllerDelegate {
         if (self.isMovingFromParentViewController()) {
             let parent = navigationController?.topViewController as! SettingsTableViewController
             parent.selectedTheme = selectedTheme
+            parent.tempTheme = tempTheme
         }
     }
 
@@ -40,6 +42,7 @@ class ThemeViewController: UIViewController, ThemeTableViewControllerDelegate {
         if segue.identifier == "themeTableEmbed" {
             themeController = segue.destinationViewController as? ThemeTableViewController
             themeController!.delegate = self
+            themeController?.tempTheme = self.tempTheme
         }
     }
     
@@ -57,16 +60,5 @@ class ThemeViewController: UIViewController, ThemeTableViewControllerDelegate {
     @IBAction func useTheme(sender: AnyObject) {
         navigationController?.popViewControllerAnimated(true)
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

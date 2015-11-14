@@ -897,7 +897,7 @@
                                         </tableViewCellContentView>
                                         <animations/>
                                         <connections>
-                                            <segue destination="2aS-JR-0Gd" kind="show" identifier="" id="rVE-lc-mj5"/>
+                                            <segue destination="2aS-JR-0Gd" kind="show" identifier="showThemes" id="rVE-lc-mj5"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="54" id="mgZ-fG-O0s">

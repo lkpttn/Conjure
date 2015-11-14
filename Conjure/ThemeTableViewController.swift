@@ -19,6 +19,7 @@ class ThemeTableViewController: UITableViewController {
     func updatePreview() {
         delegate?.updatePreview()
         delegate?.selectedTheme = selectedTheme
+        delegate?.tempTheme = tempTheme
     }
     
     var parentView = ThemeViewController?()
@@ -70,9 +71,9 @@ class ThemeTableViewController: UITableViewController {
         
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "settingCell")
         
-        // Uncomment the following line to preserve selection between presentations
         self.clearsSelectionOnViewWillAppear = false
-        selectedTheme = defaults.stringForKey("selectedTheme")!
+        // We need to keep track of a temporary theme that someone can choose before saving
+        selectedTheme = tempTheme ?? defaults.stringForKey("selectedTheme")!
         
     }
 
@@ -130,8 +131,8 @@ class ThemeTableViewController: UITableViewController {
         }
         
         selectedTheme = cellData[indexPath.row]
+        tempTheme = cellData[indexPath.row]
         changeTheme(selectedTheme)
-        print("Selecting table row \(cell?.textLabel?.text)")
     }
     
     override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
@@ -202,15 +203,4 @@ class ThemeTableViewController: UITableViewController {
 
         updatePreview()
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

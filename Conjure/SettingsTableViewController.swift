@@ -38,6 +38,7 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate, S
     
     // Holder variables
     var selectedTheme = ""
+    var tempTheme: String?
     var tempPlayerOneName = "Me"
     var tempPlayerTwoName = "Opponent"
     var tempLifeTotal = 20
@@ -51,6 +52,7 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate, S
         
         self.styleNavBar()
         self.loadAllSettings()
+        
 
         
         playerOneNameField.delegate = self
@@ -74,6 +76,7 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate, S
     }
     
     override func viewDidAppear(animated: Bool) {
+        print("The temp theme = \(tempTheme)")
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -297,7 +300,11 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate, S
         if segue.identifier != nil {
             self.tableView.deselectRowAtIndexPath((self.tableView.indexPathForSelectedRow)!, animated: true)
         }
-        
+        if segue.identifier == "showThemes" {
+            print("Choosing theme")
+            let destination = segue.destinationViewController as! ThemeViewController
+            destination.tempTheme = tempTheme
+        }
         if segue.identifier == "showMatchType" {
             print("Choosing match type")
             let destination = segue.destinationViewController as! SettingsDetailTableViewController
