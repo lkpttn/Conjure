@@ -93,10 +93,8 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     }
     
     override func viewDidLoad() {
-        
         // Allows the screen to fall asleep.
         UIApplication.sharedApplication().idleTimerDisabled = false
-        
         
         // Using UIAppearance to change colors.
         UINavigationBar.appearance().tintColor = UIColor.whiteColor()
@@ -128,6 +126,8 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         
         checkDecks()
         changeTheme(defaults.stringForKey("selectedTheme") ?? "Beleren")
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+        
         self.reloadInputViews()
     }
     
@@ -143,7 +143,11 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             let lastSeries = seriesArray[0]
             deckNameHistoryLabel.text = lastSeries.deck.deckName
             
-            if lastSeries.wins > lastSeries.losses {
+            if lastSeries.tie == true {
+                deckRecordHistoryLabel.textColor = UIColor.lightGrayColor()
+                deckRecordHistoryLabel.text = "T \(lastSeries.wins)-\(lastSeries.losses)"
+            }
+            else if lastSeries.wins > lastSeries.losses {
                 deckRecordHistoryLabel.textColor = greenColor
                 deckRecordHistoryLabel.text = "W \(lastSeries.wins)-\(lastSeries.losses)"
             }
@@ -167,7 +171,7 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
                 currentDeck = deckDictionary[name!]
                 if currentDeck != nil {
                     deckLabel.text = currentDeck?.deckName
-                    deckWinLossLabel.text = "W: \(currentDeck!.wins)    L: \(currentDeck!.losses)"
+                    deckWinLossLabel.text = "Record: \(currentDeck!.wins)-\(currentDeck!.losses)-\(currentDeck!.ties)"
                 }
                 else if currentDeck == nil {
                     deckLabel.text = "No deck selected"
@@ -205,7 +209,7 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         
         let toolBar = UIToolbar()
         toolBar.barStyle = UIBarStyle.Default
-        toolBar.translucent = true
+        toolBar.translucent = false
         toolBar.tintColor = UIColor.blueColor()
         toolBar.sizeToFit()
         
@@ -509,14 +513,17 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
                     saveSeries()
             
                     // Edit the deck as well.
-                    if series.wins > series.losses {
+                    if series.tie == true {
+                        deckDictionary[currentDeck!.deckName]?.ties += 1
+                    }
+                    else if series.wins > series.losses {
                         deckDictionary[currentDeck!.deckName]?.wins += 1
                     }
                     else if series.losses > series.wins {
                         deckDictionary[currentDeck!.deckName]?.losses += 1
                     }
             
-                    deckWinLossLabel.text = "W: \(deckDictionary[currentDeck!.deckName]!.wins)    L: \(deckDictionary[currentDeck!.deckName]!.losses)"
+                    deckWinLossLabel.text = "Record: \(deckDictionary[currentDeck!.deckName]!.wins)-\(deckDictionary[currentDeck!.deckName]!.losses)-\(deckDictionary[currentDeck!.deckName]!.ties)"
             
                     saveDecks()
                     changeLabels()
@@ -538,7 +545,7 @@ class LeadViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             let defaults = NSUserDefaults.standardUserDefaults()
             defaults.setObject(deck.deckName, forKey: "currentDeckString")
     
-            deckWinLossLabel.text = "W: \(deck.wins)    L: \(deck.losses)"
+            deckWinLossLabel.text = "Record: \(deck.wins)-\(deck.losses)-\(deck.ties)"
             
             // Set the passed in deckDictionary to the lead view
             deckDictionary = source.deckDictionary

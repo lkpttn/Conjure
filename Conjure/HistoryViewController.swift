@@ -98,7 +98,11 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         // Configure the cell...
         cell.deckNameLabel.text = String(series.deck.deckName)
         
-        if series.wins > series.losses {
+        if series.tie == true {
+            cell.winLossLabel.textColor = UIColor.lightGrayColor()
+            cell.winLossLabel.text = "T \(series.wins)-\(series.losses)"
+        }
+        else if series.wins > series.losses {
             cell.winLossLabel.textColor = greenColor
             cell.winLossLabel.text = "W \(series.wins)-\(series.losses)"
         }

@@ -26,7 +26,7 @@ class DeckNotesViewController: UIViewController {
         // Toolbar stuff
         let toolBar = UIToolbar()
         toolBar.barStyle = UIBarStyle.Default
-        toolBar.translucent = true
+        toolBar.translucent = false
         toolBar.tintColor = UIColor.blueColor()
         toolBar.sizeToFit()
         

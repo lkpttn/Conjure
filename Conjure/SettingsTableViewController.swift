@@ -38,6 +38,7 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate, S
     
     // Holder variables
     var selectedTheme = ""
+    var tempTheme: String?
     var tempPlayerOneName = "Me"
     var tempPlayerTwoName = "Opponent"
     var tempLifeTotal = 20
@@ -51,6 +52,7 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate, S
         
         self.styleNavBar()
         self.loadAllSettings()
+        
 
         
         playerOneNameField.delegate = self
@@ -74,6 +76,7 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate, S
     }
     
     override func viewDidAppear(animated: Bool) {
+        print("The temp theme = \(tempTheme)")
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -122,7 +125,7 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate, S
         case 5:
             numberOfGamesLabel.text = "Best of 5"
         default:
-            numberOfGamesLabel.text = "Best of 3"
+            numberOfGamesLabel.text = "Single Game"
         }
         
     }
@@ -160,7 +163,7 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate, S
         navBar?.translucent = false
     }
     
-    override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
@@ -172,8 +175,9 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate, S
             print(productsRequest)
             
             productsRequest.delegate = self
-            productsRequest.start()
             UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+            productsRequest.start()
+            
         }
         else {
             print("Cannot perform In App Purchases.")
@@ -296,7 +300,11 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate, S
         if segue.identifier != nil {
             self.tableView.deselectRowAtIndexPath((self.tableView.indexPathForSelectedRow)!, animated: true)
         }
-        
+        if segue.identifier == "showThemes" {
+            print("Choosing theme")
+            let destination = segue.destinationViewController as! ThemeViewController
+            destination.tempTheme = tempTheme
+        }
         if segue.identifier == "showMatchType" {
             print("Choosing match type")
             let destination = segue.destinationViewController as! SettingsDetailTableViewController
@@ -334,9 +342,16 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate, S
     }
     
     func restorePurchases(sender: UIGestureRecognizer) {
-        if (SKPaymentQueue.canMakePayments()) {
-            SKPaymentQueue.defaultQueue().restoreCompletedTransactions()
-            UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        if settings.boolForKey("didPurchase") == false {
+            if (SKPaymentQueue.canMakePayments()) {
+                SKPaymentQueue.defaultQueue().restoreCompletedTransactions()
+                UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+            }
+        }
+        else {
+            let alert = UIAlertController(title: "You've already purchased everything.", message: "All features are already unlocked for you, go enjoy them!", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Ok, thanks", style: UIAlertActionStyle.Cancel, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
         }
     }
     

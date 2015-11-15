@@ -19,6 +19,7 @@ class ThemeTableViewController: UITableViewController {
     func updatePreview() {
         delegate?.updatePreview()
         delegate?.selectedTheme = selectedTheme
+        delegate?.tempTheme = tempTheme
     }
     
     var parentView = ThemeViewController?()
@@ -28,6 +29,7 @@ class ThemeTableViewController: UITableViewController {
     
     var cellData = ["Beleren", "Aggro", "Nissa", "Aeons Torn", "Scalding", "Scapeshift", "Living End", "Golden"]
     var selectedTheme = ""
+    var tempTheme: String?
     var cellArray = NSMutableArray()
     
     // Giant color library
@@ -69,9 +71,20 @@ class ThemeTableViewController: UITableViewController {
         
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "settingCell")
         
-        // Uncomment the following line to preserve selection between presentations
         self.clearsSelectionOnViewWillAppear = false
-        selectedTheme = defaults.stringForKey("selectedTheme")!
+        // We need to keep track of a temporary theme that someone can choose before saving
+        if tempTheme != nil {
+            selectedTheme = tempTheme!
+        }
+        if defaults.stringForKey("selectedTheme") == "" {
+            selectedTheme = "Beleren"
+        }
+        if defaults.stringForKey("selectedTheme") != "" && tempTheme == nil {
+            selectedTheme = defaults.stringForKey("selectedTheme")!
+        }
+
+        print("The selected theme is \(selectedTheme)")
+        
         
     }
 
@@ -129,8 +142,8 @@ class ThemeTableViewController: UITableViewController {
         }
         
         selectedTheme = cellData[indexPath.row]
+        tempTheme = cellData[indexPath.row]
         changeTheme(selectedTheme)
-        print("Selecting table row \(cell?.textLabel?.text)")
     }
     
     override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
@@ -201,15 +214,4 @@ class ThemeTableViewController: UITableViewController {
 
         updatePreview()
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
