@@ -7,11 +7,8 @@ Conjure was designed around how I would keep track of my games, and how I notice
 The full version includes unlimited deck slots, match history, 9 additional themes and the ability to save format defaults. Conjure is a passion project of mine, and all the money I earn helps me keep working on it (and buy more cards).
 
 ### Know Issues
-- Activity indicator spins while requesting store content after purchase.
-- Ties currently end in a loss for Player One.
-- Moving back from the theme selection can introduce selection bugs.
 - Sometimes the UIPickerView initializes with only one button.
-- You can still restore a purchase even if you've purchased the app.
+- Some settings detail pages don't have checkmarks on load.
 
 ### Upcoming features
 - Better support for ties and conceding
