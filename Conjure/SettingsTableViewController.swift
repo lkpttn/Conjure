@@ -125,7 +125,7 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate, S
         case 5:
             numberOfGamesLabel.text = "Best of 5"
         default:
-            numberOfGamesLabel.text = "Best of 3"
+            numberOfGamesLabel.text = "Single Game"
         }
         
     }
@@ -163,7 +163,7 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate, S
         navBar?.translucent = false
     }
     
-    override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
@@ -342,9 +342,16 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate, S
     }
     
     func restorePurchases(sender: UIGestureRecognizer) {
-        if (SKPaymentQueue.canMakePayments()) {
-            SKPaymentQueue.defaultQueue().restoreCompletedTransactions()
-            UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        if settings.boolForKey("didPurchase") == false {
+            if (SKPaymentQueue.canMakePayments()) {
+                SKPaymentQueue.defaultQueue().restoreCompletedTransactions()
+                UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+            }
+        }
+        else {
+            let alert = UIAlertController(title: "You've already purchased everything.", message: "All features are already unlocked for you, go enjoy them!", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Ok, thanks", style: UIAlertActionStyle.Cancel, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
         }
     }
     
