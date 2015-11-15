@@ -73,7 +73,18 @@ class ThemeTableViewController: UITableViewController {
         
         self.clearsSelectionOnViewWillAppear = false
         // We need to keep track of a temporary theme that someone can choose before saving
-        selectedTheme = tempTheme ?? defaults.stringForKey("selectedTheme")!
+        if tempTheme != nil {
+            selectedTheme = tempTheme!
+        }
+        if defaults.stringForKey("selectedTheme") == "" {
+            selectedTheme = "Beleren"
+        }
+        if defaults.stringForKey("selectedTheme") != "" && tempTheme == nil {
+            selectedTheme = defaults.stringForKey("selectedTheme")!
+        }
+
+        print("The selected theme is \(selectedTheme)")
+        
         
     }
 
