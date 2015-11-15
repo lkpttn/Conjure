@@ -93,8 +93,6 @@
             <string>SourceSansPro-Regular</string>
             <string>SourceSansPro-Regular</string>
             <string>SourceSansPro-Regular</string>
-            <string>SourceSansPro-Regular</string>
-            <string>SourceSansPro-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -263,8 +261,8 @@
                                     <segue destination="jA6-mA-r8K" kind="show" identifier="showHistory" id="IKF-va-G6z"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="150" placeholderIntrinsicHeight="21" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DdO-g7-hPi">
-                                <rect key="frame" x="430" y="348" width="150" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="200" placeholderIntrinsicHeight="21" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DdO-g7-hPi">
+                                <rect key="frame" x="380" y="348" width="200" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="13"/>
                                 <color key="textColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -437,45 +435,21 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="75" placeholderIntrinsicHeight="21" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jTm-1m-GP4">
-                                <rect key="frame" x="130" y="237" width="75" height="21"/>
-                                <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="75" id="Dpa-oi-8IT"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="21"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WINS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DfY-mV-K9X">
-                                <rect key="frame" x="20" y="220" width="29" height="17"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="13"/>
-                                <color key="textColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LOSSES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gwO-eL-3I8">
-                                <rect key="frame" x="130" y="220" width="42" height="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RECORD" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DfY-mV-K9X">
+                                <rect key="frame" x="20" y="220" width="46" height="17"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="13"/>
                                 <color key="textColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="65" placeholderIntrinsicHeight="21" text="--" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e97-ex-sWu">
-                                <rect key="frame" x="240" y="237" width="75" height="21"/>
+                                <rect key="frame" x="130" y="237" width="75" height="21"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="75" id="ogj-rK-kh2"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="21"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WIN PERCENT" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oSD-Pq-dKS">
-                                <rect key="frame" x="240" y="220" width="76" height="17"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="13"/>
-                                <color key="textColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="152" translatesAutoresizingMaskIntoConstraints="NO" id="c4Q-5x-UF7" customClass="HeaderView" customModule="Conjure" customModuleProvider="target">
@@ -548,6 +522,13 @@
                                     <segue destination="AD2-ya-Vv1" kind="show" identifier="deckNotes" id="hxR-uO-xSO"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WIN PERCENT" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oSD-Pq-dKS">
+                                <rect key="frame" x="130" y="220" width="76" height="17"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="13"/>
+                                <color key="textColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -558,16 +539,17 @@
                             <constraint firstItem="f34-5H-DQT" firstAttribute="trailing" secondItem="xhM-L7-ljz" secondAttribute="trailingMargin" id="7Bh-Y7-prt"/>
                             <constraint firstItem="DfY-mV-K9X" firstAttribute="top" secondItem="Gty-ej-0uq" secondAttribute="bottom" constant="8" id="7WW-H3-J9s"/>
                             <constraint firstItem="Gty-ej-0uq" firstAttribute="top" secondItem="c4Q-5x-UF7" secondAttribute="bottom" id="8pm-yy-LrQ"/>
-                            <constraint firstItem="jTm-1m-GP4" firstAttribute="top" secondItem="gwO-eL-3I8" secondAttribute="bottom" id="Aho-wa-Mt3"/>
                             <constraint firstItem="T7k-zv-B39" firstAttribute="leading" secondItem="xhM-L7-ljz" secondAttribute="leadingMargin" id="D6y-aU-sX9"/>
+                            <constraint firstItem="e97-ex-sWu" firstAttribute="leading" secondItem="XPG-LC-7mq" secondAttribute="trailing" constant="35" id="DRJ-3l-MVY"/>
                             <constraint firstItem="Q4x-sm-oz2" firstAttribute="top" secondItem="f34-5H-DQT" secondAttribute="bottom" id="EYj-m4-T3e"/>
-                            <constraint firstItem="gwO-eL-3I8" firstAttribute="top" secondItem="Gty-ej-0uq" secondAttribute="bottom" constant="8" id="GST-A7-JL0"/>
                             <constraint firstItem="e97-ex-sWu" firstAttribute="top" secondItem="oSD-Pq-dKS" secondAttribute="bottom" id="Hev-nS-rOz"/>
+                            <constraint firstItem="oSD-Pq-dKS" firstAttribute="leading" secondItem="DfY-mV-K9X" secondAttribute="trailing" constant="64" id="Mdf-Na-0o5"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Gty-ej-0uq" secondAttribute="trailing" constant="-20" id="MkE-MP-TbF"/>
                             <constraint firstItem="DfY-mV-K9X" firstAttribute="leading" secondItem="xhM-L7-ljz" secondAttribute="leadingMargin" id="PDB-sA-kFs"/>
                             <constraint firstItem="oSD-Pq-dKS" firstAttribute="top" secondItem="Gty-ej-0uq" secondAttribute="bottom" constant="8" id="PG1-sp-r5e"/>
                             <constraint firstItem="Gty-ej-0uq" firstAttribute="leading" secondItem="xhM-L7-ljz" secondAttribute="leadingMargin" constant="-20" id="Ryf-W4-QkE"/>
                             <constraint firstItem="XPG-LC-7mq" firstAttribute="leading" secondItem="xhM-L7-ljz" secondAttribute="leadingMargin" id="UT0-bZ-S9K"/>
+                            <constraint firstItem="oSD-Pq-dKS" firstAttribute="leading" secondItem="DfY-mV-K9X" secondAttribute="trailing" constant="81" id="UWY-rg-gwn"/>
                             <constraint firstItem="Gty-ej-0uq" firstAttribute="top" secondItem="c4Q-5x-UF7" secondAttribute="bottom" id="Ul6-NM-pFU"/>
                             <constraint firstItem="Q4x-sm-oz2" firstAttribute="top" secondItem="T7k-zv-B39" secondAttribute="bottom" id="Wrn-Dn-4dW"/>
                             <constraint firstItem="XPG-LC-7mq" firstAttribute="top" secondItem="DfY-mV-K9X" secondAttribute="bottom" id="YhO-t6-uyN"/>
@@ -575,21 +557,18 @@
                             <constraint firstItem="Q4x-sm-oz2" firstAttribute="top" secondItem="T7k-zv-B39" secondAttribute="bottom" id="aNV-ue-yfu"/>
                             <constraint firstItem="f34-5H-DQT" firstAttribute="top" secondItem="e97-ex-sWu" secondAttribute="bottom" constant="37" id="ch9-ft-jbx"/>
                             <constraint firstItem="T7k-zv-B39" firstAttribute="leading" secondItem="xhM-L7-ljz" secondAttribute="leadingMargin" id="d44-8B-LV7"/>
-                            <constraint firstItem="jTm-1m-GP4" firstAttribute="leading" secondItem="XPG-LC-7mq" secondAttribute="trailing" constant="35" id="ikS-Q1-4hv"/>
-                            <constraint firstItem="oSD-Pq-dKS" firstAttribute="leading" secondItem="gwO-eL-3I8" secondAttribute="trailing" constant="68" id="keV-9o-4SG"/>
                             <constraint firstItem="T7k-zv-B39" firstAttribute="trailing" secondItem="xhM-L7-ljz" secondAttribute="trailingMargin" id="mh1-nh-nLS"/>
                             <constraint firstItem="f34-5H-DQT" firstAttribute="top" secondItem="T7k-zv-B39" secondAttribute="bottom" id="nN8-zK-ZVt"/>
                             <constraint firstItem="c4Q-5x-UF7" firstAttribute="top" secondItem="k6w-tX-KTY" secondAttribute="bottom" constant="-64" id="tBY-2k-ZZg"/>
                             <constraint firstItem="Gty-ej-0uq" firstAttribute="top" secondItem="k6w-tX-KTY" secondAttribute="bottom" constant="80" id="x6N-fk-Hw6"/>
                             <constraint firstItem="f34-5H-DQT" firstAttribute="top" secondItem="T7k-zv-B39" secondAttribute="bottom" id="xee-af-8RG"/>
                             <constraint firstItem="f34-5H-DQT" firstAttribute="top" secondItem="e97-ex-sWu" secondAttribute="bottom" constant="8" id="y1F-AF-QnL"/>
-                            <constraint firstItem="e97-ex-sWu" firstAttribute="leading" secondItem="jTm-1m-GP4" secondAttribute="trailing" constant="35" id="yCh-Y3-8L6"/>
-                            <constraint firstItem="gwO-eL-3I8" firstAttribute="leading" secondItem="DfY-mV-K9X" secondAttribute="trailing" constant="81" id="yWL-Mx-4sb"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="8pm-yy-LrQ"/>
                                 <exclude reference="x6N-fk-Hw6"/>
+                                <exclude reference="UWY-rg-gwn"/>
                                 <exclude reference="D6y-aU-sX9"/>
                                 <exclude reference="nN8-zK-ZVt"/>
                                 <exclude reference="xee-af-8RG"/>
@@ -601,7 +580,6 @@
                     <connections>
                         <outlet property="deckNameField" destination="HnT-vZ-pqp" id="BWF-Eb-oz0"/>
                         <outlet property="deckSelectButton" destination="Gty-ej-0uq" id="Gs8-ah-Ucs"/>
-                        <outlet property="lossesLabel" destination="jTm-1m-GP4" id="NYU-v9-TzZ"/>
                         <outlet property="notesTextView" destination="f34-5H-DQT" id="51s-YU-QWD"/>
                         <outlet property="winPercentageLabel" destination="e97-ex-sWu" id="rfM-b6-Gya"/>
                         <outlet property="winsLabel" destination="XPG-LC-7mq" id="92h-yi-lhH"/>
@@ -1113,7 +1091,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection footerTitle="Conjure v1.0.3" id="9FS-MO-mXk" userLabel="About Conjure">
+                            <tableViewSection footerTitle="Conjure v1.0.4" id="9FS-MO-mXk" userLabel="About Conjure">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="54" id="KdE-Bg-qra">
                                         <rect key="frame" x="0.0" y="507" width="600" height="54"/>
