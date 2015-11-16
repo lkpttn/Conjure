@@ -17,6 +17,7 @@ class Series: NSObject, NSCoding {
     var winConditon: Int
     var wins = 0
     var losses = 0
+    var tie = false
     var games = [Game]()
     var deck = Deck(deckName: "No deck selected")
     
@@ -51,6 +52,7 @@ class Series: NSObject, NSCoding {
         aCoder.encodeObject(deck, forKey: "deck")
         aCoder.encodeInteger(wins, forKey: "wins")
         aCoder.encodeInteger(losses, forKey: "losses")
+        aCoder.encodeBool(tie, forKey: "tie")
         aCoder.encodeObject(date, forKey: "date")
         aCoder.encodeInteger(numberOfGames, forKey: "numberOfGames")
         // aCoder.encodeDouble(timeLimit, forKey: "timeLimit")
@@ -63,9 +65,9 @@ class Series: NSObject, NSCoding {
     required convenience init?(coder aDecoder: NSCoder) {
         let games = aDecoder.decodeObjectForKey("games") as! NSArray
         let deck = aDecoder.decodeObjectForKey("deck") as! Deck
-        // let deck = Deck(deckName: "Not saved deck")
         let wins = aDecoder.decodeIntegerForKey("wins")
         let losses = aDecoder.decodeIntegerForKey("losses")
+        let tie = aDecoder.decodeBoolForKey("tie")
         let numberOfGames = aDecoder.decodeIntegerForKey("numberOfGames")
         let date = aDecoder.decodeObjectForKey("date") as! NSDate
         // let timeLimit = aDecoder.decodeDoubleForKey("timeLimit")
@@ -74,6 +76,7 @@ class Series: NSObject, NSCoding {
         self.init(deck: deck, numberOfGames: numberOfGames)
         self.wins = wins
         self.losses = losses
+        self.tie = tie
         self.games = games as! [Game]
         self.date = date
     }

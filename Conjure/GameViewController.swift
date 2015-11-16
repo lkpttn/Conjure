@@ -197,7 +197,16 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         let indexPath = NSIndexPath(forItem: turnNumber-1, inSection: 0)
         turnTable.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Top, animated: true)
         
-        if playerOne.lifeTotal == 0 {
+        if playerOne.lifeTotal == 0 && playerTwo.lifeTotal == 0 {
+            print("A tie")
+            series.tie = true;
+            
+            // Add half circle win logic
+            
+            checkSeries()
+        }
+        
+        if playerOne.lifeTotal == 0  && playerTwo.lifeTotal != 0 {
             // The other player wins. Increment the losses, gamenumber 
             // and check to see if the series is over.
             print("Player Two wins")
@@ -209,7 +218,8 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             // Check to see if the series is over.
             checkSeries()
         }
-        else if playerTwo.lifeTotal == 0 {
+        
+        if playerTwo.lifeTotal == 0  && playerOne.lifeTotal != 0 {
             // The player wins. Increment the wins, gamenumber
             // and check to see if the series is over.
             print("Player One wins")
@@ -221,6 +231,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             checkSeries()
         }
+            
         else {
         }
     }
@@ -229,9 +240,10 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     func checkSeries() {
         // This code can be way better.
         
-        if series.wins == series.winConditon || series.losses == series.winConditon {
+        if series.wins == series.winConditon || series.losses == series.winConditon || series.tie == true {
             // End series and cleanup
             print("\(series.wins)-\(series.losses)")
+            print(series.tie)
             
             gameButton.removeTarget(nil, action: nil, forControlEvents: .AllEvents)
             

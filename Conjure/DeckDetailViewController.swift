@@ -14,7 +14,6 @@ class DeckDetailViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var deckNameField: UITextField!
     @IBOutlet weak var deckSelectButton: UIButton!
     @IBOutlet weak var winsLabel: UILabel!
-    @IBOutlet weak var lossesLabel: UILabel!
     @IBOutlet weak var winPercentageLabel: UILabel!
     @IBOutlet weak var notesTextView: UITextView!
     
@@ -37,12 +36,11 @@ class DeckDetailViewController: UIViewController, UITextFieldDelegate {
             // If there is a deck passed to the ViewController, assign the variables.
             oldDeckName = deck.deckName
             deckNameField.text = deck.deckName
-            winsLabel.text = String(deck.wins)
-            lossesLabel.text = String(deck.losses)
+            winsLabel.text = "\(deck.wins)-\(deck.losses)-\(deck.ties)"
             notesTextView.text = deck.notes
             notesTextView.contentInset = UIEdgeInsets(top: -4.0, left: -5.0, bottom: -5.0, right: -5.0)
             
-            if deck.wins != 0 && deck.losses != 0 {
+            if deck.wins != 0 || deck.losses != 0 {
                 let games:Float = Float(deck.wins) + Float(deck.losses)
                 let winPercent:Float = roundf((Float(deck.wins)/games)*100)
                 let winInt = Int(winPercent)
