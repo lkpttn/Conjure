@@ -127,7 +127,7 @@ class DeckDetailViewController: UIViewController, UITextFieldDelegate {
         // Get the new view controller using segue.destinationViewController
         if segue.identifier == "deckNotes" {
             print("Moving to notes")
-            let svc = segue.destinationViewController as! DeckNotesViewController
+            let svc = segue.destinationViewController as! NotesViewController
             svc.noteString = deck?.notes ?? ""
             svc.parent = "deckDetail"
         }

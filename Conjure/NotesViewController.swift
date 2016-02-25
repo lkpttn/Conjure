@@ -1,5 +1,5 @@
 //
-//  DeckNotesViewController.swift
+//  NotesViewController.swift
 //  Conjure
 //
 //  Created by Luke Patton on 10/5/15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DeckNotesViewController: UIViewController {
+class NotesViewController: UIViewController {
     
     @IBOutlet weak var notesTextView: UITextView!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
