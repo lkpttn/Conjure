@@ -81,7 +81,7 @@ class GameDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     // MARK: Segment control
     func setupSegmentControl() {
         // Start the segment control fresh, add a segment for each game.
-        var tableY: CGFloat = -315
+        let tableY: CGFloat = -315
         
         gamesSegmentControl.removeAllSegments()
         for game in series.games {
@@ -94,10 +94,10 @@ class GameDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         gamesSegmentControl.addTarget(self, action: "changeGame:", forControlEvents: .ValueChanged)
         
         // If there's only one game, remove the segmented control.
-        if gamesSegmentControl.numberOfSegments == 1 {
-            tableY = -266
-            gamesSegmentControl.removeFromSuperview()
-        }
+//        if gamesSegmentControl.numberOfSegments == 1 {
+//            tableY = -266
+//            gamesSegmentControl.removeFromSuperview()
+//        }
         
         let verticalContstraint = NSLayoutConstraint(item: self.view, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: turnTable, attribute: NSLayoutAttribute.Top, multiplier: 1, constant: tableY)
         self.view.addConstraint(verticalContstraint)
