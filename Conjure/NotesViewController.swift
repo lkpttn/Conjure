@@ -1,5 +1,5 @@
 //
-//  DeckNotesViewController.swift
+//  NotesViewController.swift
 //  Conjure
 //
 //  Created by Luke Patton on 10/5/15.
@@ -8,12 +8,13 @@
 
 import UIKit
 
-class DeckNotesViewController: UIViewController {
+class NotesViewController: UIViewController {
     
     @IBOutlet weak var notesTextView: UITextView!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     
     var noteString = ""
+    var parent = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +38,6 @@ class DeckNotesViewController: UIViewController {
         toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
         toolBar.userInteractionEnabled = true
         notesTextView.inputAccessoryView = toolBar
-        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -48,15 +48,25 @@ class DeckNotesViewController: UIViewController {
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         NSNotificationCenter.defaultCenter().removeObserver(self)
+        
         if (self.isMovingFromParentViewController()) {
-            let parent = navigationController?.topViewController as! DeckDetailViewController
-            parent.deck?.notes = noteString
+            if parent == "deckDetail" {
+                let parent = navigationController?.topViewController as! DeckDetailViewController
+                parent.deck?.notes = noteString
+                print("Saving Deck Notes")
+            }
+            else if parent == "matchDetail" {
+                let parent = navigationController?.topViewController as! GameDetailViewController
+                parent.series?.notes = noteString
+                print("Saving Match Notes")
+            }
+
         }
     }
 
     func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
-            bottomConstraint.constant = keyboardSize.size.height + 20
+            bottomConstraint.constant = keyboardSize.size.height + 5
         }
     }
     

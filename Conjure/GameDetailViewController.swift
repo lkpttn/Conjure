@@ -15,8 +15,10 @@ class GameDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var deckNameLabel: UILabel!
     @IBOutlet weak var winLossLabel: UILabel!
     @IBOutlet weak var gamesSegmentControl: UISegmentedControl!
+    @IBOutlet weak var notesTextView: UITextView!
     
     var series: Series!
+    var seriesArray = [Series]()
     var gamenumber = 1
     
     // Colors
@@ -27,6 +29,8 @@ class GameDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     
     override func viewWillAppear(animated: Bool) {
         styleNavBar()
+        notesTextView.text = series.notes ?? ""
+        saveSeries()
     }
 
     override func viewDidLoad() {
@@ -36,6 +40,7 @@ class GameDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         if let series = series {
             deckNameLabel.text = series.deck.deckName
             winLossLabel.text = "\(series.wins)-\(series.losses)"
+            notesTextView.text = series.notes ?? ""
             
             if series.tie == true {
                 winLossLabel.text = "T \(series.wins)-\(series.losses)"
@@ -52,6 +57,8 @@ class GameDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         turnTable.dataSource = self
         self.turnTable.reloadData()
         
+        notesTextView.textContainer.lineFragmentPadding = 0;
+        
         setupSegmentControl()
     }
     
@@ -63,10 +70,18 @@ class GameDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         navBar!.barTintColor = UIColor.clearColor()
     }
     
+    func saveSeries() {
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(seriesArray, toFile: Series.ArchiveURL.path!)
+        print("Saved the series")
+        if !isSuccessfulSave {
+            print("Failure!")
+        }
+    }
+    
     // MARK: Segment control
     func setupSegmentControl() {
         // Start the segment control fresh, add a segment for each game.
-        var tableY: CGFloat = -205
+        // let tableY: CGFloat = -315
         
         gamesSegmentControl.removeAllSegments()
         for game in series.games {
@@ -79,13 +94,13 @@ class GameDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         gamesSegmentControl.addTarget(self, action: "changeGame:", forControlEvents: .ValueChanged)
         
         // If there's only one game, remove the segmented control.
-        if gamesSegmentControl.numberOfSegments == 1 {
-            tableY = -155
-            gamesSegmentControl.removeFromSuperview()
-        }
+//        if gamesSegmentControl.numberOfSegments == 1 {
+//            tableY = -266
+//            gamesSegmentControl.removeFromSuperview()
+//        }
         
-        let verticalContstraint = NSLayoutConstraint(item: self.view, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: turnTable, attribute: NSLayoutAttribute.Top, multiplier: 1, constant: tableY)
-        self.view.addConstraint(verticalContstraint)
+        // let verticalContstraint = NSLayoutConstraint(item: self.view, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: turnTable, attribute: NSLayoutAttribute.Top, multiplier: 1, constant: tableY)
+        // self.view.addConstraint(verticalContstraint)
     }
 
     
@@ -150,5 +165,17 @@ class GameDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         }
         
         turnTable.reloadData()
+    }
+    
+    // MARK: Segues
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using segue.destinationViewController
+        if segue.identifier == "matchNotes" {
+            print("Moving to notes")
+            let svc = segue.destinationViewController as! NotesViewController
+            svc.noteString = series?.notes ?? ""
+            svc.parent = "matchDetail"
+        }
+        
     }
 }

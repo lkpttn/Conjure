@@ -38,7 +38,7 @@ class DeckDetailViewController: UIViewController, UITextFieldDelegate {
             deckNameField.text = deck.deckName
             winsLabel.text = "\(deck.wins)-\(deck.losses)-\(deck.ties)"
             notesTextView.text = deck.notes
-            notesTextView.contentInset = UIEdgeInsets(top: -4.0, left: -5.0, bottom: -5.0, right: -5.0)
+            notesTextView.textContainer.lineFragmentPadding = 0;
             
             if deck.wins != 0 || deck.losses != 0 {
                 let games:Float = Float(deck.wins) + Float(deck.losses)
@@ -127,8 +127,9 @@ class DeckDetailViewController: UIViewController, UITextFieldDelegate {
         // Get the new view controller using segue.destinationViewController
         if segue.identifier == "deckNotes" {
             print("Moving to notes")
-            let svc = segue.destinationViewController as! DeckNotesViewController
+            let svc = segue.destinationViewController as! NotesViewController
             svc.noteString = deck?.notes ?? ""
+            svc.parent = "deckDetail"
         }
 
     }
