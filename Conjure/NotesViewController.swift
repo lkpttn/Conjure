@@ -66,7 +66,7 @@ class NotesViewController: UIViewController {
 
     func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
-            bottomConstraint.constant = keyboardSize.size.height + 20
+            bottomConstraint.constant = keyboardSize.size.height + 5
         }
     }
     
