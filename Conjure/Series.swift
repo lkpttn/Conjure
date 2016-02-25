@@ -13,6 +13,7 @@ class Series: NSObject, NSCoding {
     // MARK: Properties
     var date = NSDate()
     var numberOfGames: Int
+    var notes = ""
     // var timeLimit: Double
     var winConditon: Int
     var wins = 0
@@ -55,6 +56,7 @@ class Series: NSObject, NSCoding {
         aCoder.encodeBool(tie, forKey: "tie")
         aCoder.encodeObject(date, forKey: "date")
         aCoder.encodeInteger(numberOfGames, forKey: "numberOfGames")
+        aCoder.encodeObject(notes, forKey: "notes")
         // aCoder.encodeDouble(timeLimit, forKey: "timeLimit")
     }
     
@@ -70,6 +72,7 @@ class Series: NSObject, NSCoding {
         let tie = aDecoder.decodeBoolForKey("tie")
         let numberOfGames = aDecoder.decodeIntegerForKey("numberOfGames")
         let date = aDecoder.decodeObjectForKey("date") as! NSDate
+        let notes = aDecoder.decodeObjectForKey("notes") as? String ?? ""
         // let timeLimit = aDecoder.decodeDoubleForKey("timeLimit")
         
         
@@ -79,6 +82,7 @@ class Series: NSObject, NSCoding {
         self.tie = tie
         self.games = games as! [Game]
         self.date = date
+        self.notes = notes
     }
 
 } // END
