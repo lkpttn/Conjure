@@ -81,7 +81,7 @@ class GameDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     // MARK: Segment control
     func setupSegmentControl() {
         // Start the segment control fresh, add a segment for each game.
-        let tableY: CGFloat = -315
+        // let tableY: CGFloat = -315
         
         gamesSegmentControl.removeAllSegments()
         for game in series.games {
@@ -99,8 +99,8 @@ class GameDetailViewController: UIViewController, UITableViewDelegate, UITableVi
 //            gamesSegmentControl.removeFromSuperview()
 //        }
         
-        let verticalContstraint = NSLayoutConstraint(item: self.view, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: turnTable, attribute: NSLayoutAttribute.Top, multiplier: 1, constant: tableY)
-        self.view.addConstraint(verticalContstraint)
+        // let verticalContstraint = NSLayoutConstraint(item: self.view, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: turnTable, attribute: NSLayoutAttribute.Top, multiplier: 1, constant: tableY)
+        // self.view.addConstraint(verticalContstraint)
     }
 
     
@@ -172,7 +172,7 @@ class GameDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         // Get the new view controller using segue.destinationViewController
         if segue.identifier == "matchNotes" {
             print("Moving to notes")
-            let svc = segue.destinationViewController as! DeckNotesViewController
+            let svc = segue.destinationViewController as! NotesViewController
             svc.noteString = series?.notes ?? ""
             svc.parent = "matchDetail"
         }
