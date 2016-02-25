@@ -18,6 +18,7 @@ class GameDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var notesTextView: UITextView!
     
     var series: Series!
+    var seriesArray = [Series]()
     var gamenumber = 1
     
     // Colors
@@ -29,6 +30,7 @@ class GameDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     override func viewWillAppear(animated: Bool) {
         styleNavBar()
         notesTextView.text = series.notes ?? ""
+        saveSeries()
     }
 
     override func viewDidLoad() {
@@ -66,6 +68,14 @@ class GameDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         navBar?.shadowImage = UIImage()
         navBar?.translucent = true
         navBar!.barTintColor = UIColor.clearColor()
+    }
+    
+    func saveSeries() {
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(seriesArray, toFile: Series.ArchiveURL.path!)
+        print("Saved the series")
+        if !isSuccessfulSave {
+            print("Failure!")
+        }
     }
     
     // MARK: Segment control

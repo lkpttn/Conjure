@@ -162,6 +162,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
                 
                 // the new view controller (A GameDetailViewController) is passed the series information
                 destination.series = selectedSeries
+                destination.seriesArray = seriesArray
             }
         }
         else {

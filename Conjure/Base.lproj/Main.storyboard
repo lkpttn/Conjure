@@ -1910,9 +1910,12 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Glf-54-AOP">
-                                <rect key="frame" x="20" y="175" width="560" height="96"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Glf-54-AOP">
+                                <rect key="frame" x="20" y="179" width="560" height="92"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="92" id="ccO-Uy-CHu"/>
+                                </constraints>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -1945,7 +1948,7 @@
                             <constraint firstItem="Bnf-PS-B6B" firstAttribute="top" secondItem="Glf-54-AOP" secondAttribute="bottom" constant="8" symbolic="YES" id="VHu-eI-Q5F"/>
                             <constraint firstItem="9vh-lN-WJ2" firstAttribute="top" secondItem="jt3-gS-4F2" secondAttribute="bottom" constant="8" id="XKW-Mu-bz1"/>
                             <constraint firstItem="Bnf-PS-B6B" firstAttribute="trailing" secondItem="goD-Il-UNw" secondAttribute="trailingMargin" id="awA-9g-GYZ"/>
-                            <constraint firstItem="Glf-54-AOP" firstAttribute="top" secondItem="jt3-gS-4F2" secondAttribute="bottom" constant="23" id="h3I-z7-AwI"/>
+                            <constraint firstItem="Glf-54-AOP" firstAttribute="top" secondItem="jt3-gS-4F2" secondAttribute="bottom" constant="27" id="h3I-z7-AwI"/>
                             <constraint firstItem="Glf-54-AOP" firstAttribute="trailing" secondItem="goD-Il-UNw" secondAttribute="trailingMargin" id="jdE-SV-GPy"/>
                             <constraint firstItem="Bnf-PS-B6B" firstAttribute="leading" secondItem="goD-Il-UNw" secondAttribute="leadingMargin" id="oqt-sZ-vKm"/>
                             <constraint firstItem="yjV-0z-Jbz" firstAttribute="leading" secondItem="goD-Il-UNw" secondAttribute="leadingMargin" id="wRz-tJ-ftN"/>
