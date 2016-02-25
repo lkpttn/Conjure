@@ -66,7 +66,7 @@ class GameDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     // MARK: Segment control
     func setupSegmentControl() {
         // Start the segment control fresh, add a segment for each game.
-        var tableY: CGFloat = -205
+        var tableY: CGFloat = -315
         
         gamesSegmentControl.removeAllSegments()
         for game in series.games {
@@ -80,7 +80,7 @@ class GameDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         
         // If there's only one game, remove the segmented control.
         if gamesSegmentControl.numberOfSegments == 1 {
-            tableY = -155
+            tableY = -266
             gamesSegmentControl.removeFromSuperview()
         }
         
