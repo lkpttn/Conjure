@@ -129,6 +129,7 @@ class DeckDetailViewController: UIViewController, UITextFieldDelegate {
             print("Moving to notes")
             let svc = segue.destinationViewController as! DeckNotesViewController
             svc.noteString = deck?.notes ?? ""
+            svc.parent = "deckDetail"
         }
 
     }

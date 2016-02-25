@@ -15,6 +15,7 @@ class GameDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var deckNameLabel: UILabel!
     @IBOutlet weak var winLossLabel: UILabel!
     @IBOutlet weak var gamesSegmentControl: UISegmentedControl!
+    @IBOutlet weak var notesTextView: UITextView!
     
     var series: Series!
     var gamenumber = 1
@@ -27,6 +28,7 @@ class GameDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     
     override func viewWillAppear(animated: Bool) {
         styleNavBar()
+        notesTextView.text = series.notes ?? ""
     }
 
     override func viewDidLoad() {
@@ -36,6 +38,7 @@ class GameDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         if let series = series {
             deckNameLabel.text = series.deck.deckName
             winLossLabel.text = "\(series.wins)-\(series.losses)"
+            notesTextView.text = series.notes ?? ""
             
             if series.tie == true {
                 winLossLabel.text = "T \(series.wins)-\(series.losses)"
@@ -51,6 +54,8 @@ class GameDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         turnTable.delegate = self
         turnTable.dataSource = self
         self.turnTable.reloadData()
+        
+        notesTextView.textContainer.lineFragmentPadding = 0;
         
         setupSegmentControl()
     }
@@ -150,5 +155,17 @@ class GameDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         }
         
         turnTable.reloadData()
+    }
+    
+    // MARK: Segues
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using segue.destinationViewController
+        if segue.identifier == "matchNotes" {
+            print("Moving to notes")
+            let svc = segue.destinationViewController as! DeckNotesViewController
+            svc.noteString = series?.notes ?? ""
+            svc.parent = "matchDetail"
+        }
+        
     }
 }

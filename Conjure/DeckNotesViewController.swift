@@ -14,6 +14,7 @@ class DeckNotesViewController: UIViewController {
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     
     var noteString = ""
+    var parent = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +38,6 @@ class DeckNotesViewController: UIViewController {
         toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
         toolBar.userInteractionEnabled = true
         notesTextView.inputAccessoryView = toolBar
-        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -48,9 +48,19 @@ class DeckNotesViewController: UIViewController {
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         NSNotificationCenter.defaultCenter().removeObserver(self)
+        
         if (self.isMovingFromParentViewController()) {
-            let parent = navigationController?.topViewController as! DeckDetailViewController
-            parent.deck?.notes = noteString
+            if parent == "deckDetail" {
+                let parent = navigationController?.topViewController as! DeckDetailViewController
+                parent.deck?.notes = noteString
+                print("Saving Deck Notes")
+            }
+            else if parent == "matchDetail" {
+                let parent = navigationController?.topViewController as! GameDetailViewController
+                parent.series?.notes = noteString
+                print("Saving Match Notes")
+            }
+
         }
     }
 
